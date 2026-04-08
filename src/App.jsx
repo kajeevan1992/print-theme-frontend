@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, MapPin, User, Search, ChevronRight, ChevronLeft, Plus, Minus, Check, Menu, X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,12 +12,13 @@ const BRAND = {
   bg: "#EAF6F7",
   panel: "#F4FBFB",
   card: "#FFFFFF",
-  line: "#C6E9EE",
-  primary: "#24B4C7",
-  primaryDark: "#138FA1",
-  ink: "#0E3340",
-  muted: "#597A84",
+  line: "#C8E7EC",
+  primary: "#25B5C7",
+  primaryDark: "#0E95A8",
+  ink: "#123A45",
+  muted: "#64818A",
   soft: "#DDF3F6",
+  heroGlow: "#D5EFF4",
 };
 
 const heroSlides = [
@@ -26,7 +27,7 @@ const heroSlides = [
     titleB: "Vision",
     titleC: "into Print",
     body:
-      "A modern print storefront for business cards, flyers, posters, booklets and bespoke quote requests — built for speed, clarity and future API integration.",
+      "A premium storefront for business cards, flyers, posters, booklets and bespoke quote requests — designed to feel cleaner, sharper and more trustworthy for client demos.",
     cta: "Explore Our Solutions",
     visual: "ROLLER BANNERS",
   },
@@ -35,7 +36,7 @@ const heroSlides = [
     titleB: "Print",
     titleC: "for Growing Brands",
     body:
-      "Clean product configurators, clear pricing blocks and a polished quote flow that feels premium on every screen size.",
+      "Product configurators, clear pricing and a stronger visual hierarchy built to present well now and connect to your admin API later.",
     cta: "Browse Products",
     visual: "BUSINESS CARDS",
   },
@@ -44,7 +45,7 @@ const heroSlides = [
     titleB: "Turnaround",
     titleC: "Beautiful UX",
     body:
-      "Launch with a strong storefront now, then connect products, stock, orders and customer accounts to your admin dashboard later.",
+      "Launch a polished frontend first, then connect stock, orders, pricing rules, customer accounts and bespoke quote workflows when you are ready.",
     cta: "Request Bespoke Quote",
     visual: "SAME DAY PRINT",
   },
@@ -108,6 +109,36 @@ const bookletCards = [
   { title: "Perfect Bound Booklets", text: "Ideal for premium brochures, lookbooks and polished publications." },
   { title: "Spot UV Stapled Booklets", text: "Add tactile contrast and gloss details for standout branded print." },
   { title: "Notebooks", text: "Custom branded notebooks ready for campaigns, teams and events." },
+];
+
+const megaMenu = [
+  {
+    title: "Marketing Materials",
+    items: [
+      ["Business Cards", "/standard-business-cards"],
+      ["Flyers", "/flyers"],
+      ["Booklets", "/booklets"],
+      ["Posters Large Format", "/posters-large-format-prints"],
+    ],
+  },
+  {
+    title: "Signage & Displays",
+    items: [
+      ["Roller Banners", "/bespoke-quote"],
+      ["Signage & Display", "/bespoke-quote"],
+      ["Outdoor Advertising", "/bespoke-quote"],
+      ["PVC Material", "/posters-large-format-prints"],
+    ],
+  },
+  {
+    title: "Stationery & More",
+    items: [
+      ["Bespoke Quote", "/bespoke-quote"],
+      ["Same Day Business Cards", "/standard-business-cards"],
+      ["Same Day Flyers", "/flyers"],
+      ["Same Day Posters", "/posters-large-format-prints"],
+    ],
+  },
 ];
 
 function currency(value) {
@@ -174,7 +205,7 @@ function useLocalCart() {
 
 function AppShell({ children }) {
   return (
-    <div className="mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto w-full max-w-[1340px] px-4 sm:px-6 lg:px-8">
       {children}
     </div>
   );
@@ -182,19 +213,30 @@ function AppShell({ children }) {
 
 function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [megaOpen, setMegaOpen] = useState(false);
+  const megaRef = useRef(null);
+
   const nav = [
     { label: "Business Cards", path: "/standard-business-cards" },
     { label: "Flyers", path: "/flyers" },
     { label: "Posters", path: "/posters-large-format-prints" },
     { label: "Booklets", path: "/booklets" },
-    { label: "All Products", path: "/all-products" },
+    { label: "All Products", path: "/all-products", mega: true },
     { label: "Bespoke Quote", path: "/bespoke-quote" },
   ];
 
+  useEffect(() => {
+    const close = (e) => {
+      if (megaRef.current && !megaRef.current.contains(e.target)) setMegaOpen(false);
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 border-b backdrop-blur-xl" style={{ backgroundColor: "rgba(234,246,247,0.94)", borderColor: BRAND.line }}>
+    <header className="sticky top-0 z-40 border-b backdrop-blur-xl" style={{ backgroundColor: "rgba(234,246,247,0.95)", borderColor: BRAND.line }}>
       <AppShell>
-        <div className="flex h-[84px] items-center justify-between gap-4">
+        <div className="flex h-[86px] items-center justify-between gap-4">
           <div className="flex items-center gap-3 lg:hidden">
             <button className="rounded-2xl p-3" onClick={() => setMobileOpen(true)} style={{ backgroundColor: BRAND.panel }}>
               <Menu className="h-5 w-5" />
@@ -205,14 +247,72 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
 
           <nav className="hidden items-center gap-8 lg:flex">
             {nav.map((item) => (
-              <button
-                key={item.path}
-                onClick={() => navigate(item.path)}
-                className="text-[18px] font-semibold transition hover:opacity-80"
-                style={{ color: currentPath === item.path ? BRAND.primaryDark : BRAND.ink }}
-              >
-                {item.label}
-              </button>
+              item.mega ? (
+                <div
+                  key={item.path}
+                  className="relative"
+                  ref={megaRef}
+                  onMouseEnter={() => setMegaOpen(true)}
+                  onMouseLeave={() => setMegaOpen(false)}
+                >
+                  <button
+                    onClick={() => navigate(item.path)}
+                    className="text-[18px] font-semibold transition hover:opacity-80"
+                    style={{ color: currentPath === item.path ? BRAND.primaryDark : BRAND.ink }}
+                  >
+                    {item.label}
+                  </button>
+                  <AnimatePresence>
+                    {megaOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ duration: 0.18 }}
+                        className="absolute left-1/2 top-[54px] w-[860px] -translate-x-1/2 rounded-[28px] border p-6 shadow-[0_26px_70px_rgba(14,58,70,0.12)]"
+                        style={{ backgroundColor: BRAND.card, borderColor: BRAND.line }}
+                      >
+                        <div className="grid grid-cols-[260px_1fr_1fr_1fr] gap-5">
+                          <div className="rounded-[22px] border p-4" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(36,180,199,0.18), rgba(255,255,255,1))" }}>
+                            <div className="mb-4 h-32 rounded-[18px] border" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.7)" }} />
+                            <div className="text-[22px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>Explore the full range</div>
+                            <p className="mt-2 text-sm leading-6" style={{ color: BRAND.muted }}>Clean dropdown navigation like your example, but with stronger spacing and polish.</p>
+                            <button onClick={() => navigate("/all-products")} className="mt-4 inline-flex items-center font-bold" style={{ color: BRAND.primaryDark }}>
+                              Shop now <ChevronRight className="ml-1 h-4 w-4" />
+                            </button>
+                          </div>
+                          {megaMenu.map((group) => (
+                            <div key={group.title}>
+                              <div className="mb-3 text-sm font-black uppercase tracking-[0.14em]" style={{ color: BRAND.primaryDark }}>{group.title}</div>
+                              <div className="grid gap-2">
+                                {group.items.map(([label, path]) => (
+                                  <button
+                                    key={label}
+                                    onClick={() => { navigate(path); setMegaOpen(false); }}
+                                    className="rounded-2xl px-3 py-2.5 text-left text-[15px] font-medium transition hover:translate-x-1"
+                                    style={{ color: BRAND.ink, backgroundColor: "rgba(221,243,246,0.35)" }}
+                                  >
+                                    {label}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <button
+                  key={item.path}
+                  onClick={() => navigate(item.path)}
+                  className="text-[18px] font-semibold transition hover:opacity-80"
+                  style={{ color: currentPath === item.path ? BRAND.primaryDark : BRAND.ink }}
+                >
+                  {item.label}
+                </button>
+              )
             ))}
           </nav>
 
@@ -244,7 +344,7 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
       {mobileOpen && (
         <div className="lg:hidden">
           <div className="fixed inset-0 z-50 bg-black/30" onClick={() => setMobileOpen(false)} />
-          <div className="fixed left-0 top-0 z-50 h-full w-[320px] border-r p-6" style={{ backgroundColor: BRAND.card, borderColor: BRAND.line }}>
+          <div className="fixed left-0 top-0 z-50 h-full w-[320px] overflow-y-auto border-r p-6" style={{ backgroundColor: BRAND.card, borderColor: BRAND.line }}>
             <div className="flex items-center justify-between">
               <Logo navigate={(path) => { navigate(path); setMobileOpen(false); }} />
               <button onClick={() => setMobileOpen(false)} className="rounded-2xl p-2">
@@ -262,6 +362,16 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
                   {item.label}
                 </button>
               ))}
+              <div className="mt-4 rounded-[22px] border p-4" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
+                <div className="mb-2 text-sm font-black uppercase tracking-[0.14em]" style={{ color: BRAND.primaryDark }}>Quick links</div>
+                <div className="grid gap-2">
+                  {megaMenu.flatMap((g) => g.items).slice(0, 6).map(([label, path]) => (
+                    <button key={label} onClick={() => { navigate(path); setMobileOpen(false); }} className="rounded-xl px-3 py-2 text-left" style={{ backgroundColor: "white", color: BRAND.ink }}>
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -298,9 +408,9 @@ function Hero({ navigate }) {
 
   return (
     <section className="relative overflow-hidden border-b" style={{ backgroundColor: BRAND.bg, borderColor: BRAND.line }}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(36,180,199,0.18),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(14,58,70,0.14),transparent_30%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(36,180,199,0.20),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(14,58,70,0.14),transparent_28%)]" />
       <AppShell>
-        <div className="relative grid min-h-[760px] grid-cols-1 gap-14 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:py-24">
+        <div className="relative grid min-h-[760px] grid-cols-1 gap-14 py-16 lg:grid-cols-[1.08fr_0.92fr] lg:py-24">
           <div className="flex flex-col justify-center">
             <Badge className="mb-6 w-fit rounded-full border-0 px-4 py-2 text-xs uppercase tracking-[0.18em]" style={{ backgroundColor: BRAND.soft, color: BRAND.primaryDark }}>
               Premium online printing across the UK
@@ -313,10 +423,10 @@ function Hero({ navigate }) {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.35 }}
               >
-                <h1 className="max-w-4xl text-5xl font-black leading-[0.93] tracking-[-0.03em] sm:text-6xl lg:text-[84px]" style={{ color: BRAND.ink }}>
+                <h1 className="max-w-4xl text-5xl font-black leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-[92px]" style={{ color: BRAND.ink }}>
                   {slide.titleA} <span style={{ color: BRAND.primary }}>{slide.titleB}</span> {slide.titleC}
                 </h1>
-                <p className="mt-8 max-w-2xl text-[18px] leading-8 sm:text-[20px]" style={{ color: BRAND.muted }}>
+                <p className="mt-8 max-w-2xl text-[19px] leading-8 sm:text-[21px]" style={{ color: BRAND.muted }}>
                   {slide.body}
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4">
@@ -348,21 +458,21 @@ function Hero({ navigate }) {
               initial={{ opacity: 0, scale: 0.96, rotate: -2 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 0.5 }}
-              className="relative h-[580px] w-full max-w-[540px] rounded-[40px] border p-8 shadow-[0_30px_70px_rgba(14,58,70,0.18)]"
-              style={{ background: "linear-gradient(180deg, rgba(14,58,70,0.15), rgba(255,255,255,0.78))", borderColor: BRAND.line }}
+              className="relative h-[600px] w-full max-w-[560px] rounded-[42px] border p-8 shadow-[0_34px_80px_rgba(14,58,70,0.18)]"
+              style={{ background: "linear-gradient(180deg, rgba(14,58,70,0.12), rgba(255,255,255,0.82))", borderColor: BRAND.line }}
             >
-              <div className="absolute right-8 top-8 h-20 w-20 rounded-full bg-black/90 shadow-2xl" />
+              <div className="absolute right-9 top-8 h-20 w-20 rounded-full bg-black/90 shadow-2xl" />
               <div className="absolute left-8 top-10 h-10 w-32 rounded-full bg-black/80 shadow-2xl" />
               <div className="absolute bottom-10 left-1/2 h-7 w-44 -translate-x-1/2 rounded-t-md bg-slate-500/80" />
               <div
-                className="absolute bottom-16 left-1/2 flex h-[420px] w-[220px] -translate-x-1/2 flex-col justify-between rounded-sm px-8 py-10 text-left shadow-[0_30px_50px_rgba(0,0,0,0.28)]"
-                style={{ background: "linear-gradient(180deg, #006E79, #0E3A46)", color: "rgba(255,255,255,0.92)" }}
+                className="absolute bottom-16 left-1/2 flex h-[435px] w-[224px] -translate-x-1/2 flex-col justify-between rounded-sm px-8 py-10 text-left shadow-[0_30px_50px_rgba(0,0,0,0.28)]"
+                style={{ background: "linear-gradient(180deg, #006E79, #0E3A46)", color: "rgba(255,255,255,0.94)" }}
               >
                 <div>
                   <div className="text-[52px] font-black tracking-tight">atlantis<span className="text-white/80">print</span></div>
                   <div className="mt-8 text-[34px] font-black uppercase leading-tight tracking-tight">{slide.visual}</div>
                 </div>
-                <div className="space-y-3 text-base uppercase text-white/70">
+                <div className="space-y-3 text-[15px] uppercase text-white/72">
                   <div>High resolution printing</div>
                   <div>Vibrant brand colours</div>
                   <div>Durable premium materials</div>
@@ -393,7 +503,7 @@ function HomePage({ navigate, addDemoProduct }) {
           <div className="mt-20 grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
             <Card className="soft-card rounded-[32px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
               <CardHeader className="p-8 pb-2">
-                <CardTitle className="text-[32px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>Why this starter is better for building fast</CardTitle>
+                <CardTitle className="text-[34px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Why this starter is better for building fast</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-5 p-8 pt-4 text-base leading-7" style={{ color: BRAND.muted }}>
                 <InfoBullet text="Frontend-first structure so you can deploy immediately in Coolify." />
@@ -401,16 +511,14 @@ function HomePage({ navigate, addDemoProduct }) {
                 <InfoBullet text="Reusable theme tokens matching your current visual identity." />
                 <InfoBullet text="Cleaner UX hierarchy, stronger spacing and more scalable component structure." />
                 <div className="pt-3">
-                  <PrimaryButton onClick={addDemoProduct}>
-                    Add demo business card product
-                  </PrimaryButton>
+                  <PrimaryButton onClick={addDemoProduct}>Add demo business card product</PrimaryButton>
                 </div>
               </CardContent>
             </Card>
 
             <Card className="soft-card rounded-[32px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
               <CardHeader className="p-8 pb-2">
-                <CardTitle className="text-[32px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>API-ready architecture</CardTitle>
+                <CardTitle className="text-[34px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>API-ready architecture</CardTitle>
               </CardHeader>
               <CardContent className="p-8 pt-4">
                 <div className="rounded-[28px] border p-5 font-mono text-sm leading-7" style={{ borderColor: BRAND.line, backgroundColor: "white", color: BRAND.ink }}>
@@ -428,7 +536,7 @@ function HomePage({ navigate, addDemoProduct }) {
                   <div className="pl-8">tokens.ts</div>
                 </div>
                 <p className="mt-5 text-base leading-7" style={{ color: BRAND.muted }}>
-                  You can keep the whole storefront live and polished while gradually connecting products, pricing, stock, authentication, quotes and orders to your admin dashboard.
+                  You can keep the storefront polished for demo use now, then gradually connect products, pricing, stock, authentication, quotes and orders to your admin dashboard.
                 </p>
               </CardContent>
             </Card>
@@ -446,7 +554,7 @@ function FeatureCard({ title, text, cta, onClick }) {
         <CardContent className="flex h-full flex-col justify-between p-7">
           <div>
             <div className="mb-6 h-44 rounded-[28px] border" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(36,180,199,0.22), rgba(14,58,70,0.08))" }} />
-            <h3 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>{title}</h3>
+            <h3 className="text-[28px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{title}</h3>
             <p className="mt-3 text-base leading-7" style={{ color: BRAND.muted }}>{text}</p>
           </div>
           <button onClick={onClick} className="mt-7 inline-flex items-center justify-start rounded-full px-0 text-base font-bold transition hover:translate-x-1" style={{ color: BRAND.primaryDark }}>
@@ -511,12 +619,12 @@ function ProductConfigurator({ productKey, addItem }) {
         <div className="grid items-start gap-8 xl:grid-cols-[1.05fr_440px]">
           <Card className="soft-card overflow-hidden rounded-[34px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
             <CardContent className="p-0">
-              <div className="grid min-h-[740px] grid-cols-1 lg:grid-cols-[1fr_1.05fr]">
+              <div className="grid min-h-[760px] grid-cols-1 lg:grid-cols-[1fr_1.05fr]">
                 <div className="relative flex items-center justify-center border-b p-8 lg:border-b-0 lg:border-r" style={{ borderColor: BRAND.line, backgroundColor: "#F3F7F8" }}>
-                  <button className="absolute left-5 top-1/2 rounded-full border p-3 -translate-y-1/2" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.8)" }}>
+                  <button className="absolute left-5 top-1/2 rounded-full border p-3 -translate-y-1/2" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.84)" }}>
                     <ChevronLeft className="h-5 w-5" style={{ color: BRAND.ink }} />
                   </button>
-                  <button className="absolute right-5 top-1/2 rounded-full border p-3 -translate-y-1/2" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.8)" }}>
+                  <button className="absolute right-5 top-1/2 rounded-full border p-3 -translate-y-1/2" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.84)" }}>
                     <ChevronRight className="h-5 w-5" style={{ color: BRAND.ink }} />
                   </button>
                   <ProductVisual productKey={productKey} label={product.imageLabel} />
@@ -528,7 +636,7 @@ function ProductConfigurator({ productKey, addItem }) {
                 </div>
 
                 <div className="p-8 sm:p-10">
-                  <h2 className="text-[42px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{product.name}</h2>
+                  <h2 className="text-[44px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{product.name}</h2>
                   <p className="mt-3 max-w-xl text-[17px] leading-8" style={{ color: BRAND.muted }}>
                     Clean storefront configurator with premium theme styling and expandable options for API-driven pricing later.
                   </p>
@@ -577,7 +685,7 @@ function ProductConfigurator({ productKey, addItem }) {
           <div className="space-y-6 xl:sticky xl:top-[110px]">
             <Card className="soft-card rounded-[32px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
               <CardHeader className="p-6 pb-2">
-                <CardTitle className="text-[28px] font-black tracking-[-0.02em]" style={{ color: BRAND.primaryDark }}>Technical Specifications</CardTitle>
+                <CardTitle className="text-[28px] font-black tracking-[-0.03em]" style={{ color: BRAND.primaryDark }}>Technical Specifications</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-0 sm:grid-cols-2">
                 {specList(product, config).map((item, i) => (
@@ -591,8 +699,8 @@ function ProductConfigurator({ productKey, addItem }) {
 
             <Card className="soft-card rounded-[32px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
               <CardContent className="p-6">
-                <div className="rounded-[24px] border border-dashed p-5" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.55)" }}>
-                  <div className="text-[26px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>Can't find your exact specs?</div>
+                <div className="rounded-[24px] border border-dashed p-5" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.60)" }}>
+                  <div className="text-[26px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Can't find your exact specs?</div>
                   <p className="mt-2 text-base leading-7" style={{ color: BRAND.primaryDark }}>We offer custom sizes, premium papers and special finishes.</p>
                   <SecondaryButton className="mt-5">Request Bespoke Quote</SecondaryButton>
                 </div>
@@ -603,7 +711,7 @@ function ProductConfigurator({ productKey, addItem }) {
               <CardContent className="p-8">
                 <div className="flex items-end justify-between gap-6">
                   <div>
-                    <div className="text-[64px] font-black leading-none tracking-[-0.03em]" style={{ color: BRAND.ink }}>{currency(price)}</div>
+                    <div className="text-[64px] font-black leading-none tracking-[-0.04em]" style={{ color: BRAND.ink }}>{currency(price)}</div>
                     <div className="mt-2 text-[26px] font-semibold" style={{ color: BRAND.primaryDark }}>INC. VAT</div>
                     <div className="mt-3 text-base" style={{ color: BRAND.muted }}>Net: {currency(net)} + VAT: {currency(vatValue)}</div>
                   </div>
@@ -708,7 +816,7 @@ function OptionGroup({ title, options, selected, onPick }) {
               className="rounded-full border px-6 py-4 text-lg font-semibold transition hover:-translate-y-[1px]"
               style={{
                 borderColor: active ? BRAND.primary : BRAND.line,
-                backgroundColor: active ? BRAND.primary : "rgba(255,255,255,0.72)",
+                backgroundColor: active ? BRAND.primary : "rgba(255,255,255,0.76)",
                 color: active ? "white" : BRAND.ink,
                 boxShadow: active ? "0 8px 20px rgba(36,180,199,0.25)" : "none"
               }}
@@ -730,7 +838,7 @@ function BookletsPage({ navigate }) {
           <Badge className="rounded-full border-0 px-4 py-2 tracking-[0.15em]" style={{ backgroundColor: BRAND.soft, color: BRAND.primaryDark }}>
             Booklet printing in London and the UK
           </Badge>
-          <h1 className="mt-5 max-w-3xl text-[56px] font-black leading-[1.05] tracking-[-0.03em]" style={{ color: BRAND.ink }}>
+          <h1 className="mt-5 max-w-3xl text-[58px] font-black leading-[1.03] tracking-[-0.04em]" style={{ color: BRAND.ink }}>
             Get booklet printing with a clean premium storefront and the fastest path to launch.
           </h1>
           <p className="mt-5 max-w-3xl text-[18px] leading-8" style={{ color: BRAND.muted }}>
@@ -743,7 +851,7 @@ function BookletsPage({ navigate }) {
         </div>
 
         <div className="mt-16">
-          <h2 className="text-[34px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>Explore our booklet range</h2>
+          <h2 className="text-[34px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Explore our booklet range</h2>
           <p className="mt-3 text-lg" style={{ color: BRAND.muted }}>Choose from premium binding options. Select a product below to configure your sizes, page counts and turnaround later.</p>
         </div>
 
@@ -752,7 +860,7 @@ function BookletsPage({ navigate }) {
             <Card key={item.title} className="soft-card rounded-[30px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
               <CardContent className="p-4">
                 <div className="h-52 rounded-[24px] border" style={{ borderColor: BRAND.line, background: i % 2 === 0 ? "linear-gradient(135deg, rgba(133,126,203,0.26), rgba(255,255,255,0.8))" : "linear-gradient(135deg, rgba(36,180,199,0.18), rgba(255,255,255,0.86))" }} />
-                <div className="mt-5 text-[24px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>{item.title}</div>
+                <div className="mt-5 text-[24px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{item.title}</div>
                 <p className="mt-2 text-base leading-7" style={{ color: BRAND.muted }}>{item.text}</p>
                 <button className="mt-3 inline-flex items-center px-0 font-bold transition hover:translate-x-1" style={{ color: BRAND.primaryDark }}>Details <ChevronRight className="ml-1 h-4 w-4" /></button>
               </CardContent>
@@ -762,7 +870,7 @@ function BookletsPage({ navigate }) {
 
         <div className="mt-16 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <Card className="soft-card rounded-[32px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
-            <CardHeader className="p-8 pb-2"><CardTitle className="text-[32px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>Competitive rates and rapid execution</CardTitle></CardHeader>
+            <CardHeader className="p-8 pb-2"><CardTitle className="text-[32px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Competitive rates and rapid execution</CardTitle></CardHeader>
             <CardContent className="space-y-4 p-8 pt-4 text-base leading-7" style={{ color: BRAND.muted }}>
               <InfoBullet text="Perfect for premium brochures, manuals, presentations and company packs." />
               <InfoBullet text="Selectable page counts, paper weights and laminations can be injected from your admin API." />
@@ -786,26 +894,6 @@ function BookletsPage({ navigate }) {
 }
 
 function AllProductsPage({ navigate }) {
-  const groups = [
-    {
-      title: "Marketing Materials",
-      items: [
-        ["Business Cards", "/standard-business-cards"],
-        ["Flyers", "/flyers"],
-        ["Booklets", "/booklets"],
-        ["Posters", "/posters-large-format-prints"],
-      ],
-    },
-    {
-      title: "Signage & Displays",
-      items: [["Posters & Large Format", "/posters-large-format-prints"], ["Roller Banners", "/bespoke-quote"], ["Signage & Display", "/bespoke-quote"]],
-    },
-    {
-      title: "Stationery & More",
-      items: [["Bespoke Quote", "/bespoke-quote"], ["Same Day Business Cards", "/standard-business-cards"], ["Same Day Flyers", "/flyers"]],
-    },
-  ];
-
   return (
     <AppShell>
       <section className="py-14">
@@ -827,10 +915,10 @@ function AllProductsPage({ navigate }) {
           </Card>
 
           <div className="space-y-8">
-            {groups.map((group) => (
+            {megaMenu.map((group) => (
               <Card key={group.title} className="soft-card rounded-[34px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
                 <CardContent className="p-7">
-                  <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>{group.title}</h2>
+                  <h2 className="text-[28px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{group.title}</h2>
                   <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {group.items.map(([label, path], i) => (
                       <button key={label} onClick={() => navigate(path)} className="rounded-[28px] border p-5 text-left transition hover:-translate-y-1" style={{ borderColor: BRAND.line, background: i % 2 === 0 ? "linear-gradient(135deg, rgba(36,180,199,0.16), rgba(255,255,255,0.9))" : "linear-gradient(135deg, rgba(14,58,70,0.08), rgba(255,255,255,0.9))", boxShadow: "0 8px 20px rgba(14,58,70,0.05)" }}>
@@ -857,7 +945,7 @@ function BespokeQuotePage() {
         <div className="mx-auto max-w-4xl">
           <Card className="soft-card rounded-[36px] border shadow-[0_20px_50px_rgba(36,180,199,0.08)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
             <CardHeader className="p-8 pb-2">
-              <CardTitle className="text-[42px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Request a Bespoke Quote</CardTitle>
+              <CardTitle className="text-[44px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Request a Bespoke Quote</CardTitle>
               <p className="pt-2 text-[18px] leading-8" style={{ color: BRAND.muted }}>
                 This form is frontend-ready. Later connect it directly to your CRM, admin dashboard or quote API endpoint.
               </p>
@@ -871,9 +959,7 @@ function BespokeQuotePage() {
               <Input placeholder="Selected service / product" className="h-14 rounded-2xl border" style={{ borderColor: BRAND.line }} />
               <Input placeholder="Preferred turnaround" className="h-14 rounded-2xl border" style={{ borderColor: BRAND.line }} />
               <Textarea placeholder="Please describe your printing requirements, quantity, sizes, material, finish and any special notes." className="min-h-[180px] rounded-[24px] border sm:col-span-2" style={{ borderColor: BRAND.line }} />
-              <PrimaryButton className="mt-2 h-14 justify-center text-lg sm:col-span-2">
-                Get a Quote
-              </PrimaryButton>
+              <PrimaryButton className="mt-2 h-14 justify-center text-lg sm:col-span-2">Get a Quote</PrimaryButton>
               <p className="text-center text-sm sm:col-span-2" style={{ color: BRAND.muted }}>Prefer to talk? Call us on 0203 137 4310</p>
             </CardContent>
           </Card>
@@ -889,7 +975,7 @@ function CartPage({ cart, navigate }) {
       <section className="py-14">
         <div className="mb-8 flex items-center justify-between gap-6">
           <div>
-            <h1 className="text-[56px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Cart</h1>
+            <h1 className="text-[56px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Cart</h1>
             <p className="mt-3 text-lg" style={{ color: BRAND.muted }}>Review your configured products before proceeding to order creation or checkout.</p>
           </div>
           <SecondaryButton onClick={() => navigate("/all-products")}>Keep Shopping</SecondaryButton>
@@ -946,12 +1032,8 @@ function CartPage({ cart, navigate }) {
                 <span>Total</span>
                 <span>{currency(cart.subtotal)}</span>
               </div>
-              <PrimaryButton className="mt-8 h-16 w-full justify-center text-xl">
-                Proceed to create order
-              </PrimaryButton>
-              <SecondaryButton onClick={cart.clear} className="mt-4 h-14 w-full justify-center text-base">
-                Clear cart
-              </SecondaryButton>
+              <PrimaryButton className="mt-8 h-16 w-full justify-center text-xl">Proceed to create order</PrimaryButton>
+              <SecondaryButton onClick={cart.clear} className="mt-4 h-14 w-full justify-center text-base">Clear cart</SecondaryButton>
             </CardContent>
           </Card>
         </div>
@@ -977,7 +1059,7 @@ function SecondaryButton({ children, className = "", ...props }) {
     <Button
       variant="outline"
       className={`inline-flex items-center rounded-full border px-7 py-4 text-lg font-bold transition hover:-translate-y-[1px] ${className}`}
-      style={{ borderColor: BRAND.line, color: BRAND.ink, backgroundColor: "rgba(255,255,255,0.76)" }}
+      style={{ borderColor: BRAND.line, color: BRAND.ink, backgroundColor: "rgba(255,255,255,0.82)" }}
       {...props}
     >
       {children}

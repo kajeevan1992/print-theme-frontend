@@ -43,3 +43,11 @@ Use these values:
 - improved spacing and card depth
 - sticky pricing column on product pages
 - cleaner form and CTA styling
+
+
+## Final demo pass
+- cleaner hero typography and banner mockup
+- polished desktop mega menu under All Products
+- improved hover states and cards
+- stronger product page balance and sticky price block
+- cleaner dropdown-like navigation closer to the reference
