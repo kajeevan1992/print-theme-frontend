@@ -48,6 +48,16 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: 0 4px 12px rgba(36, 180, 199, 0.35);
 }
 
-.shadow-soft {
-  box-shadow: 0 20px 50px rgba(14, 58, 70, 0.08);
+.soft-card {
+  box-shadow: 0 8px 24px rgba(14, 58, 70, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.soft-card:hover {
+  box-shadow: 0 14px 34px rgba(14, 58, 70, 0.08);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #87A3AA;
 }

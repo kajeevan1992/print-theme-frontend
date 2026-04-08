@@ -36,3 +36,10 @@ Use these values:
 3. Replace local cart with server cart
 4. Connect bespoke quote form to your CRM/admin API
 5. Add auth, account pages, checkout and CMS-managed content
+
+## Updated demo polish
+- wider layout container
+- stronger typography hierarchy
+- improved spacing and card depth
+- sticky pricing column on product pages
+- cleaner form and CTA styling
