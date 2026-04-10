@@ -205,7 +205,7 @@ function useLocalCart() {
 
 function AppShell({ children }) {
   return (
-    <div className="mx-auto w-full max-w-[1340px] px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8">
       {children}
     </div>
   );
@@ -236,7 +236,7 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
   return (
     <header className="sticky top-0 z-40 border-b backdrop-blur-xl" style={{ backgroundColor: "rgba(234,246,247,0.95)", borderColor: BRAND.line }}>
       <AppShell>
-        <div className="flex h-[86px] items-center justify-between gap-4">
+        <div className="flex h-[92px] items-center justify-between gap-6">
           <div className="flex items-center gap-3 lg:hidden">
             <button className="rounded-2xl p-3" onClick={() => setMobileOpen(true)} style={{ backgroundColor: BRAND.panel }}>
               <Menu className="h-5 w-5" />
@@ -269,13 +269,13 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.18 }}
-                        className="absolute left-1/2 top-[54px] w-[860px] -translate-x-1/2 rounded-[28px] border p-6 shadow-[0_26px_70px_rgba(14,58,70,0.12)]"
+                        className="absolute left-1/2 top-[54px] w-[940px] -translate-x-1/2 rounded-[28px] border p-6 shadow-[0_26px_70px_rgba(14,58,70,0.12)]"
                         style={{ backgroundColor: BRAND.card, borderColor: BRAND.line }}
                       >
-                        <div className="grid grid-cols-[260px_1fr_1fr_1fr] gap-5">
-                          <div className="rounded-[22px] border p-4" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(36,180,199,0.18), rgba(255,255,255,1))" }}>
-                            <div className="mb-4 h-32 rounded-[18px] border" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.7)" }} />
-                            <div className="text-[22px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>Explore the full range</div>
+                        <div className="grid grid-cols-[280px_1fr_1fr_1fr] gap-5">
+                          <div className="rounded-[24px] border p-5" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(36,180,199,0.18), rgba(255,255,255,1))" }}>
+                            <div className="mb-4 h-36 rounded-[18px] border" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.7)" }} />
+                            <div className="text-[24px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>Explore the full range</div>
                             <p className="mt-2 text-sm leading-6" style={{ color: BRAND.muted }}>Clean dropdown navigation like your example, but with stronger spacing and polish.</p>
                             <button onClick={() => navigate("/all-products")} className="mt-4 inline-flex items-center font-bold" style={{ color: BRAND.primaryDark }}>
                               Shop now <ChevronRight className="ml-1 h-4 w-4" />
@@ -362,7 +362,7 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
                   {item.label}
                 </button>
               ))}
-              <div className="mt-4 rounded-[22px] border p-4" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
+              <div className="mt-4 rounded-[24px] border p-5" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
                 <div className="mb-2 text-sm font-black uppercase tracking-[0.14em]" style={{ color: BRAND.primaryDark }}>Quick links</div>
                 <div className="grid gap-2">
                   {megaMenu.flatMap((g) => g.items).slice(0, 6).map(([label, path]) => (
@@ -383,8 +383,8 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
 function Logo({ navigate }) {
   return (
     <button onClick={() => navigate("/")} className="group flex items-center gap-0.5">
-      <span className="text-[40px] font-black tracking-tight" style={{ color: BRAND.primary }}>atlantis</span>
-      <span className="text-[40px] font-black tracking-tight" style={{ color: BRAND.ink }}>print</span>
+      <span className="text-[42px] font-black tracking-[-0.04em]" style={{ color: BRAND.primary }}>atlantis</span>
+      <span className="text-[42px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>print</span>
     </button>
   );
 }
@@ -410,7 +410,7 @@ function Hero({ navigate }) {
     <section className="relative overflow-hidden border-b" style={{ backgroundColor: BRAND.bg, borderColor: BRAND.line }}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(36,180,199,0.20),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(14,58,70,0.14),transparent_28%)]" />
       <AppShell>
-        <div className="relative grid min-h-[760px] grid-cols-1 gap-14 py-16 lg:grid-cols-[1.08fr_0.92fr] lg:py-24">
+        <div className="relative grid min-h-[780px] grid-cols-1 gap-14 py-16 lg:grid-cols-[1fr_1fr] lg:py-24">
           <div className="flex flex-col justify-center">
             <Badge className="mb-6 w-fit rounded-full border-0 px-4 py-2 text-xs uppercase tracking-[0.18em]" style={{ backgroundColor: BRAND.soft, color: BRAND.primaryDark }}>
               Premium online printing across the UK
@@ -423,10 +423,10 @@ function Hero({ navigate }) {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.35 }}
               >
-                <h1 className="max-w-4xl text-5xl font-black leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-[92px]" style={{ color: BRAND.ink }}>
+                <h1 className="max-w-5xl text-5xl font-black leading-[0.9] tracking-[-0.05em] sm:text-6xl lg:text-[96px]" style={{ color: BRAND.ink }}>
                   {slide.titleA} <span style={{ color: BRAND.primary }}>{slide.titleB}</span> {slide.titleC}
                 </h1>
-                <p className="mt-8 max-w-2xl text-[19px] leading-8 sm:text-[21px]" style={{ color: BRAND.muted }}>
+                <p className="mt-8 max-w-2xl text-[20px] leading-9 sm:text-[21px]" style={{ color: BRAND.muted }}>
                   {slide.body}
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4">
@@ -458,7 +458,7 @@ function Hero({ navigate }) {
               initial={{ opacity: 0, scale: 0.96, rotate: -2 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 0.5 }}
-              className="relative h-[600px] w-full max-w-[560px] rounded-[42px] border p-8 shadow-[0_34px_80px_rgba(14,58,70,0.18)]"
+              className="relative h-[620px] w-full max-w-[590px] rounded-[42px] border p-10 shadow-[0_34px_80px_rgba(14,58,70,0.18)]"
               style={{ background: "linear-gradient(180deg, rgba(14,58,70,0.12), rgba(255,255,255,0.82))", borderColor: BRAND.line }}
             >
               <div className="absolute right-9 top-8 h-20 w-20 rounded-full bg-black/90 shadow-2xl" />
@@ -553,8 +553,8 @@ function FeatureCard({ title, text, cta, onClick }) {
       <Card className="soft-card h-full rounded-[32px] border transition-all" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
         <CardContent className="flex h-full flex-col justify-between p-7">
           <div>
-            <div className="mb-6 h-44 rounded-[28px] border" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(36,180,199,0.22), rgba(14,58,70,0.08))" }} />
-            <h3 className="text-[28px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{title}</h3>
+            <div className="mb-6 h-52 rounded-[28px] border" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(36,180,199,0.22), rgba(14,58,70,0.08))" }} />
+            <h3 className="text-[30px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{title}</h3>
             <p className="mt-3 text-base leading-7" style={{ color: BRAND.muted }}>{text}</p>
           </div>
           <button onClick={onClick} className="mt-7 inline-flex items-center justify-start rounded-full px-0 text-base font-bold transition hover:translate-x-1" style={{ color: BRAND.primaryDark }}>
@@ -615,11 +615,11 @@ function ProductConfigurator({ productKey, addItem }) {
 
   return (
     <AppShell>
-      <section className="py-14">
-        <div className="grid items-start gap-8 xl:grid-cols-[1.05fr_440px]">
+      <section className="py-18">
+        <div className="grid items-start gap-8 xl:grid-cols-[minmax(0,1fr)_460px]">
           <Card className="soft-card overflow-hidden rounded-[34px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
             <CardContent className="p-0">
-              <div className="grid min-h-[760px] grid-cols-1 lg:grid-cols-[1fr_1.05fr]">
+              <div className="grid min-h-[780px] grid-cols-1 lg:grid-cols-[1fr_1.05fr]">
                 <div className="relative flex items-center justify-center border-b p-8 lg:border-b-0 lg:border-r" style={{ borderColor: BRAND.line, backgroundColor: "#F3F7F8" }}>
                   <button className="absolute left-5 top-1/2 rounded-full border p-3 -translate-y-1/2" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.84)" }}>
                     <ChevronLeft className="h-5 w-5" style={{ color: BRAND.ink }} />
@@ -636,8 +636,8 @@ function ProductConfigurator({ productKey, addItem }) {
                 </div>
 
                 <div className="p-8 sm:p-10">
-                  <h2 className="text-[44px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{product.name}</h2>
-                  <p className="mt-3 max-w-xl text-[17px] leading-8" style={{ color: BRAND.muted }}>
+                  <h2 className="text-[46px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{product.name}</h2>
+                  <p className="mt-3 max-w-xl text-[18px] leading-8" style={{ color: BRAND.muted }}>
                     Clean storefront configurator with premium theme styling and expandable options for API-driven pricing later.
                   </p>
 
@@ -682,10 +682,10 @@ function ProductConfigurator({ productKey, addItem }) {
             </CardContent>
           </Card>
 
-          <div className="space-y-6 xl:sticky xl:top-[110px]">
+          <div className="space-y-6 xl:sticky xl:top-[118px]">
             <Card className="soft-card rounded-[32px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
               <CardHeader className="p-6 pb-2">
-                <CardTitle className="text-[28px] font-black tracking-[-0.03em]" style={{ color: BRAND.primaryDark }}>Technical Specifications</CardTitle>
+                <CardTitle className="text-[30px] font-black tracking-[-0.03em]" style={{ color: BRAND.primaryDark }}>Technical Specifications</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-0 sm:grid-cols-2">
                 {specList(product, config).map((item, i) => (
@@ -711,7 +711,7 @@ function ProductConfigurator({ productKey, addItem }) {
               <CardContent className="p-8">
                 <div className="flex items-end justify-between gap-6">
                   <div>
-                    <div className="text-[64px] font-black leading-none tracking-[-0.04em]" style={{ color: BRAND.ink }}>{currency(price)}</div>
+                    <div className="text-[68px] font-black leading-none tracking-[-0.04em]" style={{ color: BRAND.ink }}>{currency(price)}</div>
                     <div className="mt-2 text-[26px] font-semibold" style={{ color: BRAND.primaryDark }}>INC. VAT</div>
                     <div className="mt-3 text-base" style={{ color: BRAND.muted }}>Net: {currency(net)} + VAT: {currency(vatValue)}</div>
                   </div>
@@ -747,10 +747,10 @@ function ProductVisual({ productKey, label }) {
     return (
       <div className="relative flex h-[500px] w-full max-w-[560px] items-center justify-center">
         <div className="absolute left-8 top-16 w-[220px] rotate-[-10deg]">
-          <ImagePlaceholder ratio="poster" title="Flyer Image" subtitle="Replace with front artwork" />
+          <ImagePlaceholder ratio="poster" title="Flyer Image" subtitle="Add final product artwork later" />
         </div>
         <div className="absolute left-56 top-20 w-[220px] rotate-[8deg]">
-          <ImagePlaceholder ratio="poster" title="Flyer Image" subtitle="Replace with back artwork" />
+          <ImagePlaceholder ratio="poster" title="Flyer Image" subtitle="Add final product artwork later" />
         </div>
       </div>
     );
@@ -759,7 +759,7 @@ function ProductVisual({ productKey, label }) {
   if (productKey === "posters") {
     return (
       <div className="w-[390px]">
-        <ImagePlaceholder ratio="posterLarge" title="Poster Image" subtitle="Replace with product artwork" />
+        <ImagePlaceholder ratio="posterLarge" title="Poster Image" subtitle="Add final poster artwork later" />
       </div>
     );
   }
@@ -767,10 +767,10 @@ function ProductVisual({ productKey, label }) {
   return (
     <div className="relative flex h-[470px] w-full max-w-[560px] items-center justify-center">
       <div className="absolute left-6 top-16 w-[220px] rotate-[-8deg]">
-        <ImagePlaceholder ratio="landscapeTall" title="Card Design" subtitle="Replace with back artwork" />
+        <ImagePlaceholder ratio="landscapeTall" title="Card Design" subtitle="Add final product artwork later" />
       </div>
       <div className="absolute left-56 top-24 w-[300px] rotate-[6deg]">
-        <ImagePlaceholder ratio="landscape" title="Card Design" subtitle="Replace with front artwork" />
+        <ImagePlaceholder ratio="landscape" title="Card Design" subtitle="Add final product artwork later" />
       </div>
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-sm font-bold tracking-[0.3em]" style={{ color: BRAND.muted }}>{label}</div>
     </div>
@@ -788,7 +788,7 @@ function OptionGroup({ title, options, selected, onPick }) {
             <button
               key={option}
               onClick={() => onPick(option)}
-              className="rounded-full border px-6 py-4 text-lg font-semibold transition hover:-translate-y-[1px]"
+              className="rounded-full border px-5 py-3.5 text-[17px] font-semibold transition hover:-translate-y-[1px]"
               style={{
                 borderColor: active ? BRAND.primary : BRAND.line,
                 backgroundColor: active ? BRAND.primary : "rgba(255,255,255,0.76)",
@@ -808,7 +808,7 @@ function OptionGroup({ title, options, selected, onPick }) {
 function BookletsPage({ navigate }) {
   return (
     <AppShell>
-      <section className="py-14">
+      <section className="py-18">
         <div className="rounded-[36px] border p-10" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(36,180,199,0.12), rgba(255,255,255,0.78))" }}>
           <Badge className="rounded-full border-0 px-4 py-2 tracking-[0.15em]" style={{ backgroundColor: BRAND.soft, color: BRAND.primaryDark }}>
             Booklet printing in London and the UK
@@ -871,8 +871,8 @@ function BookletsPage({ navigate }) {
 function AllProductsPage({ navigate }) {
   return (
     <AppShell>
-      <section className="py-14">
-        <div className="grid gap-8 lg:grid-cols-[320px_1fr]">
+      <section className="py-18">
+        <div className="grid gap-8 lg:grid-cols-[300px_1fr]">
           <Card className="soft-card rounded-[34px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
             <CardContent className="p-6">
               <div className="mb-4 text-sm font-black uppercase tracking-[0.16em]" style={{ color: BRAND.primaryDark }}>Search catalog</div>
@@ -893,11 +893,11 @@ function AllProductsPage({ navigate }) {
             {megaMenu.map((group) => (
               <Card key={group.title} className="soft-card rounded-[34px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
                 <CardContent className="p-7">
-                  <h2 className="text-[28px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{group.title}</h2>
+                  <h2 className="text-[30px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{group.title}</h2>
                   <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {group.items.map(([label, path], i) => (
                       <button key={label} onClick={() => navigate(path)} className="rounded-[28px] border p-5 text-left transition hover:-translate-y-1" style={{ borderColor: BRAND.line, background: i % 2 === 0 ? "linear-gradient(135deg, rgba(36,180,199,0.16), rgba(255,255,255,0.9))" : "linear-gradient(135deg, rgba(14,58,70,0.08), rgba(255,255,255,0.9))", boxShadow: "0 8px 20px rgba(14,58,70,0.05)" }}>
-                        <div className="mb-4 h-28 rounded-[20px] border" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.65)" }} />
+                        <div className="mb-4 h-32 rounded-[20px] border" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.65)" }} />
                         <div className="text-xl font-black" style={{ color: BRAND.ink }}>{label}</div>
                         <div className="mt-2 text-sm leading-6" style={{ color: BRAND.muted }}>Scalable storefront card ready for collection-driven data.</div>
                       </button>
@@ -916,11 +916,11 @@ function AllProductsPage({ navigate }) {
 function BespokeQuotePage() {
   return (
     <AppShell>
-      <section className="py-16">
-        <div className="mx-auto max-w-4xl">
+      <section className="py-18">
+        <div className="mx-auto max-w-5xl">
           <Card className="soft-card rounded-[36px] border shadow-[0_20px_50px_rgba(36,180,199,0.08)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
             <CardHeader className="p-8 pb-2">
-              <CardTitle className="text-[44px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Request a Bespoke Quote</CardTitle>
+              <CardTitle className="text-[46px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Request a Bespoke Quote</CardTitle>
               <p className="pt-2 text-[18px] leading-8" style={{ color: BRAND.muted }}>
                 This form is frontend-ready. Later connect it directly to your CRM, admin dashboard or quote API endpoint.
               </p>
@@ -947,10 +947,10 @@ function BespokeQuotePage() {
 function CartPage({ cart, navigate }) {
   return (
     <AppShell>
-      <section className="py-14">
+      <section className="py-18">
         <div className="mb-8 flex items-center justify-between gap-6">
           <div>
-            <h1 className="text-[56px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Cart</h1>
+            <h1 className="text-[60px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Cart</h1>
             <p className="mt-3 text-lg" style={{ color: BRAND.muted }}>Review your configured products before proceeding to order creation or checkout.</p>
           </div>
           <SecondaryButton onClick={() => navigate("/all-products")}>Keep Shopping</SecondaryButton>
@@ -1037,8 +1037,8 @@ function ImagePlaceholder({ ratio = "landscape", title = "Image Placeholder", su
           <span className="h-3 w-3 rounded-full" style={{ backgroundColor: BRAND.primary }} />
           <span className="h-3 w-3 rounded-full" style={{ backgroundColor: BRAND.line }} />
         </div>
-        <div className="mb-4 h-14 w-14 rounded-2xl border border-dashed" style={{ borderColor: BRAND.primary, backgroundColor: "rgba(37,181,199,0.08)" }} />
-        <div className="text-[22px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>{title}</div>
+        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-[20px] border border-dashed" style={{ borderColor: BRAND.primary, backgroundColor: "rgba(37,181,199,0.08)" }}><div className="h-6 w-6 rounded-md" style={{ backgroundColor: "rgba(37,181,199,0.22)" }} /></div>
+        <div className="text-[24px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>{title}</div>
         <div className="mt-2 max-w-[220px] text-sm leading-6" style={{ color: BRAND.muted }}>{subtitle}</div>
       </div>
     </div>

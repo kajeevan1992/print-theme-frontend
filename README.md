@@ -51,3 +51,11 @@ Use these values:
 - improved hover states and cards
 - stronger product page balance and sticky price block
 - cleaner dropdown-like navigation closer to the reference
+
+
+## Demo v4 polish
+- bigger container and stronger page proportions
+- refined hero, header and mega menu spacing
+- improved product configurator balance
+- cleaner placeholder image blocks ready for final assets
+- better overall premium feel for client presentation
