@@ -745,16 +745,12 @@ function specList(product, config) {
 function ProductVisual({ productKey, label }) {
   if (productKey === "flyers") {
     return (
-      <div className="relative h-[500px] w-full max-w-[520px]">
-        <div className="absolute left-6 top-16 h-[360px] w-[220px] rotate-[-10deg] rounded-[18px] p-6 shadow-2xl" style={{ background: "linear-gradient(180deg,#1A2433,#3F0E5C 34%,#27C5E6 100%)" }}>
-          <div className="mt-6 text-6xl font-black italic leading-[0.9] text-white">DIM</div>
-          <div className="text-6xl font-black italic leading-[0.9] text-cyan-100">SUM</div>
-          <div className="absolute bottom-5 left-6 text-sm font-bold tracking-[0.35em] text-white/90">TAKEAWAY MENU</div>
+      <div className="relative flex h-[500px] w-full max-w-[560px] items-center justify-center">
+        <div className="absolute left-8 top-16 w-[220px] rotate-[-10deg]">
+          <ImagePlaceholder ratio="poster" title="Flyer Image" subtitle="Replace with front artwork" />
         </div>
-        <div className="absolute left-52 top-20 h-[360px] w-[220px] rotate-[8deg] rounded-[18px] p-6 shadow-2xl" style={{ background: "linear-gradient(180deg,#1A2433,#3F0E5C 34%,#27C5E6 100%)" }}>
-          <div className="mt-6 text-6xl font-black italic leading-[0.9] text-white">DIM</div>
-          <div className="text-6xl font-black italic leading-[0.9] text-cyan-100">SUM</div>
-          <div className="absolute bottom-5 left-6 text-sm font-bold tracking-[0.35em] text-white/90">TAKEAWAY MENU</div>
+        <div className="absolute left-56 top-20 w-[220px] rotate-[8deg]">
+          <ImagePlaceholder ratio="poster" title="Flyer Image" subtitle="Replace with back artwork" />
         </div>
       </div>
     );
@@ -762,42 +758,21 @@ function ProductVisual({ productKey, label }) {
 
   if (productKey === "posters") {
     return (
-      <div className="relative h-[560px] w-[390px] rounded-[20px] p-6 shadow-2xl" style={{ backgroundColor: "#E5B500" }}>
-        <div className="absolute left-12 top-20 h-32 w-32 rounded-full bg-black" />
-        <div className="absolute left-40 top-12 h-20 w-20 rounded-full bg-yellow-400" />
-        <div className="absolute right-10 top-4 h-24 w-24 rounded-full bg-black" />
-        <div className="absolute inset-y-24 right-12 w-28 bg-cyan-200" />
-        <div className="absolute left-10 top-56 text-[84px] font-black leading-[0.88] tracking-tight text-white">03–10</div>
-        <div className="absolute left-10 top-[310px] text-[84px] font-black leading-[0.88] tracking-tight text-white">04/2020</div>
-        <div className="absolute bottom-12 left-10 text-[92px] font-black leading-none tracking-tight text-white">FASHION</div>
-        <div className="absolute bottom-4 left-28 text-[22px] font-bold tracking-[0.8em] text-white">WEEK</div>
+      <div className="w-[390px]">
+        <ImagePlaceholder ratio="posterLarge" title="Poster Image" subtitle="Replace with product artwork" />
       </div>
     );
   }
 
   return (
-    <div className="relative h-[470px] w-full max-w-[560px]">
-      <div className="absolute left-4 top-14 h-[300px] w-[210px] rotate-[-8deg] rounded-[20px] bg-white p-5 shadow-2xl">
-        <div className="grid h-full grid-cols-[56px_1fr] gap-4">
-          <div className="space-y-3 pt-6">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="h-7 w-7 rounded-full" style={{ backgroundColor: ["#E5855E", "#B0004B", "#7B9125", "#E2A61B", "#67C3B1", "#D79F7D", "#2BA7D0", "#A97839"][i] }} />
-            ))}
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="rounded-lg border bg-slate-100" style={{ borderColor: BRAND.line }} />
-            ))}
-          </div>
-        </div>
+    <div className="relative flex h-[470px] w-full max-w-[560px] items-center justify-center">
+      <div className="absolute left-6 top-16 w-[220px] rotate-[-8deg]">
+        <ImagePlaceholder ratio="landscapeTall" title="Card Design" subtitle="Replace with back artwork" />
       </div>
-      <div className="absolute left-52 top-16 h-[230px] w-[300px] rounded-[20px] bg-white p-6 shadow-2xl">
-        <div className="h-full rounded-[14px] p-5" style={{ background: "linear-gradient(135deg,#E85E7F,#F8D195 58%,#F6FBFF)" }}>
-          <div className="mt-20 text-5xl font-black leading-none" style={{ color: BRAND.ink }}>Need Some</div>
-          <div className="text-5xl font-black leading-none" style={{ color: BRAND.ink }}>Inspiration?</div>
-        </div>
+      <div className="absolute left-56 top-24 w-[300px] rotate-[6deg]">
+        <ImagePlaceholder ratio="landscape" title="Card Design" subtitle="Replace with front artwork" />
       </div>
-      <div className="absolute bottom-2 left-36 text-sm font-bold tracking-[0.3em]" style={{ color: BRAND.muted }}>{label}</div>
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-sm font-bold tracking-[0.3em]" style={{ color: BRAND.muted }}>{label}</div>
     </div>
   );
 }
@@ -1041,6 +1016,45 @@ function CartPage({ cart, navigate }) {
     </AppShell>
   );
 }
+
+
+function ImagePlaceholder({ ratio = "landscape", title = "Image Placeholder", subtitle = "Replace later" }) {
+  const heights = {
+    portrait: "h-[380px]",
+    poster: "h-[360px]",
+    posterLarge: "h-[560px]",
+    landscapeTall: "h-[300px]",
+    landscape: "h-[230px]",
+  };
+
+  return (
+    <div className={`soft-card relative overflow-hidden rounded-[24px] border bg-white ${heights[ratio] || "h-[260px]"}`} style={{ borderColor: BRAND.line }}>
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(37,181,199,0.16),rgba(255,255,255,1)_42%,rgba(18,58,69,0.05))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,181,199,0.18),transparent_24%)]" />
+      <div className="relative flex h-full flex-col items-center justify-center px-6 text-center">
+        <div className="mb-5 grid grid-cols-3 gap-2">
+          <span className="h-3 w-3 rounded-full" style={{ backgroundColor: BRAND.soft }} />
+          <span className="h-3 w-3 rounded-full" style={{ backgroundColor: BRAND.primary }} />
+          <span className="h-3 w-3 rounded-full" style={{ backgroundColor: BRAND.line }} />
+        </div>
+        <div className="mb-4 h-14 w-14 rounded-2xl border border-dashed" style={{ borderColor: BRAND.primary, backgroundColor: "rgba(37,181,199,0.08)" }} />
+        <div className="text-[22px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>{title}</div>
+        <div className="mt-2 max-w-[220px] text-sm leading-6" style={{ color: BRAND.muted }}>{subtitle}</div>
+      </div>
+    </div>
+  );
+}
+
+function MiniPlaceholder() {
+  return (
+    <div className="soft-card h-24 rounded-[18px] border bg-white/90" style={{ borderColor: BRAND.line }}>
+      <div className="flex h-full items-center justify-center">
+        <div className="h-8 w-8 rounded-xl border border-dashed" style={{ borderColor: BRAND.primary, backgroundColor: "rgba(37,181,199,0.08)" }} />
+      </div>
+    </div>
+  );
+}
+
 
 function PrimaryButton({ children, className = "", ...props }) {
   return (
