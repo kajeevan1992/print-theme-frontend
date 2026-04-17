@@ -223,7 +223,7 @@ function useLocalCart() {
 
 function AppShell({ children }) {
   return (
-    <div className="mx-auto w-full max-w-[1380px] px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
       {children}
     </div>
   );
@@ -254,8 +254,8 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
   return (
     <header className="sticky top-0 z-40 border-b backdrop-blur-xl" style={{ backgroundColor: "rgba(234,246,247,0.95)", borderColor: BRAND.line }}>
       <AppShell>
-        <div className="flex h-[78px] items-center justify-between gap-4">
-          <div className="flex items-center gap-3 lg:hidden">
+        <div className="flex h-[68px] items-center justify-between gap-2.5">
+          <div className="flex items-center gap-2.5 lg:hidden">
             <button className="rounded-2xl p-2.5" onClick={() => setMobileOpen(true)} style={{ backgroundColor: BRAND.panel }}>
               <Menu className="h-5 w-5" />
             </button>
@@ -275,7 +275,7 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
                 >
                   <button
                     onClick={() => navigate(item.path)}
-                    className="text-[16px] font-semibold transition hover:opacity-80"
+                    className="text-[13px] font-semibold transition hover:opacity-80"
                     style={{ color: currentPath === item.path ? BRAND.primaryDark : BRAND.ink }}
                   >
                     {item.label}
@@ -287,10 +287,10 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.18 }}
-                        className="absolute left-1/2 top-[46px] w-[860px] -translate-x-1/2 rounded-[28px] border p-6 shadow-[0_26px_70px_rgba(14,58,70,0.12)]"
+                        className="absolute left-1/2 top-[46px] w-[720px] -translate-x-1/2 rounded-[28px] border p-6 shadow-[0_26px_70px_rgba(14,58,70,0.12)]"
                         style={{ backgroundColor: BRAND.card, borderColor: BRAND.line }}
                       >
-                        <div className="grid grid-cols-[240px_1fr_1fr_1fr] gap-5">
+                        <div className="grid grid-cols-[200px_1fr_1fr_1fr] gap-5">
                           <div className="rounded-[24px] border p-5" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(36,180,199,0.18), rgba(255,255,255,1))" }}>
                             <div className="mb-4 h-28 rounded-[16px] border" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.7)" }} />
                             <div className="text-[19px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>Explore the full range</div>
@@ -307,7 +307,7 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
                                   <button
                                     key={label}
                                     onClick={() => { navigate(path); setMegaOpen(false); }}
-                                    className="rounded-2xl px-3 py-2.5 text-left text-[14px] font-medium transition hover:translate-x-1"
+                                    className="rounded-2xl px-3 py-2.5 text-left text-[13px] font-medium transition hover:translate-x-1"
                                     style={{ color: BRAND.ink, backgroundColor: "rgba(221,243,246,0.35)" }}
                                   >
                                     {label}
@@ -325,7 +325,7 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
                 <button
                   key={item.path}
                   onClick={() => navigate(item.path)}
-                  className="text-[16px] font-semibold transition hover:opacity-80"
+                  className="text-[13px] font-semibold transition hover:opacity-80"
                   style={{ color: currentPath === item.path ? BRAND.primaryDark : BRAND.ink }}
                 >
                   {item.label}
@@ -334,7 +334,7 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-2.5">
             <IconBubble icon={<MapPin className="h-5 w-5" />} />
             <IconBubble icon={<User className="h-5 w-5" />} />
             <button
@@ -401,8 +401,8 @@ function Header({ navigate, cartCount, cartSubtotal, currentPath }) {
 function Logo({ navigate }) {
   return (
     <button onClick={() => navigate("/")} className="group flex items-center gap-0.5">
-      <span className="text-[28px] font-black tracking-[-0.04em]" style={{ color: BRAND.primary }}>atlantis</span>
-      <span className="text-[28px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>print</span>
+      <span className="text-[17px] font-black tracking-[-0.04em]" style={{ color: BRAND.primary }}>atlantis</span>
+      <span className="text-[17px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>print</span>
     </button>
   );
 }
@@ -428,7 +428,7 @@ function Hero({ navigate }) {
     <section className="relative overflow-hidden border-b" style={{ backgroundColor: BRAND.bg, borderColor: BRAND.line }}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(36,180,199,0.20),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(14,58,70,0.14),transparent_28%)]" />
       <AppShell>
-        <div className="relative grid min-h-[470px] grid-cols-1 gap-14 py-12 lg:grid-cols-[1fr_1fr] lg:py-14">
+        <div className="relative grid min-h-[360px] grid-cols-1 gap-14 py-8 lg:grid-cols-[1fr_1fr] lg:py-12">
           <div className="flex flex-col justify-center">
             <Badge className="mb-6 w-fit rounded-full border-0 px-4 py-2 text-xs uppercase tracking-[0.18em]" style={{ backgroundColor: BRAND.soft, color: BRAND.primaryDark }}>
               Premium online printing across the UK
@@ -441,13 +441,13 @@ function Hero({ navigate }) {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.35 }}
               >
-                <h1 className="max-w-5xl text-4xl font-black leading-[0.92] tracking-[-0.05em] sm:text-5xl lg:text-[72px]" style={{ color: BRAND.ink }}>
+                <h1 className="max-w-5xl text-4xl font-black leading-[0.92] tracking-[-0.05em] sm:text-5xl lg:text-[64px]" style={{ color: BRAND.ink }}>
                   {slide.titleA} <span style={{ color: BRAND.primary }}>{slide.titleB}</span> {slide.titleC}
                 </h1>
-                <p className="mt-8 max-w-xl text-[16px] leading-8 sm:text-[17px]" style={{ color: BRAND.muted }}>
+                <p className="mt-8 max-w-xl text-[13px] leading-8 sm:text-[17px]" style={{ color: BRAND.muted }}>
                   {slide.body}
                 </p>
-                <div className="mt-10 flex flex-wrap gap-4">
+                <div className="mt-8 flex flex-wrap gap-2.5">
                   <PrimaryButton onClick={() => navigate("/all-products")}>
                     {slide.cta} <ChevronRight className="ml-2 h-5 w-5" />
                   </PrimaryButton>
@@ -458,7 +458,7 @@ function Hero({ navigate }) {
               </motion.div>
             </AnimatePresence>
 
-            <div className="mt-10 flex items-center gap-3">
+            <div className="mt-8 flex items-center gap-2.5">
               {heroSlides.map((_, i) => (
                 <button
                   key={i}
@@ -499,7 +499,7 @@ function HomePage({ navigate, addDemoProduct }) {
     <div>
       <Hero navigate={navigate} />
       <AppShell>
-        <section className="py-14">
+        <section className="py-12">
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
             <FeatureCard title="Business Cards" text="Premium cards with refined options for paper, lamination, sides and quantity." cta="Configure cards" onClick={() => navigate("/standard-business-cards")} />
             <FeatureCard title="Flyers" text="Simple, quick promotional print with a clean size and sides selector." cta="Explore flyers" onClick={() => navigate("/flyers")} />
@@ -507,12 +507,12 @@ function HomePage({ navigate, addDemoProduct }) {
             <FeatureCard title="Booklets" text="Range explorer for stapled, wiro, perfect bound and notebook formats." cta="Browse booklets" onClick={() => navigate("/booklets")} />
           </div>
 
-          <div className="mt-14 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="mt-8 grid gap-2.5 lg:grid-cols-[1.05fr_0.95fr]">
             <Card className="soft-card rounded-[32px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
               <CardHeader className="p-8 pb-2">
-                <CardTitle className="text-[22px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Why this starter is better for building fast</CardTitle>
+                <CardTitle className="text-[16px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Why this starter is better for building fast</CardTitle>
               </CardHeader>
-              <CardContent className="grid gap-5 p-8 pt-4 text-[14px] leading-6" style={{ color: BRAND.muted }}>
+              <CardContent className="grid gap-5 p-8 pt-4 text-[13px] leading-6" style={{ color: BRAND.muted }}>
                 <InfoBullet text="Frontend-first structure so you can deploy immediately in Coolify." />
                 <InfoBullet text="Mock catalog and pricing engine ready to swap for admin/API data." />
                 <InfoBullet text="Reusable theme tokens matching your current visual identity." />
@@ -525,7 +525,7 @@ function HomePage({ navigate, addDemoProduct }) {
 
             <Card className="soft-card rounded-[32px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
               <CardHeader className="p-8 pb-2">
-                <CardTitle className="text-[22px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>API-ready architecture</CardTitle>
+                <CardTitle className="text-[16px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>API-ready architecture</CardTitle>
               </CardHeader>
               <CardContent className="p-8 pt-4">
                 <div className="rounded-[28px] border p-5 font-mono text-sm leading-7" style={{ borderColor: BRAND.line, backgroundColor: "white", color: BRAND.ink }}>
@@ -542,7 +542,7 @@ function HomePage({ navigate, addDemoProduct }) {
                   <div className="pl-4">theme/</div>
                   <div className="pl-8">tokens.ts</div>
                 </div>
-                <p className="mt-5 text-[14px] leading-6" style={{ color: BRAND.muted }}>
+                <p className="mt-5 text-[13px] leading-6" style={{ color: BRAND.muted }}>
                   You can keep the storefront polished for demo use now, then gradually connect products, pricing, stock, authentication, quotes and orders to your admin dashboard.
                 </p>
               </CardContent>
@@ -560,9 +560,9 @@ function FeatureCard({ title, text, cta, onClick }) {
       <Card className="soft-card h-full rounded-[32px] border transition-all" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
         <CardContent className="flex h-full flex-col justify-between p-7">
           <div>
-            <div className="mb-6 h-40 rounded-[24px] border" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(36,180,199,0.22), rgba(14,58,70,0.08))" }} />
-            <h3 className="text-[24px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{title}</h3>
-            <p className="mt-3 text-[14px] leading-6" style={{ color: BRAND.muted }}>{text}</p>
+            <div className="mb-6 h-32 rounded-[20px] border" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(36,180,199,0.22), rgba(14,58,70,0.08))" }} />
+            <h3 className="text-[17px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{title}</h3>
+            <p className="mt-3 text-[13px] leading-6" style={{ color: BRAND.muted }}>{text}</p>
           </div>
           <button onClick={onClick} className="mt-7 inline-flex items-center justify-start rounded-full px-0 text-base font-bold transition hover:translate-x-1" style={{ color: BRAND.primaryDark }}>
             {cta} <ChevronRight className="ml-2 h-5 w-5" />
@@ -575,7 +575,7 @@ function FeatureCard({ title, text, cta, onClick }) {
 
 function InfoBullet({ text }) {
   return (
-    <div className="flex items-start gap-3">
+    <div className="flex items-start gap-2.5">
       <div className="mt-1 rounded-full p-1.5" style={{ backgroundColor: BRAND.soft, color: BRAND.primaryDark }}>
         <Check className="h-4 w-4" />
       </div>
@@ -626,7 +626,7 @@ function ProductConfigurator({ productKey, addItem }) {
         <div className="grid items-start gap-8 xl:grid-cols-[minmax(0,1fr)_460px]">
           <Card className="soft-card overflow-hidden rounded-[34px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
             <CardContent className="p-0">
-              <div className="grid min-h-[470px] grid-cols-1 lg:grid-cols-[1fr_1.05fr]">
+              <div className="grid min-h-[360px] grid-cols-1 lg:grid-cols-[1fr_1.05fr]">
                 <div className="relative flex items-center justify-center border-b p-8 lg:border-b-0 lg:border-r" style={{ borderColor: BRAND.line, backgroundColor: "#F3F7F8" }}>
                   <button className="absolute left-5 top-1/2 rounded-full border p-3 -translate-y-1/2" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.84)" }}>
                     <ChevronLeft className="h-5 w-5" style={{ color: BRAND.ink }} />
@@ -643,8 +643,8 @@ function ProductConfigurator({ productKey, addItem }) {
                 </div>
 
                 <div className="p-8 sm:p-6">
-                  <h2 className="text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{product.name}</h2>
-                  <p className="mt-3 max-w-lg text-[15px] leading-7" style={{ color: BRAND.muted }}>
+                  <h2 className="text-[28px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{product.name}</h2>
+                  <p className="mt-3 max-w-lg text-[13px] leading-7" style={{ color: BRAND.muted }}>
                     Clean storefront configurator with premium theme styling and expandable options for API-driven pricing later.
                   </p>
 
@@ -674,7 +674,7 @@ function ProductConfigurator({ productKey, addItem }) {
                           className="h-3 w-full cursor-pointer appearance-none rounded-full"
                           style={{ background: `linear-gradient(90deg, ${BRAND.primary} 0%, ${BRAND.soft} 100%)` }}
                         />
-                        <div className={`mt-4 grid gap-3 ${product.specs.quantity.length > 4 ? "grid-cols-4 sm:grid-cols-6" : "grid-cols-4"}`}>
+                        <div className={`mt-4 grid gap-2.5 ${product.specs.quantity.length > 4 ? "grid-cols-4 sm:grid-cols-6" : "grid-cols-4"}`}>
                           {product.specs.quantity.map((qty, i) => (
                             <button key={qty} onClick={() => setQtyIndex(i)} className="text-left text-[18px] font-semibold transition" style={{ color: i === qtyIndex ? BRAND.primaryDark : BRAND.primary }}>
                               {qty}
@@ -692,13 +692,13 @@ function ProductConfigurator({ productKey, addItem }) {
           <div className="space-y-6 xl:sticky xl:top-[118px]">
             <Card className="soft-card rounded-[32px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
               <CardHeader className="p-6 pb-2">
-                <CardTitle className="text-[24px] font-black tracking-[-0.03em]" style={{ color: BRAND.primaryDark }}>Technical Specifications</CardTitle>
+                <CardTitle className="text-[17px] font-black tracking-[-0.03em]" style={{ color: BRAND.primaryDark }}>Technical Specifications</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-0 sm:grid-cols-2">
                 {specList(product, config).map((item, i) => (
                   <div key={item.label} className={`border-b p-4 ${i % 2 === 1 ? "sm:border-l" : ""}`} style={{ borderColor: BRAND.line }}>
                     <div className="mb-2 text-xs font-bold uppercase tracking-[0.14em]" style={{ color: BRAND.primaryDark }}>{item.label}</div>
-                    <div className="text-[16px] font-semibold leading-6" style={{ color: BRAND.ink }}>{item.value}</div>
+                    <div className="text-[13px] font-semibold leading-6" style={{ color: BRAND.ink }}>{item.value}</div>
                   </div>
                 ))}
               </CardContent>
@@ -707,8 +707,8 @@ function ProductConfigurator({ productKey, addItem }) {
             <Card className="soft-card rounded-[32px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
               <CardContent className="p-6">
                 <div className="rounded-[24px] border border-dashed p-5" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.60)" }}>
-                  <div className="text-[20px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Can't find your exact specs?</div>
-                  <p className="mt-2 text-[14px] leading-6" style={{ color: BRAND.primaryDark }}>We offer custom sizes, premium papers and special finishes.</p>
+                  <div className="text-[17px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Can't find your exact specs?</div>
+                  <p className="mt-2 text-[13px] leading-6" style={{ color: BRAND.primaryDark }}>We offer custom sizes, premium papers and special finishes.</p>
                   <SecondaryButton className="mt-5">Request Bespoke Quote</SecondaryButton>
                 </div>
               </CardContent>
@@ -716,14 +716,14 @@ function ProductConfigurator({ productKey, addItem }) {
 
             <Card className="soft-card rounded-[32px] border shadow-[0_20px_50px_rgba(36,180,199,0.12)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
               <CardContent className="p-8">
-                <div className="flex items-end justify-between gap-4">
+                <div className="flex items-end justify-between gap-2.5">
                   <div>
                     <div className="text-[68px] font-black leading-none tracking-[-0.04em]" style={{ color: BRAND.ink }}>{currency(price)}</div>
                     <div className="mt-2 text-[18px] font-semibold" style={{ color: BRAND.primaryDark }}>INC. VAT</div>
                     <div className="mt-3 text-base" style={{ color: BRAND.muted }}>Net: {currency(net)} + VAT: {currency(vatValue)}</div>
                   </div>
                 </div>
-                <PrimaryButton onClick={addToCart} className="mt-8 h-[56px] w-full justify-center text-[16px]">
+                <PrimaryButton onClick={addToCart} className="mt-8 h-[56px] w-full justify-center text-[13px]">
                   <ShoppingCart className="mr-3 h-8 w-8" /> ADD TO CART
                 </PrimaryButton>
               </CardContent>
@@ -788,14 +788,14 @@ function OptionGroup({ title, options, selected, onPick }) {
   return (
     <div>
       <div className="mb-3 text-[18px] font-bold" style={{ color: BRAND.ink }}>{title} *</div>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2.5">
         {options.map((option) => {
           const active = option === selected;
           return (
             <button
               key={option}
               onClick={() => onPick(option)}
-              className="rounded-full border px-4 py-2.5 text-[14px] font-semibold transition hover:-translate-y-[1px]"
+              className="rounded-full border px-4 py-2.5 text-[13px] font-semibold transition hover:-translate-y-[1px]"
               style={{
                 borderColor: active ? BRAND.primary : BRAND.line,
                 backgroundColor: active ? BRAND.primary : "rgba(255,255,255,0.76)",
@@ -826,24 +826,24 @@ function BookletsPage({ navigate }) {
           <p className="mt-5 max-w-3xl text-[18px] leading-8" style={{ color: BRAND.muted }}>
             Select a booklet family below, then later connect page counts, sizes, paper weights, cover finishes and turnaround logic through your API.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap gap-2.5">
             <PrimaryButton onClick={() => navigate("/all-products")}>Browse Solutions</PrimaryButton>
             <SecondaryButton onClick={() => navigate("/bespoke-quote")}>Request Custom Quote</SecondaryButton>
           </div>
         </div>
 
         <div className="mt-16">
-          <h2 className="text-[22px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Explore our booklet range</h2>
-          <p className="mt-3 text-[15px]" style={{ color: BRAND.muted }}>Choose from premium binding options. Select a product below to configure your sizes, page counts and turnaround later.</p>
+          <h2 className="text-[16px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Explore our booklet range</h2>
+          <p className="mt-3 text-[13px]" style={{ color: BRAND.muted }}>Choose from premium binding options. Select a product below to configure your sizes, page counts and turnaround later.</p>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid gap-2.5 md:grid-cols-2 xl:grid-cols-3">
           {bookletCards.map((item, i) => (
             <Card key={item.title} className="soft-card rounded-[30px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
               <CardContent className="p-4">
                 <div className="h-52 rounded-[24px] border" style={{ borderColor: BRAND.line, background: i % 2 === 0 ? "linear-gradient(135deg, rgba(133,126,203,0.26), rgba(255,255,255,0.8))" : "linear-gradient(135deg, rgba(36,180,199,0.18), rgba(255,255,255,0.86))" }} />
                 <div className="mt-5 text-[19px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{item.title}</div>
-                <p className="mt-2 text-[14px] leading-6" style={{ color: BRAND.muted }}>{item.text}</p>
+                <p className="mt-2 text-[13px] leading-6" style={{ color: BRAND.muted }}>{item.text}</p>
                 <button className="mt-3 inline-flex items-center px-0 font-bold transition hover:translate-x-1" style={{ color: BRAND.primaryDark }}>Details <ChevronRight className="ml-1 h-4 w-4" /></button>
               </CardContent>
             </Card>
@@ -852,14 +852,14 @@ function BookletsPage({ navigate }) {
 
         <div className="mt-16 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <Card className="soft-card rounded-[32px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
-            <CardHeader className="p-8 pb-2"><CardTitle className="text-[24px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Competitive rates and rapid execution</CardTitle></CardHeader>
-            <CardContent className="space-y-4 p-8 pt-4 text-[14px] leading-6" style={{ color: BRAND.muted }}>
+            <CardHeader className="p-8 pb-2"><CardTitle className="text-[17px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Competitive rates and rapid execution</CardTitle></CardHeader>
+            <CardContent className="space-y-4 p-8 pt-4 text-[13px] leading-6" style={{ color: BRAND.muted }}>
               <InfoBullet text="Perfect for premium brochures, manuals, presentations and company packs." />
               <InfoBullet text="Selectable page counts, paper weights and laminations can be injected from your admin API." />
               <InfoBullet text="Use the same storefront shell for notebooks, spot UV, stapled and wiro bound products." />
             </CardContent>
           </Card>
-          <div className="grid gap-4">
+          <div className="grid gap-2.5">
             {["Highest quality printing", "Graphic design expertise", "Fastest turnaround times", "Best value for money"].map((item) => (
               <Card key={item} className="soft-card rounded-[28px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
                 <CardContent className="p-5">
@@ -900,12 +900,12 @@ function AllProductsPage({ navigate }) {
             {megaMenu.map((group) => (
               <Card key={group.title} className="soft-card rounded-[34px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
                 <CardContent className="p-7">
-                  <h2 className="text-[24px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{group.title}</h2>
-                  <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <h2 className="text-[17px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{group.title}</h2>
+                  <div className="mt-5 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
                     {group.items.map(([label, path], i) => (
                       <button key={label} onClick={() => navigate(path)} className="rounded-[28px] border p-5 text-left transition hover:-translate-y-1" style={{ borderColor: BRAND.line, background: i % 2 === 0 ? "linear-gradient(135deg, rgba(36,180,199,0.16), rgba(255,255,255,0.9))" : "linear-gradient(135deg, rgba(14,58,70,0.08), rgba(255,255,255,0.9))", boxShadow: "0 8px 20px rgba(14,58,70,0.05)" }}>
                         <div className="mb-4 h-32 rounded-[20px] border" style={{ borderColor: BRAND.line, backgroundColor: "rgba(255,255,255,0.65)" }} />
-                        <div className="text-[18px] font-black" style={{ color: BRAND.ink }}>{label}</div>
+                        <div className="text-[16px] font-black" style={{ color: BRAND.ink }}>{label}</div>
                         <div className="mt-2 text-[13px] leading-5" style={{ color: BRAND.muted }}>Scalable storefront card ready for collection-driven data.</div>
                       </button>
                     ))}
@@ -927,12 +927,12 @@ function BespokeQuotePage() {
         <div className="mx-auto max-w-5xl">
           <Card className="soft-card rounded-[36px] border shadow-[0_20px_50px_rgba(36,180,199,0.08)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
             <CardHeader className="p-8 pb-2">
-              <CardTitle className="text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Request a Bespoke Quote</CardTitle>
+              <CardTitle className="text-[28px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Request a Bespoke Quote</CardTitle>
               <p className="pt-2 text-[18px] leading-8" style={{ color: BRAND.muted }}>
                 This form is frontend-ready. Later connect it directly to your CRM, admin dashboard or quote API endpoint.
               </p>
             </CardHeader>
-            <CardContent className="grid gap-4 p-8 sm:grid-cols-2">
+            <CardContent className="grid gap-2.5 p-8 sm:grid-cols-2">
               <Input placeholder="Full name *" className="h-14 rounded-2xl border" style={{ borderColor: BRAND.line }} />
               <Input placeholder="Job title" className="h-14 rounded-2xl border" style={{ borderColor: BRAND.line }} />
               <Input placeholder="Email *" className="h-14 rounded-2xl border sm:col-span-2" style={{ borderColor: BRAND.line }} />
@@ -941,7 +941,7 @@ function BespokeQuotePage() {
               <Input placeholder="Selected service / product" className="h-14 rounded-2xl border" style={{ borderColor: BRAND.line }} />
               <Input placeholder="Preferred turnaround" className="h-14 rounded-2xl border" style={{ borderColor: BRAND.line }} />
               <Textarea placeholder="Please describe your printing requirements, quantity, sizes, material, finish and any special notes." className="min-h-[180px] rounded-[24px] border sm:col-span-2" style={{ borderColor: BRAND.line }} />
-              <PrimaryButton className="mt-2 h-14 justify-center text-[15px] sm:col-span-2">Get a Quote</PrimaryButton>
+              <PrimaryButton className="mt-2 h-14 justify-center text-[13px] sm:col-span-2">Get a Quote</PrimaryButton>
               <p className="text-center text-sm sm:col-span-2" style={{ color: BRAND.muted }}>Prefer to talk? Call us on 0203 137 4310</p>
             </CardContent>
           </Card>
@@ -955,10 +955,10 @@ function CartPage({ cart, navigate }) {
   return (
     <AppShell>
       <section className="py-18">
-        <div className="mb-8 flex items-center justify-between gap-4">
+        <div className="mb-8 flex items-center justify-between gap-2.5">
           <div>
             <h1 className="text-[42px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Cart</h1>
-            <p className="mt-3 text-[15px]" style={{ color: BRAND.muted }}>Review your configured products before proceeding to order creation or checkout.</p>
+            <p className="mt-3 text-[13px]" style={{ color: BRAND.muted }}>Review your configured products before proceeding to order creation or checkout.</p>
           </div>
           <SecondaryButton onClick={() => navigate("/all-products")}>Keep Shopping</SecondaryButton>
         </div>
@@ -972,7 +972,7 @@ function CartPage({ cart, navigate }) {
                     <ShoppingCart className="h-8 w-8" style={{ color: BRAND.primaryDark }} />
                   </div>
                   <div className="mt-5 text-3xl font-black" style={{ color: BRAND.ink }}>Your cart is empty</div>
-                  <p className="mt-3 text-[15px]" style={{ color: BRAND.muted }}>Add a few products to see your order summary here.</p>
+                  <p className="mt-3 text-[13px]" style={{ color: BRAND.muted }}>Add a few products to see your order summary here.</p>
                 </CardContent>
               </Card>
             ) : cart.items.map((item) => (
@@ -987,7 +987,7 @@ function CartPage({ cart, navigate }) {
                       ))}
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2.5">
                     <div className="flex items-center gap-2 rounded-full border px-3 py-2" style={{ borderColor: BRAND.line }}>
                       <button onClick={() => cart.updateQty(item.id, -1)}><Minus className="h-4 w-4" /></button>
                       <span className="w-6 text-center font-bold">{item.qty}</span>
@@ -1003,7 +1003,7 @@ function CartPage({ cart, navigate }) {
 
           <Card className="soft-card h-fit rounded-[34px] border" style={{ borderColor: BRAND.line, backgroundColor: BRAND.card }}>
             <CardContent className="p-8">
-              <div className="text-[24px] font-black" style={{ color: BRAND.ink }}>Order Summary</div>
+              <div className="text-[17px] font-black" style={{ color: BRAND.ink }}>Order Summary</div>
               <div className="mt-6 space-y-3 text-base">
                 <div className="flex items-center justify-between" style={{ color: BRAND.muted }}><span>Subtotal</span><span>{currency(cart.subtotal)}</span></div>
                 <div className="flex items-center justify-between" style={{ color: BRAND.muted }}><span>Estimated VAT</span><span>{currency(Math.round(cart.subtotal / 6))}</span></div>
@@ -1044,7 +1044,7 @@ function ProductImage({ src, alt, ratio = "landscape" }) {
 function PrimaryButton({ children, className = "", ...props }) {
   return (
     <Button
-      className={`inline-flex items-center rounded-full px-6 py-3 text-[15px] font-bold shadow-[0_10px_24px_rgba(36,180,199,0.25)] transition hover:-translate-y-[1px] hover:shadow-[0_14px_28px_rgba(36,180,199,0.34)] ${className}`}
+      className={`inline-flex items-center rounded-full px-6 py-3 text-[13px] font-bold shadow-[0_10px_24px_rgba(36,180,199,0.25)] transition hover:-translate-y-[1px] hover:shadow-[0_14px_28px_rgba(36,180,199,0.34)] ${className}`}
       style={{ backgroundColor: BRAND.primary, color: "white" }}
       {...props}
     >
@@ -1057,7 +1057,7 @@ function SecondaryButton({ children, className = "", ...props }) {
   return (
     <Button
       variant="outline"
-      className={`inline-flex items-center rounded-full border px-6 py-3 text-[15px] font-bold transition hover:-translate-y-[1px] ${className}`}
+      className={`inline-flex items-center rounded-full border px-6 py-3 text-[13px] font-bold transition hover:-translate-y-[1px] ${className}`}
       style={{ borderColor: BRAND.line, color: BRAND.ink, backgroundColor: "rgba(255,255,255,0.82)" }}
       {...props}
     >
@@ -1068,12 +1068,12 @@ function SecondaryButton({ children, className = "", ...props }) {
 
 function Footer({ navigate }) {
   return (
-    <footer className="mt-14 border-t" style={{ borderColor: BRAND.line, backgroundColor: BRAND.bg }}>
+    <footer className="mt-8 border-t" style={{ borderColor: BRAND.line, backgroundColor: BRAND.bg }}>
       <AppShell>
-        <div className="grid gap-4 py-12 lg:grid-cols-[1.15fr_0.9fr_0.9fr_0.75fr]">
+        <div className="grid gap-2.5 py-8 lg:grid-cols-[1.15fr_0.9fr_0.9fr_0.75fr]">
           <div>
             <Logo navigate={navigate} />
-            <p className="mt-6 max-w-md text-[15px] leading-7" style={{ color: BRAND.primaryDark }}>
+            <p className="mt-6 max-w-md text-[13px] leading-7" style={{ color: BRAND.primaryDark }}>
               Providing premium online printing services across the UK. From same-day essentials to bespoke print jobs, this starter theme is ready to evolve into your full API-connected storefront.
             </p>
           </div>
@@ -1092,10 +1092,10 @@ function Footer({ navigate }) {
 function FooterCol({ title, items, navigate }) {
   return (
     <div>
-      <div className="mb-5 text-[18px] font-black" style={{ color: BRAND.ink }}>{title}</div>
-      <div className="grid gap-3">
+      <div className="mb-5 text-[16px] font-black" style={{ color: BRAND.ink }}>{title}</div>
+      <div className="grid gap-2.5">
         {items.map(([label, path]) => (
-          <button key={label} onClick={() => navigate(path)} className="text-left text-[15px] transition hover:translate-x-1" style={{ color: BRAND.primaryDark }}>
+          <button key={label} onClick={() => navigate(path)} className="text-left text-[13px] transition hover:translate-x-1" style={{ color: BRAND.primaryDark }}>
             {label}
           </button>
         ))}
