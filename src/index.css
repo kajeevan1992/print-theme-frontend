@@ -42,7 +42,7 @@ textarea {
 
 input:focus,
 textarea:focus {
-  border-color: #11A344 !important;
+  border-color: #18A7D0 !important;
   box-shadow: 0 0 0 4px rgba(17, 163, 68, 0.10);
 }
 
@@ -126,4 +126,18 @@ textarea:focus-visible {
   .lg\:sticky {
     top: 88px !important;
   }
+}
+
+/* HOLO branding */
+body {
+  background: #F7F9FA;
+}
+
+header {
+  background: rgba(255,255,255,0.96);
+}
+
+
+section {
+  transition: all 0.3s ease;
 }
