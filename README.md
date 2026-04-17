@@ -59,3 +59,11 @@ Use these values:
 - improved product configurator balance
 - cleaner placeholder image blocks ready for final assets
 - better overall premium feel for client presentation
+
+
+## Demo v5 polish
+- removed hero mockup artwork and replaced it with real slider image slots
+- added replaceable image files in `public/images`
+- scaled typography, buttons and layout down for a less zoomed-in feel
+- tightened mega menu, cards and footer spacing
+- switched product visuals to real image placeholders instead of text mockups
