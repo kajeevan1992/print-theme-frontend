@@ -114,3 +114,10 @@ Use these values:
 - tightened section rhythm and card shadows
 - added storefront stats band for more realism
 - refined footer with a legal / utility row
+
+
+## Next build
+- refined dropdown proportions and hero balance
+- added client/sector logo-style strip
+- added service support cards before FAQ
+- improved footer messaging and product summary depth

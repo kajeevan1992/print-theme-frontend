@@ -88,3 +88,26 @@ button:hover {
 .shadow-card {
   box-shadow: 0 12px 28px rgba(0,0,0,0.035);
 }
+
+
+/* next-next build */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,0.18), rgba(255,255,255,0) 220px);
+  z-index: 0;
+}
+
+header, section, footer {
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1280px) {
+  .xl\:flex > button {
+    white-space: nowrap;
+  }
+}

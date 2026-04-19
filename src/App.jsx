@@ -371,7 +371,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
               </button>
             </div>
 
-            <nav className="hidden items-center justify-center gap-5 xl:flex">
+            <nav className="hidden items-center justify-center gap-4 xl:flex">
               {NAV_ITEMS.map((item) => {
                 const active = currentPath === item.path;
                 const open = openLabel === item.label;
@@ -408,7 +408,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
                   {(() => {
                     const item = NAV_ITEMS.find((x) => x.label === openLabel) || NAV_ITEMS[0];
                     return (
-                      <div className="grid grid-cols-[250px_1fr_1fr_1fr] gap-6">
+                      <div className="grid grid-cols-[270px_1fr_1fr_1fr] gap-6">
                         <div className="rounded-[18px] border p-4" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panelSoft }}>
                           <img src={item.feature.image} alt={item.feature.title} className="h-36 w-full rounded-[12px] object-cover" />
                           <div className="mt-4 text-[18px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{item.feature.title}</div>
@@ -477,9 +477,9 @@ function Hero({ navigate }) {
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.22 }}>
               <div className="mb-3 inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{heroSlides[active].eyebrow}</div>
-              <h1 className="max-w-[640px] text-[58px] font-black leading-[0.94] tracking-[-0.055em] sm:text-[68px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
+              <h1 className="max-w-[660px] text-[60px] font-black leading-[0.93] tracking-[-0.058em] sm:text-[70px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
               <p className="mt-5 max-w-[600px] text-[14px] leading-7" style={{ color: BRAND.muted }}>{heroSlides[active].body}</p>
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-7 flex flex-wrap gap-3">
                 <PrimaryButton onClick={() => navigate("/all-products")}>Browse Products</PrimaryButton>
                 <SecondaryButton onClick={() => navigate("/bespoke-quote")}>Request Bespoke Quote</SecondaryButton>
               </div>
@@ -492,7 +492,7 @@ function Hero({ navigate }) {
           </AnimatePresence>
 
           <div className="justify-self-center lg:justify-self-end">
-            <div className="overflow-hidden rounded-[22px] border bg-white p-3 shadow-[0_18px_50px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
+            <div className="overflow-hidden rounded-[24px] border bg-white p-3 shadow-[0_22px_56px_rgba(0,0,0,0.055)]" style={{ borderColor: BRAND.line }}>
               <img src={heroSlides[active].image} alt="Hero" className="h-[335px] w-[520px] max-w-full rounded-[16px] object-cover" />
             </div>
           </div>
@@ -551,6 +551,18 @@ function HomePage({ navigate }) {
               <div key={n} className="text-center">
                 <div className="text-[28px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{n}</div>
                 <div className="text-[11px] uppercase tracking-[0.14em]" style={{ color: BRAND.muted }}>{t}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Shell></section>
+
+      <section className="py-3"><Shell>
+        <div className="rounded-[20px] border bg-white px-5 py-4 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+          <div className="grid gap-4 md:grid-cols-5">
+            {["Retail brands", "Hospitality", "Events", "Corporate teams", "Independent studios"].map((item) => (
+              <div key={item} className="rounded-[14px] border bg-[#FBFBFB] px-4 py-3 text-center text-[11px] font-bold uppercase tracking-[0.14em]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
+                {item}
               </div>
             ))}
           </div>
@@ -761,7 +773,7 @@ function ProductPage({ type, cart }) {
           </div>
 
           <div className="lg:sticky lg:top-24">
-            <div className="rounded-[18px] border bg-white p-5 shadow-[0_14px_34px_rgba(0,0,0,0.04)]" style={{ borderColor: BRAND.line }}>
+            <div className="rounded-[20px] border bg-white p-5 shadow-[0_18px_38px_rgba(0,0,0,0.045)]" style={{ borderColor: BRAND.line }}>
               <div className="text-[11px] font-bold uppercase tracking-[0.16em]" style={{ color: BRAND.primary }}>Price summary</div>
               <div className="mt-2 text-[40px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{currency(price)}</div>
               <div className="mt-1 text-[11px]" style={{ color: BRAND.muted }}>Base pricing before live backend rules and shipping logic</div>
@@ -961,7 +973,7 @@ function Footer({ navigate }) {
       <div className="border-b py-3" style={{ borderColor: BRAND.line, backgroundColor: BRAND.primary }}>
         <Shell>
           <div className="flex flex-col items-center justify-between gap-2 text-[12px] font-semibold text-white md:flex-row">
-            <span>Get the very best print solutions for your business.</span>
+            <span>Get the very best print solutions for your business, events and brand campaigns.</span>
             <div className="flex gap-2">
               <Input className="h-9 w-[250px] rounded-full border-0 bg-white text-[12px] text-black" placeholder="Email address" />
               <button className="rounded-full bg-black px-4 text-[12px] font-bold text-white">Subscribe</button>
