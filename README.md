@@ -93,3 +93,10 @@ Use these values:
 - added collection strip, trust cards, featured products, testimonials, FAQ and how-it-works sections
 - expanded all-products and footer structure
 - updated brand styling to HOLO PRINT with blue, black and white palette
+
+
+## Next build pass
+- rebuilt header nav so every top-level item has a dropdown
+- aligned dropdown region across the full header width between logo and cart area
+- shifted the background to a softer grey-white tone closer to the references
+- expanded section density and category coverage for a more reference-like structure
