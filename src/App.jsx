@@ -366,8 +366,8 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
             <div className="flex items-center gap-3">
               <button className="rounded-xl p-2 xl:hidden" onClick={() => setMobileOpen(true)}><Menu className="h-5 w-5" /></button>
               <button onClick={() => navigate("/")} className="flex items-center gap-0.5">
-                <span className="text-[40px] font-black tracking-[-0.05em]" style={{ color: BRAND.primary }}>HOLO</span>
-                <span className="text-[40px] font-black tracking-[-0.05em]" style={{ color: BRAND.ink }}>PRINT</span>
+                <span className="text-[42px] font-black tracking-[-0.055em]" style={{ color: BRAND.primary }}>HOLO</span>
+                <span className="text-[42px] font-black tracking-[-0.055em]" style={{ color: BRAND.ink }}>PRINT</span>
               </button>
             </div>
 
@@ -473,11 +473,11 @@ function Hero({ navigate }) {
     <section className="relative overflow-hidden border-b" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panelSoft }}>
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(24,167,208,0.07),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.03),transparent_24%)]" />
       <Shell>
-        <div className="relative grid min-h-[470px] items-center gap-10 py-8 lg:grid-cols-[1.02fr_0.98fr]">
+        <div className="relative grid min-h-[500px] items-center gap-10 py-8 lg:grid-cols-[1.02fr_0.98fr]">
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.22 }}>
               <div className="mb-3 inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{heroSlides[active].eyebrow}</div>
-              <h1 className="max-w-[640px] text-[56px] font-black leading-[0.97] tracking-[-0.05em] sm:text-[64px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
+              <h1 className="max-w-[640px] text-[58px] font-black leading-[0.94] tracking-[-0.055em] sm:text-[68px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
               <p className="mt-5 max-w-[600px] text-[14px] leading-7" style={{ color: BRAND.muted }}>{heroSlides[active].body}</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <PrimaryButton onClick={() => navigate("/all-products")}>Browse Products</PrimaryButton>
@@ -493,7 +493,7 @@ function Hero({ navigate }) {
 
           <div className="justify-self-center lg:justify-self-end">
             <div className="overflow-hidden rounded-[22px] border bg-white p-3 shadow-[0_18px_50px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
-              <img src={heroSlides[active].image} alt="Hero" className="h-[315px] w-[490px] max-w-full rounded-[16px] object-cover" />
+              <img src={heroSlides[active].image} alt="Hero" className="h-[335px] w-[520px] max-w-full rounded-[16px] object-cover" />
             </div>
           </div>
         </div>
@@ -507,7 +507,7 @@ function SectionHeading({ eyebrow, title, compact = false, action = null }) {
     <div className={compact ? "mb-4" : "mb-5 flex items-end justify-between gap-4"}>
       <div>
         <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{eyebrow}</div>
-        <h2 className="mt-2 text-[28px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{title}</h2>
+        <h2 className="mt-2 text-[30px] font-black tracking-[-0.045em]" style={{ color: BRAND.ink }}>{title}</h2>
       </div>
       {!compact && action}
     </div>
@@ -519,26 +519,45 @@ function HomePage({ navigate }) {
     <div>
       <Hero navigate={navigate} />
 
-      <section className="py-5"><Shell><div className="flex gap-3 overflow-x-auto pb-2">
+      <section className="py-6"><Shell><div className="flex gap-3 overflow-x-auto pb-2">
         {["Business Cards", "Flyers", "Posters", "Booklets", "Labels", "Signage", "Packaging", "Stationery"].map((item) => (
           <button key={item} className="whitespace-nowrap rounded-full border bg-white px-4 py-2 text-[12px] font-semibold shadow-[0_6px_14px_rgba(0,0,0,0.02)]" style={{ borderColor: BRAND.line }}>{item}</button>
         ))}
       </div></Shell></section>
 
-      <section className="py-5"><Shell><div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="py-6"><Shell><div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {trustBadges.map((item) => {
           const Icon = item.icon;
           return (
-            <div key={item.title} className="rounded-[18px] border bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+            <div key={item.title} className="rounded-[20px] border bg-white p-4 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
               <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#F1FAFD]" style={{ color: BRAND.primary }}><Icon className="h-5 w-5" /></div>
               <div className="mt-3 text-[15px] font-bold" style={{ color: BRAND.ink }}>{item.title}</div>
               <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{item.text}</p>
             </div>
           );
         })}
-      </div></Shell></section>
+      </div></Shell>
+</section>
 
-      <section className="py-5"><Shell>
+      <section className="py-3"><Shell>
+        <div className="rounded-[20px] border bg-white px-5 py-4 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+          <div className="grid gap-4 md:grid-cols-4">
+            {[
+              ["10k+", "orders delivered"],
+              ["24hr", "express turnaround"],
+              ["350gsm+", "premium stock options"],
+              ["B2B", "bulk quote ready"],
+            ].map(([n,t]) => (
+              <div key={n} className="text-center">
+                <div className="text-[28px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{n}</div>
+                <div className="text-[11px] uppercase tracking-[0.14em]" style={{ color: BRAND.muted }}>{t}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Shell></section>
+
+      <section className="py-6"><Shell>
         <SectionHeading eyebrow="Collections" title="Shop our most-used print categories" action={<SecondaryButton onClick={() => navigate("/all-products")}>View all</SecondaryButton>} />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {featuredCollections.map((item) => (
@@ -551,7 +570,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-5"><Shell>
+      <section className="py-6"><Shell>
         <SectionHeading eyebrow="Featured products" title="Popular print products with a cleaner card structure" />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {featuredProducts.map((item) => (
@@ -569,7 +588,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-5"><Shell><div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
+      <section className="py-6"><Shell><div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="overflow-hidden rounded-[20px] border bg-white shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
           <div className="grid gap-0 md:grid-cols-[0.95fr_1.05fr]">
             <div className="p-6">
@@ -588,7 +607,7 @@ function HomePage({ navigate }) {
 
         <div className="grid gap-4">
           {testimonials.map((item) => (
-            <div key={item.name} className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+            <div key={item.name} className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
               <div className="flex gap-1" style={{ color: BRAND.primary }}>{Array.from({length:5}).map((_,i)=><Star key={i} className="h-4 w-4 fill-current" />)}</div>
               <p className="mt-3 text-[13px] leading-6" style={{ color: BRAND.ink }}>“{item.quote}”</p>
               <div className="mt-3 text-[12px] font-bold" style={{ color: BRAND.ink }}>{item.name}</div>
@@ -598,13 +617,13 @@ function HomePage({ navigate }) {
         </div>
       </div></Shell></section>
 
-      <section className="py-5"><Shell><div className="grid gap-4 md:grid-cols-3">
+      <section className="py-6"><Shell><div className="grid gap-4 md:grid-cols-3">
         {[
           ["Choose your product", "Browse cards, flyers, posters, labels and more."],
           ["Upload artwork or request help", "Use artwork later or move through a bespoke quote flow."],
           ["Approve and receive delivery", "Keep the customer journey simple and clear."],
         ].map(([title, text], i) => (
-          <div key={title} className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+          <div key={title} className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
             <div className="grid h-8 w-8 place-items-center rounded-full text-[12px] font-bold text-white" style={{ backgroundColor: BRAND.primary }}>{i + 1}</div>
             <div className="mt-4 text-[16px] font-bold" style={{ color: BRAND.ink }}>{title}</div>
             <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{text}</p>
@@ -612,21 +631,21 @@ function HomePage({ navigate }) {
         ))}
       </div></Shell></section>
 
-      <section className="py-5"><Shell>
+      <section className="py-6"><Shell>
         <SectionHeading eyebrow="Pricing options" title="Simple starter pricing blocks" />
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {pricingGrid.map((item) => (
             <div key={item.qty} className="rounded-[18px] border bg-white p-5 text-center shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
               <div className="text-[12px] font-bold uppercase tracking-[0.14em]" style={{ color: BRAND.muted }}>{item.qty}</div>
-              <div className="mt-3 text-[28px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{item.price}</div>
+              <div className="mt-3 text-[30px] font-black tracking-[-0.045em]" style={{ color: BRAND.ink }}>{item.price}</div>
               <div className="mt-2 text-[12px]" style={{ color: BRAND.muted }}>Base visual pricing block</div>
             </div>
           ))}
         </div>
       </Shell></section>
 
-      <section className="py-5"><Shell>
-        <div className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+      <section className="py-6"><Shell>
+        <div className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
           <div className="grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
               <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Delivery estimator</div>
@@ -641,8 +660,8 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-5"><Shell>
-        <div className="rounded-[18px] border bg-white p-6 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+      <section className="py-6"><Shell>
+        <div className="rounded-[20px] border bg-white p-6 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
           <SectionHeading eyebrow="Frequently asked questions" title="Common questions before customers order" compact />
           <div className="grid gap-3">
             {faqItems.map(([q, a]) => (
@@ -676,7 +695,7 @@ function ProductPage({ type, cart }) {
     <section className="py-6">
       <Shell narrow>
         <div className="grid gap-6 lg:grid-cols-[1.05fr_360px]">
-          <div className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+          <div className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
             <div className="mb-5 border-b pb-4" style={{ borderColor: BRAND.line }}>
               <div className="flex items-center gap-2">
                 <span className="rounded-full bg-[#F1FAFD] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: BRAND.primary }}>{product.badge}</span>
@@ -772,7 +791,7 @@ function BookletsPage({ navigate }) {
   return (
     <section className="py-6">
       <Shell narrow>
-        <div className="rounded-[18px] border bg-white p-6 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+        <div className="rounded-[20px] border bg-white p-6 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
           <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Booklet printing</div>
           <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Booklets with a cleaner, more editorial storefront layout</h1>
           <p className="mt-3 max-w-[660px] text-[12px] leading-6" style={{ color: BRAND.muted }}>This page now reflects a fuller commerce structure with lighter cards, more compact typography and cleaner category presentation.</p>
@@ -783,7 +802,7 @@ function BookletsPage({ navigate }) {
         </div>
         <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {["Stapled Booklets", "Wiro Bound Booklets", "Perfect Bound Booklets", "Spot UV Booklets", "Notebooks", "Brochures"].map((title, i) => (
-            <div key={title} className="rounded-[18px] border bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+            <div key={title} className="rounded-[20px] border bg-white p-4 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
               <img src={heroSlides[i % heroSlides.length].image} alt={title} className="h-40 w-full rounded-[14px] object-cover" />
               <div className="mt-4 text-[16px] font-bold" style={{ color: BRAND.ink }}>{title}</div>
               <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>Cleaner product card spacing and a more believable print-store presentation.</p>
@@ -799,8 +818,8 @@ function AllProductsPage({ navigate }) {
   return (
     <section className="py-6">
       <Shell narrow>
-        <div className="grid gap-5 lg:grid-cols-[260px_1fr]">
-          <div className="rounded-[18px] border bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+        <div className="grid gap-6 lg:grid-cols-[270px_1fr]">
+          <div className="rounded-[20px] border bg-white p-4 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
             <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Search catalog</div>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" style={{ color: BRAND.muted }} />
@@ -814,7 +833,7 @@ function AllProductsPage({ navigate }) {
           </div>
           <div className="grid gap-5">
             {NAV_ITEMS.slice(0,7).map((group) => (
-              <div key={group.label} className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+              <div key={group.label} className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
                 <div className="text-[22px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{group.label}</div>
                 <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                   {group.columns.flatMap((c) => c.links).slice(0, 4).map(([label, path], i) => (
@@ -838,7 +857,7 @@ function BespokeQuotePage() {
     <section className="py-6">
       <Shell narrow>
         <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
-          <div className="rounded-[18px] border bg-white p-6 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+          <div className="rounded-[20px] border bg-white p-6 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Custom quote</div>
             <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Request a bespoke quote for custom print jobs</h1>
             <p className="mt-3 max-w-[620px] text-[12px] leading-6" style={{ color: BRAND.muted }}>This section now sits more naturally inside the storefront and better matches the professional, compact structure from your references.</p>
@@ -853,7 +872,7 @@ function BespokeQuotePage() {
             </div>
           </div>
           <div className="grid gap-4">
-            <div className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+            <div className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
               <div className="text-[15px] font-bold" style={{ color: BRAND.ink }}>Ideal for</div>
               <div className="mt-4 grid gap-3">
                 {["Custom sizes", "Special finishes", "Bulk orders", "Complex specifications"].map((x) => (
@@ -861,7 +880,7 @@ function BespokeQuotePage() {
                 ))}
               </div>
             </div>
-            <div className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+            <div className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
               <div className="text-[15px] font-bold" style={{ color: BRAND.ink }}>Upload artwork later</div>
               <p className="mt-3 text-[12px] leading-6" style={{ color: BRAND.muted }}>You can also wire artwork upload into the order or approval flow later.</p>
               <div className="mt-4 inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-[12px]" style={{ borderColor: BRAND.line }}>
@@ -892,7 +911,7 @@ function CartPage({ cart, navigate }) {
               <div className="rounded-[18px] border bg-white p-6 text-[12px] shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>Your cart is empty.</div>
             ) : (
               cart.items.map((item) => (
-                <div key={item.id} className="rounded-[18px] border bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+                <div key={item.id} className="rounded-[20px] border bg-white p-4 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="text-[15px] font-bold" style={{ color: BRAND.ink }}>{item.name}</div>
@@ -916,7 +935,7 @@ function CartPage({ cart, navigate }) {
               ))
             )}
           </div>
-          <div className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+          <div className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
             <div className="text-[20px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Order summary</div>
             <div className="mt-4 space-y-3 text-[12px]" style={{ color: BRAND.muted }}>
               <div className="flex justify-between"><span>Subtotal</span><span>{currency(cart.subtotal)}</span></div>
@@ -954,8 +973,8 @@ function Footer({ navigate }) {
         <div className="grid gap-8 py-10 md:grid-cols-[1.25fr_0.8fr_0.8fr_0.8fr_0.8fr]">
           <div>
             <button onClick={() => navigate("/")} className="flex items-center gap-0.5">
-              <span className="text-[48px] font-black tracking-[-0.05em]" style={{ color: BRAND.primary }}>HOLO</span>
-              <span className="text-[48px] font-black tracking-[-0.05em]" style={{ color: BRAND.ink }}>PRINT</span>
+              <span className="text-[50px] font-black tracking-[-0.055em]" style={{ color: BRAND.primary }}>HOLO</span>
+              <span className="text-[50px] font-black tracking-[-0.055em]" style={{ color: BRAND.ink }}>PRINT</span>
             </button>
             <p className="mt-4 max-w-[360px] text-[12px] leading-7" style={{ color: BRAND.muted }}>A fuller ecommerce print storefront direction with broader navigation, denser sections and a cleaner visual tone.</p>
           </div>
@@ -965,7 +984,18 @@ function Footer({ navigate }) {
           <FooterCol title="Support" items={[["All products", "/all-products"], ["Cart", "/cart"], ["Contact", "/bespoke-quote"], ["Quote request", "/bespoke-quote"]]} navigate={navigate} />
         </div>
       </Shell>
-    </footer>
+    
+        <Shell>
+          <div className="border-t py-4 text-[11px] flex flex-col gap-2 md:flex-row md:items-center md:justify-between" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
+            <span>© 2026 HOLO PRINT. All rights reserved.</span>
+            <div className="flex gap-4">
+              <button onClick={() => navigate("/all-products")}>All products</button>
+              <button onClick={() => navigate("/bespoke-quote")}>Custom quote</button>
+              <button onClick={() => navigate("/cart")}>Cart</button>
+            </div>
+          </div>
+        </Shell>
+      </footer>
   );
 }
 

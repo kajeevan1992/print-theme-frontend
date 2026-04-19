@@ -107,3 +107,10 @@ Use these values:
 - restored a single clean homepage sequence
 - kept full dropdown coverage for all top-level nav items
 - preserved HOLO PRINT branding and softer grey-white background
+
+
+## Next build polish
+- improved hero proportions and typography
+- tightened section rhythm and card shadows
+- added storefront stats band for more realism
+- refined footer with a legal / utility row

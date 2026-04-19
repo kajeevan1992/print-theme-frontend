@@ -63,3 +63,28 @@ img {
 ::-webkit-scrollbar-track {
   background: #F3F5F6;
 }
+
+
+/* next build polish pass */
+body {
+  background:
+    radial-gradient(circle at top left, rgba(24,167,208,0.045), transparent 22%),
+    radial-gradient(circle at center right, rgba(255,255,255,0.55), transparent 26%),
+    linear-gradient(180deg, #F2F4F5 0%, #EEF1F3 100%);
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.04em;
+}
+
+section {
+  position: relative;
+}
+
+button:hover {
+  filter: saturate(1.02);
+}
+
+.shadow-card {
+  box-shadow: 0 12px 28px rgba(0,0,0,0.035);
+}
