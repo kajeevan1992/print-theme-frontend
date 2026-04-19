@@ -408,26 +408,35 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
                   {(() => {
                     const item = NAV_ITEMS.find((x) => x.label === openLabel) || NAV_ITEMS[0];
                     return (
-                      <div className="grid grid-cols-[270px_1fr_1fr_1fr] gap-6">
-                        <div className="rounded-[18px] border p-4" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panelSoft }}>
-                          <img src={item.feature.image} alt={item.feature.title} className="h-36 w-full rounded-[12px] object-cover" />
-                          <div className="mt-4 text-[18px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{item.feature.title}</div>
-                          <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{item.feature.body}</p>
-                          <button onClick={() => navigate(item.path)} className="mt-4 text-[12px] font-bold" style={{ color: BRAND.primary }}>{item.feature.cta}</button>
-                        </div>
-
-                        {item.columns.map((column) => (
-                          <div key={column.title}>
-                            <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{column.title}</div>
-                            <div className="grid gap-1">
-                              {column.links.map(([label, path]) => (
-                                <button key={label} onClick={() => { navigate(path); setOpenLabel(null); }} className="rounded-xl px-3 py-2 text-left text-[12px] font-medium hover:bg-[#F6F7F8]" style={{ color: BRAND.ink }}>
-                                  {label}
-                                </button>
-                              ))}
-                            </div>
+                      <div className="grid gap-5">
+                        <div className="grid grid-cols-[270px_1fr_1fr_1fr] gap-6">
+                          <div className="rounded-[18px] border p-4" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panelSoft }}>
+                            <img src={item.feature.image} alt={item.feature.title} className="h-36 w-full rounded-[12px] object-cover" />
+                            <div className="mt-4 text-[18px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{item.feature.title}</div>
+                            <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{item.feature.body}</p>
+                            <button onClick={() => navigate(item.path)} className="mt-4 text-[12px] font-bold" style={{ color: BRAND.primary }}>{item.feature.cta}</button>
                           </div>
-                        ))}
+
+                          {item.columns.map((column) => (
+                            <div key={column.title}>
+                              <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{column.title}</div>
+                              <div className="grid gap-1">
+                                {column.links.map(([label, path]) => (
+                                  <button key={label} onClick={() => { navigate(path); setOpenLabel(null); }} className="rounded-xl px-3 py-2 text-left text-[12px] font-medium hover:bg-[#F6F7F8]" style={{ color: BRAND.ink }}>
+                                    {label}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="grid grid-cols-4 gap-3 border-t pt-4" style={{ borderColor: BRAND.line }}>
+                          {["Fast turnaround", "Premium stock", "Bulk pricing", "Artwork support"].map((x) => (
+                            <div key={x} className="rounded-[14px] border bg-[#FBFBFB] px-4 py-3 text-[11px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
+                              {x}
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     );
                   })()}
@@ -495,6 +504,18 @@ function Hero({ navigate }) {
             <div className="overflow-hidden rounded-[24px] border bg-white p-3 shadow-[0_22px_56px_rgba(0,0,0,0.055)]" style={{ borderColor: BRAND.line }}>
               <img src={heroSlides[active].image} alt="Hero" className="h-[335px] w-[520px] max-w-full rounded-[16px] object-cover" />
             </div>
+          </div>
+        </div>
+        <div className="mt-6 rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+          <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>You may also like</div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {featuredProducts.slice(0,3).map((item) => (
+              <button key={item.title} onClick={() => window.location.pathname !== item.path && (window.history.pushState({}, "", item.path), window.dispatchEvent(new PopStateEvent("popstate")))} className="group rounded-[16px] border bg-white p-3 text-left transition hover:-translate-y-[1px] hover:shadow-[0_12px_24px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
+                <img src={item.image} alt={item.title} className="h-28 w-full rounded-[12px] object-cover transition duration-500 group-hover:scale-[1.03]" />
+                <div className="mt-3 text-[13px] font-bold" style={{ color: BRAND.ink }}>{item.title}</div>
+                <div className="text-[11px]" style={{ color: BRAND.muted }}>{item.price}</div>
+              </button>
+            ))}
           </div>
         </div>
       </Shell>
@@ -685,6 +706,24 @@ function HomePage({ navigate }) {
           </div>
         </div>
       </Shell></section>
+
+      <section className="py-6"><Shell>
+        <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.04)]" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, #FFFFFF 0%, #F7FBFC 100%)" }}>
+          <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Ready to connect your backend later</div>
+              <div className="mt-2 text-[32px] font-black tracking-[-0.045em]" style={{ color: BRAND.ink }}>Present a polished storefront now and grow into a full commerce flow.</div>
+              <p className="mt-3 max-w-[720px] text-[12px] leading-7" style={{ color: BRAND.muted }}>
+                Use this theme for the client demo now, then connect catalog data, artwork upload, stock control, orders and bespoke quote workflows through your admin dashboard.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <PrimaryButton onClick={() => navigate("/all-products")}>Browse catalog</PrimaryButton>
+              <SecondaryButton onClick={() => navigate("/bespoke-quote")}>Talk bespoke print</SecondaryButton>
+            </div>
+          </div>
+        </div>
+      </Shell></section>
     </div>
   );
 }
@@ -706,6 +745,7 @@ function ProductPage({ type, cart }) {
   return (
     <section className="py-6">
       <Shell narrow>
+        <div className="mb-4 flex items-center gap-2 text-[11px]" style={{ color: BRAND.muted }}><button onClick={() => window.history.back?.()} className="font-semibold">Store</button><span>/</span><span>{product.name}</span></div>
         <div className="grid gap-6 lg:grid-cols-[1.05fr_360px]">
           <div className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
             <div className="mb-5 border-b pb-4" style={{ borderColor: BRAND.line }}>
@@ -973,7 +1013,7 @@ function Footer({ navigate }) {
       <div className="border-b py-3" style={{ borderColor: BRAND.line, backgroundColor: BRAND.primary }}>
         <Shell>
           <div className="flex flex-col items-center justify-between gap-2 text-[12px] font-semibold text-white md:flex-row">
-            <span>Get the very best print solutions for your business, events and brand campaigns.</span>
+            <span>Get the very best print solutions for your business, events and brand campaigns — with room to grow into a full admin-connected storefront.</span>
             <div className="flex gap-2">
               <Input className="h-9 w-[250px] rounded-full border-0 bg-white text-[12px] text-black" placeholder="Email address" />
               <button className="rounded-full bg-black px-4 text-[12px] font-bold text-white">Subscribe</button>

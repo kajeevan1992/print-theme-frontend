@@ -111,3 +111,32 @@ header, section, footer {
     white-space: nowrap;
   }
 }
+
+
+/* next build 3 polish */
+section + section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: min(1280px, calc(100% - 3rem));
+  height: 1px;
+  background: rgba(226,230,232,0.45);
+  pointer-events: none;
+}
+
+footer section + section::before,
+header section + section::before {
+  display: none;
+}
+
+img {
+  backface-visibility: hidden;
+}
+
+@media (min-width: 1024px) {
+  .lg\:sticky {
+    top: 96px !important;
+  }
+}

@@ -121,3 +121,10 @@ Use these values:
 - added client/sector logo-style strip
 - added service support cards before FAQ
 - improved footer messaging and product summary depth
+
+
+## Next build 3
+- added mega menu utility row for richer dropdowns
+- added breadcrumbs and related products to product pages
+- added a stronger CTA band before the footer
+- refined separators and section polish
