@@ -85,3 +85,11 @@ Use these values:
 - upgraded buttons and product option interactions
 - added subtle section reveal motion
 - tightened product gallery and summary polish
+
+
+## Full ecommerce structure pass
+- expanded header nav with more categories
+- rebuilt mega menu with fuller product/category coverage
+- added collection strip, trust cards, featured products, testimonials, FAQ and how-it-works sections
+- expanded all-products and footer structure
+- updated brand styling to HOLO PRINT with blue, black and white palette
