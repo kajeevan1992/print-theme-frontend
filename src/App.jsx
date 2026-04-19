@@ -273,7 +273,51 @@ function UtilityBar() {
           </div>
         </div>
       </Shell>
-    </div>
+    
+      {/* PRICING TIERS */}
+      <section className="py-6">
+        <Shell>
+          <div className="mb-4 text-[24px] font-black">Pricing options</div>
+          <div className="grid gap-4 md:grid-cols-4">
+            {[100,250,500,1000].map(q=>(
+              <div key={q} className="rounded-[14px] border bg-white p-4 text-center">
+                <div className="text-[14px] font-bold">{q} pcs</div>
+                <div className="mt-2 text-[20px] font-black">£{(q/10).toFixed(2)}</div>
+              </div>
+            ))}
+          </div>
+        </Shell>
+      </section>
+
+      {/* DELIVERY ESTIMATOR */}
+      <section className="py-6">
+        <Shell>
+          <div className="rounded-[16px] border bg-white p-5">
+            <div className="text-[18px] font-bold">Estimate delivery</div>
+            <div className="mt-3 flex gap-2">
+              <input className="border px-3 py-2 text-[12px]" placeholder="Enter postcode"/>
+              <button className="px-4 py-2 bg-black text-white text-[12px]">Check</button>
+            </div>
+          </div>
+        </Shell>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="py-6">
+        <Shell>
+          <div className="mb-4 text-[24px] font-black">Customer reviews</div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[1,2,3].map(i=>(
+              <div key={i} className="rounded-[14px] border bg-white p-4">
+                <div className="text-[12px]">★★★★★</div>
+                <div className="mt-2 text-[13px]">Great quality and fast turnaround.</div>
+              </div>
+            ))}
+          </div>
+        </Shell>
+      </section>
+
+</div>
   );
 }
 
@@ -465,7 +509,51 @@ function IconButton({ icon }) {
   return (
     <div className="grid h-9 w-9 place-items-center rounded-xl border bg-white" style={{ borderColor: BRAND.line }}>
       {icon}
-    </div>
+    
+      {/* PRICING TIERS */}
+      <section className="py-6">
+        <Shell>
+          <div className="mb-4 text-[24px] font-black">Pricing options</div>
+          <div className="grid gap-4 md:grid-cols-4">
+            {[100,250,500,1000].map(q=>(
+              <div key={q} className="rounded-[14px] border bg-white p-4 text-center">
+                <div className="text-[14px] font-bold">{q} pcs</div>
+                <div className="mt-2 text-[20px] font-black">£{(q/10).toFixed(2)}</div>
+              </div>
+            ))}
+          </div>
+        </Shell>
+      </section>
+
+      {/* DELIVERY ESTIMATOR */}
+      <section className="py-6">
+        <Shell>
+          <div className="rounded-[16px] border bg-white p-5">
+            <div className="text-[18px] font-bold">Estimate delivery</div>
+            <div className="mt-3 flex gap-2">
+              <input className="border px-3 py-2 text-[12px]" placeholder="Enter postcode"/>
+              <button className="px-4 py-2 bg-black text-white text-[12px]">Check</button>
+            </div>
+          </div>
+        </Shell>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="py-6">
+        <Shell>
+          <div className="mb-4 text-[24px] font-black">Customer reviews</div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[1,2,3].map(i=>(
+              <div key={i} className="rounded-[14px] border bg-white p-4">
+                <div className="text-[12px]">★★★★★</div>
+                <div className="mt-2 text-[13px]">Great quality and fast turnaround.</div>
+              </div>
+            ))}
+          </div>
+        </Shell>
+      </section>
+
+</div>
   );
 }
 
@@ -716,7 +804,51 @@ function HomePage({ navigate, cart }) {
           </div>
         </Shell>
       </section>
-    </div>
+    
+      {/* PRICING TIERS */}
+      <section className="py-6">
+        <Shell>
+          <div className="mb-4 text-[24px] font-black">Pricing options</div>
+          <div className="grid gap-4 md:grid-cols-4">
+            {[100,250,500,1000].map(q=>(
+              <div key={q} className="rounded-[14px] border bg-white p-4 text-center">
+                <div className="text-[14px] font-bold">{q} pcs</div>
+                <div className="mt-2 text-[20px] font-black">£{(q/10).toFixed(2)}</div>
+              </div>
+            ))}
+          </div>
+        </Shell>
+      </section>
+
+      {/* DELIVERY ESTIMATOR */}
+      <section className="py-6">
+        <Shell>
+          <div className="rounded-[16px] border bg-white p-5">
+            <div className="text-[18px] font-bold">Estimate delivery</div>
+            <div className="mt-3 flex gap-2">
+              <input className="border px-3 py-2 text-[12px]" placeholder="Enter postcode"/>
+              <button className="px-4 py-2 bg-black text-white text-[12px]">Check</button>
+            </div>
+          </div>
+        </Shell>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="py-6">
+        <Shell>
+          <div className="mb-4 text-[24px] font-black">Customer reviews</div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[1,2,3].map(i=>(
+              <div key={i} className="rounded-[14px] border bg-white p-4">
+                <div className="text-[12px]">★★★★★</div>
+                <div className="mt-2 text-[13px]">Great quality and fast turnaround.</div>
+              </div>
+            ))}
+          </div>
+        </Shell>
+      </section>
+
+</div>
   );
 }
 
@@ -1136,7 +1268,51 @@ function FooterCol({ title, items, navigate }) {
           </button>
         ))}
       </div>
-    </div>
+    
+      {/* PRICING TIERS */}
+      <section className="py-6">
+        <Shell>
+          <div className="mb-4 text-[24px] font-black">Pricing options</div>
+          <div className="grid gap-4 md:grid-cols-4">
+            {[100,250,500,1000].map(q=>(
+              <div key={q} className="rounded-[14px] border bg-white p-4 text-center">
+                <div className="text-[14px] font-bold">{q} pcs</div>
+                <div className="mt-2 text-[20px] font-black">£{(q/10).toFixed(2)}</div>
+              </div>
+            ))}
+          </div>
+        </Shell>
+      </section>
+
+      {/* DELIVERY ESTIMATOR */}
+      <section className="py-6">
+        <Shell>
+          <div className="rounded-[16px] border bg-white p-5">
+            <div className="text-[18px] font-bold">Estimate delivery</div>
+            <div className="mt-3 flex gap-2">
+              <input className="border px-3 py-2 text-[12px]" placeholder="Enter postcode"/>
+              <button className="px-4 py-2 bg-black text-white text-[12px]">Check</button>
+            </div>
+          </div>
+        </Shell>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="py-6">
+        <Shell>
+          <div className="mb-4 text-[24px] font-black">Customer reviews</div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[1,2,3].map(i=>(
+              <div key={i} className="rounded-[14px] border bg-white p-4">
+                <div className="text-[12px]">★★★★★</div>
+                <div className="mt-2 text-[13px]">Great quality and fast turnaround.</div>
+              </div>
+            ))}
+          </div>
+        </Shell>
+      </section>
+
+</div>
   );
 }
 
@@ -1201,6 +1377,50 @@ export default function App() {
       <Header navigate={navigate} currentPath={path} cartCount={cart.items.length} cartSubtotal={cart.subtotal} />
       {page}
       <Footer navigate={navigate} />
-    </div>
+    
+      {/* PRICING TIERS */}
+      <section className="py-6">
+        <Shell>
+          <div className="mb-4 text-[24px] font-black">Pricing options</div>
+          <div className="grid gap-4 md:grid-cols-4">
+            {[100,250,500,1000].map(q=>(
+              <div key={q} className="rounded-[14px] border bg-white p-4 text-center">
+                <div className="text-[14px] font-bold">{q} pcs</div>
+                <div className="mt-2 text-[20px] font-black">£{(q/10).toFixed(2)}</div>
+              </div>
+            ))}
+          </div>
+        </Shell>
+      </section>
+
+      {/* DELIVERY ESTIMATOR */}
+      <section className="py-6">
+        <Shell>
+          <div className="rounded-[16px] border bg-white p-5">
+            <div className="text-[18px] font-bold">Estimate delivery</div>
+            <div className="mt-3 flex gap-2">
+              <input className="border px-3 py-2 text-[12px]" placeholder="Enter postcode"/>
+              <button className="px-4 py-2 bg-black text-white text-[12px]">Check</button>
+            </div>
+          </div>
+        </Shell>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="py-6">
+        <Shell>
+          <div className="mb-4 text-[24px] font-black">Customer reviews</div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[1,2,3].map(i=>(
+              <div key={i} className="rounded-[14px] border bg-white p-4">
+                <div className="text-[12px]">★★★★★</div>
+                <div className="mt-2 text-[13px]">Great quality and fast turnaround.</div>
+              </div>
+            ))}
+          </div>
+        </Shell>
+      </section>
+
+</div>
   );
 }

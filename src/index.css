@@ -64,3 +64,5 @@ img {
 ::-webkit-scrollbar-track {
   background: #F3F5F6;
 }
+
+section { margin-bottom: 4px; }
