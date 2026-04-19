@@ -140,3 +140,22 @@ img {
     top: 96px !important;
   }
 }
+
+
+/* next build 4 */
+body {
+  background:
+    radial-gradient(circle at top left, rgba(24,167,208,0.05), transparent 22%),
+    radial-gradient(circle at 85% 10%, rgba(255,255,255,0.55), transparent 20%),
+    linear-gradient(180deg, #F2F4F5 0%, #EEF1F3 100%);
+}
+
+button {
+  backface-visibility: hidden;
+}
+
+@media (min-width: 1280px) {
+  .xl\:flex {
+    align-items: center;
+  }
+}

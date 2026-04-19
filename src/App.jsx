@@ -501,7 +501,7 @@ function Hero({ navigate }) {
           </AnimatePresence>
 
           <div className="justify-self-center lg:justify-self-end">
-            <div className="overflow-hidden rounded-[24px] border bg-white p-3 shadow-[0_22px_56px_rgba(0,0,0,0.055)]" style={{ borderColor: BRAND.line }}>
+            <div className="overflow-hidden rounded-[26px] border bg-white p-3 shadow-[0_24px_64px_rgba(0,0,0,0.06)]" style={{ borderColor: BRAND.line }}>
               <img src={heroSlides[active].image} alt="Hero" className="h-[335px] w-[520px] max-w-full rounded-[16px] object-cover" />
             </div>
           </div>
@@ -813,7 +813,7 @@ function ProductPage({ type, cart }) {
           </div>
 
           <div className="lg:sticky lg:top-24">
-            <div className="rounded-[20px] border bg-white p-5 shadow-[0_18px_38px_rgba(0,0,0,0.045)]" style={{ borderColor: BRAND.line }}>
+            <div className="rounded-[22px] border bg-white p-5 shadow-[0_18px_42px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
               <div className="text-[11px] font-bold uppercase tracking-[0.16em]" style={{ color: BRAND.primary }}>Price summary</div>
               <div className="mt-2 text-[40px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{currency(price)}</div>
               <div className="mt-1 text-[11px]" style={{ color: BRAND.muted }}>Base pricing before live backend rules and shipping logic</div>
@@ -889,7 +889,7 @@ function AllProductsPage({ navigate }) {
                 <div className="text-[22px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{group.label}</div>
                 <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                   {group.columns.flatMap((c) => c.links).slice(0, 4).map(([label, path], i) => (
-                    <button key={label} onClick={() => navigate(path)} className="group rounded-[14px] border p-3 text-left transition hover:-translate-y-[1px] hover:shadow-[0_12px_24px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
+                    <button key={label} onClick={() => navigate(path)} className="group rounded-[16px] border p-3 text-left transition hover:-translate-y-[1px] hover:shadow-[0_14px_28px_rgba(0,0,0,0.055)]" style={{ borderColor: BRAND.line }}>
                       <img src={featuredProducts[i % featuredProducts.length].image} alt={label} className="h-24 w-full rounded-[10px] object-cover transition duration-500 group-hover:scale-[1.03]" />
                       <div className="mt-3 text-[13px] font-bold" style={{ color: BRAND.ink }}>{label}</div>
                     </button>
@@ -1022,6 +1022,13 @@ function Footer({ navigate }) {
         </Shell>
       </div>
       <Shell>
+        <div className="grid gap-3 py-5 md:grid-cols-4">
+          {["Business printing","Event signage","Labels & packaging","Custom quote support"].map((item) => (
+            <div key={item} className="rounded-[16px] border bg-[#FBFBFB] px-4 py-3 text-[11px] font-bold uppercase tracking-[0.14em]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
+              {item}
+            </div>
+          ))}
+        </div>
         <div className="grid gap-8 py-10 md:grid-cols-[1.25fr_0.8fr_0.8fr_0.8fr_0.8fr]">
           <div>
             <button onClick={() => navigate("/")} className="flex items-center gap-0.5">

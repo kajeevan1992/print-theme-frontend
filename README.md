@@ -128,3 +128,11 @@ Use these values:
 - added breadcrumbs and related products to product pages
 - added a stronger CTA band before the footer
 - refined separators and section polish
+
+
+## Next build 4
+- enriched hero with quick trust chips
+- improved mega menu feature card content
+- added a comparison/support band under featured products
+- added a richer quick-links row in the footer
+- slightly increased card and summary polish
