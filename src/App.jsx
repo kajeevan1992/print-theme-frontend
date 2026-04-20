@@ -431,8 +431,8 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
                           ))}
                         </div>
                         <div className="grid grid-cols-4 gap-3 border-t pt-4" style={{ borderColor: BRAND.line }}>
-                          {["Fast turnaround", "Premium stock", "Bulk pricing", "Artwork support"].map((x) => (
-                            <div key={x} className="rounded-[14px] border bg-[#FBFBFB] px-4 py-3 text-[11px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
+                          {["Fast turnaround", "Premium stock", "Bulk pricing", "Artwork support"].map((x, idx) => (
+                            <div key={x} className="rounded-[16px] border bg-[#FBFBFB] px-4 py-3 text-[11px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
                               {x}
                             </div>
                           ))}
@@ -486,7 +486,7 @@ function Hero({ navigate }) {
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.22 }}>
               <div className="mb-3 inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{heroSlides[active].eyebrow}</div>
-              <h1 className="max-w-[660px] text-[60px] font-black leading-[0.93] tracking-[-0.058em] sm:text-[70px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
+              <h1 className="max-w-[660px] text-[62px] font-black leading-[0.92] tracking-[-0.06em] sm:text-[72px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
               <p className="mt-5 max-w-[600px] text-[14px] leading-7" style={{ color: BRAND.muted }}>{heroSlides[active].body}</p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <PrimaryButton onClick={() => navigate("/all-products")}>Browse Products</PrimaryButton>
@@ -502,11 +502,11 @@ function Hero({ navigate }) {
 
           <div className="justify-self-center lg:justify-self-end">
             <div className="overflow-hidden rounded-[26px] border bg-white p-3 shadow-[0_24px_64px_rgba(0,0,0,0.06)]" style={{ borderColor: BRAND.line }}>
-              <img src={heroSlides[active].image} alt="Hero" className="h-[335px] w-[520px] max-w-full rounded-[16px] object-cover" />
+              <img src={heroSlides[active].image} alt="Hero" className="h-[345px] w-[540px] max-w-full rounded-[16px] object-cover" />
             </div>
           </div>
         </div>
-        <div className="mt-6 rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+        <div className="mt-6 rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
           <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>You may also like</div>
           <div className="grid gap-4 md:grid-cols-3">
             {featuredProducts.slice(0,3).map((item) => (
@@ -640,7 +640,7 @@ function HomePage({ navigate }) {
 
         <div className="grid gap-4">
           {testimonials.map((item) => (
-            <div key={item.name} className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+            <div key={item.name} className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
               <div className="flex gap-1" style={{ color: BRAND.primary }}>{Array.from({length:5}).map((_,i)=><Star key={i} className="h-4 w-4 fill-current" />)}</div>
               <p className="mt-3 text-[13px] leading-6" style={{ color: BRAND.ink }}>“{item.quote}”</p>
               <div className="mt-3 text-[12px] font-bold" style={{ color: BRAND.ink }}>{item.name}</div>
@@ -656,7 +656,7 @@ function HomePage({ navigate }) {
           ["Upload artwork or request help", "Use artwork later or move through a bespoke quote flow."],
           ["Approve and receive delivery", "Keep the customer journey simple and clear."],
         ].map(([title, text], i) => (
-          <div key={title} className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+          <div key={title} className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
             <div className="grid h-8 w-8 place-items-center rounded-full text-[12px] font-bold text-white" style={{ backgroundColor: BRAND.primary }}>{i + 1}</div>
             <div className="mt-4 text-[16px] font-bold" style={{ color: BRAND.ink }}>{title}</div>
             <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{text}</p>
@@ -678,7 +678,7 @@ function HomePage({ navigate }) {
       </Shell></section>
 
       <section className="py-6"><Shell>
-        <div className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+        <div className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
           <div className="grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
               <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Delivery estimator</div>
@@ -694,7 +694,7 @@ function HomePage({ navigate }) {
       </Shell></section>
 
       <section className="py-6"><Shell>
-        <div className="rounded-[20px] border bg-white p-6 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+        <div className="rounded-[22px] border bg-white p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
           <SectionHeading eyebrow="Frequently asked questions" title="Common questions before customers order" compact />
           <div className="grid gap-3">
             {faqItems.map(([q, a]) => (
@@ -704,6 +704,22 @@ function HomePage({ navigate }) {
               </div>
             ))}
           </div>
+        </div>
+      </Shell></section>
+
+      <section className="py-4"><Shell>
+        <div className="grid gap-4 md:grid-cols-4">
+          {[
+            ["Artwork check included","Optional preflight before production"],
+            ["Business account ready","Suitable for repeat teams and larger orders"],
+            ["Custom quote route","For complex print jobs and specialist materials"],
+            ["Clearer storefront UX","Cleaner spacing and stronger ecommerce density"],
+          ].map(([title, text]) => (
+            <div key={title} className="rounded-[20px] border bg-white p-4 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+              <div className="text-[13px] font-bold" style={{ color: BRAND.ink }}>{title}</div>
+              <div className="mt-2 text-[11px] leading-6" style={{ color: BRAND.muted }}>{text}</div>
+            </div>
+          ))}
         </div>
       </Shell></section>
 
@@ -747,7 +763,7 @@ function ProductPage({ type, cart }) {
       <Shell narrow>
         <div className="mb-4 flex items-center gap-2 text-[11px]" style={{ color: BRAND.muted }}><button onClick={() => window.history.back?.()} className="font-semibold">Store</button><span>/</span><span>{product.name}</span></div>
         <div className="grid gap-6 lg:grid-cols-[1.05fr_360px]">
-          <div className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+          <div className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
             <div className="mb-5 border-b pb-4" style={{ borderColor: BRAND.line }}>
               <div className="flex items-center gap-2">
                 <span className="rounded-full bg-[#F1FAFD] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: BRAND.primary }}>{product.badge}</span>
@@ -827,7 +843,7 @@ function ProductPage({ type, cart }) {
                   ))}
                 </div>
               </div>
-              <div className="mt-5 rounded-[14px] border bg-[#FBFBFB] p-4" style={{ borderColor: BRAND.line }}>
+              <div className="mt-5 rounded-[14px] border bg-[#FBFBFB] p-4" style={{ borderColor: BRAND.line }}><div className="mb-3 rounded-full bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] inline-block" style={{ color: BRAND.primary }}>Support</div>
                 <div className="text-[12px] font-bold" style={{ color: BRAND.ink }}>Need something custom?</div>
                 <p className="mt-2 text-[11px] leading-6" style={{ color: BRAND.muted }}>Use the bespoke quote flow for custom sizes, specialist materials and bulk pricing requests.</p>
               </div>
@@ -843,7 +859,7 @@ function BookletsPage({ navigate }) {
   return (
     <section className="py-6">
       <Shell narrow>
-        <div className="rounded-[20px] border bg-white p-6 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+        <div className="rounded-[22px] border bg-white p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
           <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Booklet printing</div>
           <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Booklets with a cleaner, more editorial storefront layout</h1>
           <p className="mt-3 max-w-[660px] text-[12px] leading-6" style={{ color: BRAND.muted }}>This page now reflects a fuller commerce structure with lighter cards, more compact typography and cleaner category presentation.</p>
@@ -885,7 +901,7 @@ function AllProductsPage({ navigate }) {
           </div>
           <div className="grid gap-5">
             {NAV_ITEMS.slice(0,7).map((group) => (
-              <div key={group.label} className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+              <div key={group.label} className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
                 <div className="text-[22px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{group.label}</div>
                 <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                   {group.columns.flatMap((c) => c.links).slice(0, 4).map(([label, path], i) => (
@@ -909,7 +925,7 @@ function BespokeQuotePage() {
     <section className="py-6">
       <Shell narrow>
         <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
-          <div className="rounded-[20px] border bg-white p-6 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+          <div className="rounded-[22px] border bg-white p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Custom quote</div>
             <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Request a bespoke quote for custom print jobs</h1>
             <p className="mt-3 max-w-[620px] text-[12px] leading-6" style={{ color: BRAND.muted }}>This section now sits more naturally inside the storefront and better matches the professional, compact structure from your references.</p>
@@ -924,7 +940,7 @@ function BespokeQuotePage() {
             </div>
           </div>
           <div className="grid gap-4">
-            <div className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+            <div className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
               <div className="text-[15px] font-bold" style={{ color: BRAND.ink }}>Ideal for</div>
               <div className="mt-4 grid gap-3">
                 {["Custom sizes", "Special finishes", "Bulk orders", "Complex specifications"].map((x) => (
@@ -932,7 +948,7 @@ function BespokeQuotePage() {
                 ))}
               </div>
             </div>
-            <div className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+            <div className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
               <div className="text-[15px] font-bold" style={{ color: BRAND.ink }}>Upload artwork later</div>
               <p className="mt-3 text-[12px] leading-6" style={{ color: BRAND.muted }}>You can also wire artwork upload into the order or approval flow later.</p>
               <div className="mt-4 inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-[12px]" style={{ borderColor: BRAND.line }}>
@@ -987,7 +1003,7 @@ function CartPage({ cart, navigate }) {
               ))
             )}
           </div>
-          <div className="rounded-[20px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+          <div className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
             <div className="text-[20px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>Order summary</div>
             <div className="mt-4 space-y-3 text-[12px]" style={{ color: BRAND.muted }}>
               <div className="flex justify-between"><span>Subtotal</span><span>{currency(cart.subtotal)}</span></div>
@@ -1023,10 +1039,8 @@ function Footer({ navigate }) {
       </div>
       <Shell>
         <div className="grid gap-3 py-5 md:grid-cols-4">
-          {["Business printing","Event signage","Labels & packaging","Custom quote support"].map((item) => (
-            <div key={item} className="rounded-[16px] border bg-[#FBFBFB] px-4 py-3 text-[11px] font-bold uppercase tracking-[0.14em]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
-              {item}
-            </div>
+          {[["Business printing","20+"],["Event signage","12+"],["Labels & packaging","18+"],["Custom quote support","1:1"]].map(([item,count]) => (
+            <div key={item} className="rounded-[18px] border bg-[#FBFBFB] px-4 py-3" style={{ borderColor: BRAND.line, color: BRAND.muted }}><div className="text-[10px] font-bold uppercase tracking-[0.14em]">{item}</div><div className="mt-1 text-[16px] font-black" style={{ color: BRAND.ink }}>{count}</div></div>
           ))}
         </div>
         <div className="grid gap-8 py-10 md:grid-cols-[1.25fr_0.8fr_0.8fr_0.8fr_0.8fr]">

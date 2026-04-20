@@ -159,3 +159,24 @@ button {
     align-items: center;
   }
 }
+
+
+/* next build 5 */
+body {
+  background:
+    radial-gradient(circle at top left, rgba(24,167,208,0.05), transparent 20%),
+    radial-gradient(circle at 78% 0%, rgba(255,255,255,0.7), transparent 18%),
+    linear-gradient(180deg, #F1F3F4 0%, #ECEFF1 100%);
+}
+
+section .rounded-\[22px\],
+section .rounded-\[20px\],
+section .rounded-\[18px\] {
+  backdrop-filter: saturate(1.02);
+}
+
+@media (min-width: 1024px) {
+  .xl\:flex > button {
+    letter-spacing: -0.01em;
+  }
+}

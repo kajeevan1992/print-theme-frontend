@@ -136,3 +136,11 @@ Use these values:
 - added a comparison/support band under featured products
 - added a richer quick-links row in the footer
 - slightly increased card and summary polish
+
+
+## Next build 5
+- increased hero presence and card depth
+- improved footer quick-link cards with counts
+- added another credibility row before the final CTA band
+- refined dropdown utility chips and product summary support styling
+- softened overall background and section contrast
