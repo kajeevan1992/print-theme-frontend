@@ -178,26 +178,9 @@ Use these values:
 - refined overall background and spacing rhythm
 
 
-## Next build 11
-- improved header logo scale and typography
-- enhanced button interactions
-- added subtle background grid texture
-- refined product card spacing
-- added product badges for realism
-- improved footer spacing
-
-
-## FINAL PRODUCTION PASS
-- full animation system polish
-- consistent spacing system
-- mobile spacing improvements
-- refined hover + motion
-- final UI tightening for production readiness
-
-
-## Realism pass
-- added delivery + turnaround info
-- improved product messaging
-- refined testimonials
-- improved CTA clarity
-- enhanced form UX realism
+## Product page upgrade
+- rebuilt product pages to match the reference more closely
+- added top tabs, help box, option tiles, pricing matrix and delivery selection
+- replaced generic pills with commercial selector layouts
+- added accordion content areas for description, specs, guidelines, FAQ and ordering
+- fixed broken product support markup from the previous realism pass

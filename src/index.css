@@ -278,82 +278,18 @@ section + section {
   }
 }
 
-/* better button feel */
-button {
-  transition: all 0.2s ease;
-}
-button:hover {
-  transform: translateY(-1px);
+
+/* product page realism upgrade */
+details summary::-webkit-details-marker {
+  display: none;
 }
 
-/* subtle premium grid */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 0;
+details[open] summary {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FBFC 100%);
 }
 
-/* FINAL PRODUCTION POLISH */
-
-/* smoother global animation */
-* {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* refined hover */
-button:hover {
-  transform: translateY(-1.5px);
-}
-
-/* better card feel */
-[class*="rounded-"] {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-[class*="rounded-"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-}
-
-/* better mobile spacing */
-@media (max-width: 768px) {
-  section {
-    padding-top: 16px !important;
-    padding-bottom: 16px !important;
+@media (max-width: 1024px) {
+  .lg\:grid-cols-\[1\.02fr_1fr\] {
+    grid-template-columns: 1fr !important;
   }
-}
-
-/* improved typography consistency */
-h1, h2, h3 {
-  letter-spacing: -0.03em;
-}
-
-/* subtle premium overlay */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent 200px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* realism pass */
-input, select {
-  border-radius: 6px;
-}
-
-input:focus {
-  outline: 2px solid rgba(24,167,208,0.3);
-}
-
-button:active {
-  transform: translateY(0);
-}
-
-input::placeholder {
-  color: rgba(0,0,0,0.4);
 }

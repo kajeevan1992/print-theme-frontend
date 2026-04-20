@@ -286,6 +286,263 @@ const pricingGrid = [
   { qty: "1000 pcs", price: "£44.00" },
 ];
 
+const productPageContent = {
+  businessCards: {
+    tabs: ["Product info", "Specifications", "Design guidelines", "FAQ's", "Ordering process"],
+    optionGroups: [
+      {
+        key: "format",
+        label: "Size",
+        valueLabel: "85 × 55 mm",
+        style: "tile",
+        options: [
+          { value: "Standard", sublabel: "85 × 55 mm", recommended: true },
+          { value: "Portrait", sublabel: "55 × 85 mm" },
+          { value: "Folded Portrait", sublabel: "110 × 85 mm" },
+          { value: "Landscape Folded", sublabel: "170 × 55 mm", muted: true },
+        ],
+      },
+      {
+        key: "materialType",
+        label: "Material Type",
+        valueLabel: "Matt",
+        style: "pill",
+        options: [
+          { value: "Matt", recommended: true },
+          { value: "Glossy" },
+          { value: "Eco" },
+          { value: "Uncoated" },
+          { value: "Special" },
+          { value: "Seed Paper" },
+        ],
+      },
+      {
+        key: "paperType",
+        label: "Paper type",
+        valueLabel: "400 gsm Silk",
+        style: "tile",
+        options: [
+          { value: "Matte (Silk) 300 gsm" },
+          { value: "Matte (Silk) 350 gsm" },
+          { value: "Matte (Silk) 400 gsm", recommended: true },
+          { value: "Matte (Silk) 450 gsm" },
+        ],
+      },
+      {
+        key: "finishing",
+        label: "Finishing",
+        valueLabel: "No finishing",
+        style: "tile",
+        options: [
+          { value: "No finishing" },
+          { value: "Double-sided Matte lamination", recommended: true },
+          { value: "Double-sided Gloss lamination" },
+          { value: "Double-sided UV Glossy", muted: true },
+        ],
+      },
+      {
+        key: "printing",
+        label: "Printing",
+        valueLabel: "Double-sided",
+        style: "pill",
+        options: [
+          { value: "Single-sided printing" },
+          { value: "Double-sided printing", recommended: true },
+        ],
+      },
+      {
+        key: "corners",
+        label: "Corners",
+        valueLabel: "Straight corners",
+        style: "pill",
+        options: [
+          { value: "Straight corners" },
+          { value: "Rounded Corners + £8.00" },
+        ],
+      },
+    ],
+    quantities: [
+      { qty: 50, price: 11.29 },
+      { qty: 100, price: 13.49 },
+      { qty: 250, price: 16.99 },
+      { qty: 500, price: 21.99, recommended: true },
+      { qty: 1000, price: 27.99 },
+      { qty: 2500, price: 43.99 },
+      { qty: 5000, price: 85.99 },
+      { qty: 10000, price: 128.99 },
+    ],
+    deliveryOptions: [
+      { day: "Monday April 27", latest: "Latest Tuesday April 28", selected: true },
+      { day: "Thursday April 23", latest: "Latest Friday April 24", addon: "+ £1.00" },
+      { day: "Wednesday April 22", latest: "Latest Thursday April 23", addon: "+ £2.00" },
+    ],
+    description:
+      "Create lasting connections with affordable, professional business cards. Choose from multiple sizes, papers and finishes to match your brand identity, with single or double-sided print and optional finishing for added durability.",
+    bullets: [
+      "High-quality full colour print",
+      "Possibility of cutting deviation",
+      "Dark ink near fold lines may crack on heavier stocks",
+      "Eco-friendly options available",
+    ],
+    specs: [
+      ["Material", "Matt | Eco | Writable | Special"],
+      ["Finishing", "Gloss | Matte | Velvet | No finishing"],
+      ["Print", "Full colour"],
+      ["Printing options", "Single-sided | Double-sided"],
+      ["Cutting", "Rounded Corners | Square Corners"],
+      ["Print technique", "High-quality digital print"],
+    ],
+    guidelines: [
+      "Use CMYK as the colour mode.",
+      "Resolution of at least 300 dpi.",
+      "Add 3 mm bleed and keep 4 mm safety margin.",
+      "Minimum font size is 6 pt.",
+      "Check line thickness and overprint settings.",
+      "Keep total ink coverage under 300%.",
+    ],
+    faqs: [
+      "What is this product? And what can I use it for?",
+      "What materials can I choose from?",
+      "What is the fastest possible turnaround?",
+      "Which production techniques do you use?",
+      "What is cutting deviation?",
+      "Is there an option to add drill holes?",
+    ],
+    orderLinks: ["Ordering with own design", "Using editor design"],
+  },
+  flyers: {
+    tabs: ["Product info", "Specifications", "Artwork guides", "FAQ's", "Ordering process"],
+    optionGroups: [
+      {
+        key: "format",
+        label: "Size",
+        valueLabel: "A5",
+        style: "tile",
+        options: [
+          { value: "A6", sublabel: "105 × 148 mm" },
+          { value: "A5", sublabel: "148 × 210 mm", recommended: true },
+          { value: "A4", sublabel: "210 × 297 mm" },
+          { value: "DL", sublabel: "99 × 210 mm" },
+        ],
+      },
+      {
+        key: "sides",
+        label: "Printing",
+        valueLabel: "Double-sided",
+        style: "pill",
+        options: [
+          { value: "Single-sided printing" },
+          { value: "Double-sided printing", recommended: true },
+        ],
+      },
+      {
+        key: "paper",
+        label: "Paper type",
+        valueLabel: "170 gsm Silk",
+        style: "tile",
+        options: [
+          { value: "130 gsm Silk" },
+          { value: "170 gsm Silk", recommended: true },
+          { value: "250 gsm Silk" },
+          { value: "350 gsm Silk" },
+        ],
+      },
+    ],
+    quantities: [
+      { qty: 100, price: 18.4 },
+      { qty: 250, price: 22.4, recommended: true },
+      { qty: 500, price: 29.4 },
+      { qty: 1000, price: 37.4 },
+      { qty: 2500, price: 59.4 },
+      { qty: 5000, price: 89.4 },
+    ],
+    deliveryOptions: [
+      { day: "Thursday April 23", latest: "Latest Friday April 24", selected: true },
+      { day: "Wednesday April 22", latest: "Latest Thursday April 23", addon: "+ £2.00" },
+    ],
+    description:
+      "Flyers and leaflets are ideal for promotions, takeaway menus and event handouts. Select a size, print side configuration and stock weight to build a simple, quick-turnaround order.",
+    bullets: [
+      "Fast handout and promotional print",
+      "Multiple flyer sizes available",
+      "Simple artwork setup",
+      "Suitable for menus and campaigns",
+    ],
+    specs: [
+      ["Stock", "Silk | Gloss | Uncoated"],
+      ["Print", "Full colour"],
+      ["Sides", "Single-sided | Double-sided"],
+      ["Use cases", "Promotions | Menus | Events"],
+    ],
+    guidelines: ["Use CMYK colour mode.", "300 dpi resolution.", "Add 3 mm bleed.", "Keep text in the safe area."],
+    faqs: ["What flyer sizes are available?", "Do you offer folded flyers?", "Can I print menus?", "What turnaround options are available?"],
+    orderLinks: ["Ordering with print-ready PDF", "Requesting artwork help"],
+  },
+  posters: {
+    tabs: ["Product info", "Specifications", "Design guidelines", "FAQ's", "Ordering process"],
+    optionGroups: [
+      {
+        key: "format",
+        label: "Size",
+        valueLabel: "A2",
+        style: "tile",
+        options: [
+          { value: "A3", sublabel: "297 × 420 mm" },
+          { value: "A2", sublabel: "420 × 594 mm", recommended: true },
+          { value: "A1", sublabel: "594 × 841 mm" },
+          { value: "A0", sublabel: "841 × 1189 mm" },
+        ],
+      },
+      {
+        key: "material",
+        label: "Material",
+        valueLabel: "190 gsm Photo Satin",
+        style: "pill",
+        options: [
+          { value: "Photo Satin" },
+          { value: "Matt Paper" },
+          { value: "Plain Paper" },
+          { value: "PVC" },
+          { value: "Vinyl" },
+        ],
+      },
+      {
+        key: "eyelets",
+        label: "Eyelets",
+        valueLabel: "No",
+        style: "pill",
+        options: [
+          { value: "No" },
+          { value: "Yes + £25.00" },
+        ],
+      },
+    ],
+    quantities: [
+      { qty: 1, price: 8.49, recommended: true },
+      { qty: 3, price: 17.49 },
+      { qty: 5, price: 23.49 },
+      { qty: 10, price: 39.49 },
+      { qty: 25, price: 74.49 },
+    ],
+    deliveryOptions: [
+      { day: "Thursday April 23", latest: "Latest Friday April 24", selected: true },
+      { day: "Wednesday April 22", latest: "Latest Thursday April 23", addon: "+ £3.00" },
+    ],
+    description:
+      "Large format posters and display graphics designed for campaigns, retail environments and event signage. Configure format, material and add-ons before ordering.",
+    bullets: ["High-resolution colour output", "Indoor and outdoor materials", "Large format sizes available", "Optional finishing and add-ons"],
+    specs: [
+      ["Material", "Photo satin | Matt paper | PVC | Vinyl"],
+      ["Sizes", "A3 | A2 | A1 | A0 | Custom"],
+      ["Add-ons", "Eyelets"],
+      ["Print", "Colour / BW"],
+    ],
+    guidelines: ["Use high-resolution images.", "Keep important text away from trim.", "Use CMYK colour mode.", "Supply artwork to final size plus bleed."],
+    faqs: ["Which poster sizes are available?", "Can I use outdoor material?", "Do you offer custom sizes?", "Can I add eyelets?"],
+    orderLinks: ["Ordering with own artwork", "Requesting custom sizing"],
+  },
+};
+
 function currency(value) {
   return new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }).format(value);
 }
@@ -329,7 +586,7 @@ function UtilityBar() {
       <Shell>
         <div className="flex h-8 items-center justify-between text-[11px] font-medium">
           <span>Professional print, signage and packaging solutions</span>
-          <div className="hidden gap-4 sm:flex">
+          <div className="hidden gap-5 sm:flex">
             <span>Business orders</span>
             <span>Bulk pricing</span>
             <span>Fast turnaround</span>
@@ -409,7 +666,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
                   {(() => {
                     const item = NAV_ITEMS.find((x) => x.label === openLabel) || NAV_ITEMS[0];
                     return (
-                      <div className="grid gap-4">
+                      <div className="grid gap-5">
                         <div className="grid grid-cols-[270px_1fr_1fr_1fr] gap-6">
                           <div className="rounded-[20px] border p-4" style={{ borderColor: BRAND.line, background: "linear-gradient(180deg, #FBFDFE 0%, #F4F9FB 100%)" }}>
                             <img src={item.feature.image} alt={item.feature.title} className="h-36 w-full rounded-[12px] object-cover" />
@@ -487,10 +744,10 @@ function Hero({ navigate }) {
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.22 }}>
               <div className="mb-3 inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{heroSlides[active].eyebrow}</div>
-              <h1 className="max-w-[660px] text-[64px] font-black leading-[0.9] tracking-[-0.065em] sm:text-[78px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
+              <h1 className="max-w-[660px] text-[66px] font-black leading-[0.9] tracking-[-0.065em] sm:text-[78px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
               <p className="mt-5 max-w-[600px] text-[14px] leading-7" style={{ color: BRAND.muted }}>{heroSlides[active].body}</p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <PrimaryButton onClick={() => navigate("/all-products")}>Browse all print products</PrimaryButton>
+                <PrimaryButton onClick={() => navigate("/all-products")}>Browse Products</PrimaryButton>
                 <SecondaryButton onClick={() => navigate("/bespoke-quote")}>Request Bespoke Quote</SecondaryButton>
               </div>
               <div className="mt-5 flex gap-2">
@@ -513,7 +770,7 @@ function Hero({ navigate }) {
             {featuredProducts.slice(0,3).map((item) => (
               <button key={item.title} onClick={() => window.location.pathname !== item.path && (window.history.pushState({}, "", item.path), window.dispatchEvent(new PopStateEvent("popstate")))} className="group rounded-[16px] border bg-white p-3 text-left transition hover:-translate-y-[1px] hover:shadow-[0_12px_24px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
                 <img src={item.image} alt={item.title} className="h-28 w-full rounded-[12px] object-cover transition duration-500 group-hover:scale-[1.03]" />
-                <div className="mt-2 text-[10px] uppercase tracking-[0.14em]" style={{color: BRAND.primary}}>Popular</div><div className="mt-1 text-[13px] font-bold" style={{ color: BRAND.ink }}>{item.title}</div>
+                <div className="mt-3 text-[13px] font-bold" style={{ color: BRAND.ink }}>{item.title}</div>
                 <div className="text-[11px]" style={{ color: BRAND.muted }}>{item.price}</div>
               </button>
             ))}
@@ -541,13 +798,13 @@ function HomePage({ navigate }) {
     <div>
       <Hero navigate={navigate} />
 
-      <section className="py-5"><Shell><div className="flex gap-3 overflow-x-auto pb-2">
+      <section className="py-6"><Shell><div className="flex gap-3 overflow-x-auto pb-2">
         {["Business Cards", "Flyers", "Posters", "Booklets", "Labels", "Signage", "Packaging", "Stationery"].map((item) => (
           <button key={item} className="whitespace-nowrap rounded-full border bg-white px-4 py-2 text-[12px] font-semibold shadow-[0_6px_14px_rgba(0,0,0,0.02)]" style={{ borderColor: BRAND.line }}>{item}</button>
         ))}
       </div></Shell></section>
 
-      <section className="py-5"><Shell><div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="py-6"><Shell><div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {trustBadges.map((item) => {
           const Icon = item.icon;
           return (
@@ -591,7 +848,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-5"><Shell>
+      <section className="py-6"><Shell>
         <SectionHeading eyebrow="Collections" title="Shop our most-used print categories" action={<SecondaryButton onClick={() => navigate("/all-products")}>View all</SecondaryButton>} />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {featuredCollections.map((item) => (
@@ -605,7 +862,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-5"><Shell>
+      <section className="py-6"><Shell>
         <SectionHeading eyebrow="Featured products" title="Popular print products with a cleaner card structure" />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {featuredProducts.map((item) => (
@@ -623,7 +880,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-5"><Shell><div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+      <section className="py-6"><Shell><div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="overflow-hidden rounded-[20px] border bg-white shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
           <div className="grid gap-0 md:grid-cols-[0.95fr_1.05fr]">
             <div className="p-6">
@@ -652,7 +909,7 @@ function HomePage({ navigate }) {
         </div>
       </div></Shell></section>
 
-      <section className="py-5"><Shell><div className="grid gap-4 md:grid-cols-3">
+      <section className="py-6"><Shell><div className="grid gap-4 md:grid-cols-3">
         {[
           ["Choose your product", "Browse cards, flyers, posters, labels and more."],
           ["Upload artwork or request help", "Use artwork later or move through a bespoke quote flow."],
@@ -666,7 +923,7 @@ function HomePage({ navigate }) {
         ))}
       </div></Shell></section>
 
-      <section className="py-5"><Shell>
+      <section className="py-6"><Shell>
         <SectionHeading eyebrow="Pricing options" title="Simple starter pricing blocks" />
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {pricingGrid.map((item) => (
@@ -679,7 +936,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-5"><Shell>
+      <section className="py-6"><Shell>
         <div className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
           <div className="grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
@@ -695,7 +952,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-5"><Shell>
+      <section className="py-6"><Shell>
         <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
           <SectionHeading eyebrow="Frequently asked questions" title="Common questions before customers order" compact />
           <div className="grid gap-3">
@@ -761,9 +1018,9 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-5"><Shell>
+      <section className="py-6"><Shell>
         <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.04)]" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, #FFFFFF 0%, #F7FBFC 100%)" }}>
-          <div className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Ready to connect your backend later</div>
               <div className="mt-2 text-[32px] font-black tracking-[-0.045em]" style={{ color: BRAND.ink }}>Present a polished storefront now and grow into a full commerce flow.</div>
@@ -782,115 +1039,302 @@ function HomePage({ navigate }) {
   );
 }
 
+
+function ProductAccordion({ title, defaultOpen = false, children }) {
+  return (
+    <details open={defaultOpen} className="group rounded-[14px] border bg-white" style={{ borderColor: BRAND.line }}>
+      <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-[13px] font-bold" style={{ color: BRAND.ink }}>
+        {title}
+        <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
+      </summary>
+      <div className="border-t px-4 py-4" style={{ borderColor: BRAND.line }}>
+        {children}
+      </div>
+    </details>
+  );
+}
+
+
 function ProductPage({ type, cart }) {
   const product = catalog[type];
-  const optionKeys = Object.keys(product.options);
-  const defaults = {};
-  optionKeys.forEach((k) => (defaults[k] = product.options[k][0]));
+  const page = productPageContent[type];
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selected, setSelected] = useState(defaults);
-  const price = useMemo(() => {
-    let result = product.basePrice;
-    const quantity = selected.quantity;
-    if (typeof quantity === "number") result += quantity > 500 ? 5.5 : quantity > 100 ? 2.5 : 0;
-    return Number(result.toFixed(2));
-  }, [selected, product]);
+
+  const initialSelected = {};
+  page.optionGroups.forEach((group) => {
+    const recommended = group.options.find((opt) => opt.recommended);
+    initialSelected[group.key] = recommended ? recommended.value : group.options[0].value;
+  });
+
+  const [selected, setSelected] = useState(initialSelected);
+  const [selectedQty, setSelectedQty] = useState(page.quantities.find((q) => q.recommended)?.qty || page.quantities[0].qty);
+  const [selectedDelivery, setSelectedDelivery] = useState(0);
+
+  const currentPrice = page.quantities.find((q) => q.qty === selectedQty)?.price ?? product.basePrice;
 
   return (
-    <section className="py-5">
+    <section className="py-6">
       <Shell narrow>
-        <div className="mb-4 flex items-center gap-2 text-[11px]" style={{ color: BRAND.muted }}><button onClick={() => window.history.back?.()} className="font-semibold">Store</button><span>/</span><span>{product.name}</span></div>
-        <div className="mb-4 flex flex-wrap gap-2">{["Premium print","Fast turnaround","Custom quote available"].map((x) => <span key={x} className="rounded-full border bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>{x}</span>)}</div>
-        <div className="grid gap-6 lg:grid-cols-[1.05fr_360px]">
-          <div className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
-            <div className="mb-5 border-b pb-4" style={{ borderColor: BRAND.line }}>
-              <div className="flex items-center gap-2">
-                <span className="rounded-full bg-[#F1FAFD] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: BRAND.primary }}>{product.badge}</span>
-                <span className="text-[11px]" style={{ color: BRAND.muted }}>Image-first product layout</span>
+        <div className="mb-4 flex flex-wrap items-center gap-2 text-[11px]" style={{ color: BRAND.muted }}>
+          <button onClick={() => window.history.back?.()} className="font-semibold">Home</button>
+          <span>/</span>
+          <button className="font-semibold">{product.name}</button>
+        </div>
+
+        <div className="mb-3 flex flex-wrap gap-2">
+          {page.tabs.map((tab) => (
+            <button key={tab} className="rounded-full border bg-white px-4 py-2 text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        <div className="mb-5 flex items-center justify-between gap-4">
+          <div>
+            <h1 className="text-[40px] font-black tracking-[-0.045em]" style={{ color: BRAND.ink }}>{product.name}</h1>
+            <p className="mt-2 max-w-[760px] text-[12px] leading-6" style={{ color: BRAND.muted }}>
+              Configure format, stock, finishing and quantity with a more commercial product-page structure inspired by your reference screenshots.
+            </p>
+          </div>
+          <div className="hidden items-center gap-3 rounded-[16px] border bg-white px-4 py-3 lg:flex" style={{ borderColor: BRAND.line }}>
+            <div className="flex -space-x-2">
+              {["A", "K", "S"].map((x, i) => (
+                <div key={x} className="grid h-9 w-9 place-items-center rounded-full border-2 text-[12px] font-bold text-white" style={{ borderColor: "white", backgroundColor: i === 0 ? BRAND.primary : i === 1 ? "#1F2937" : "#94A3B8" }}>
+                  {x}
+                </div>
+              ))}
+            </div>
+            <div>
+              <div className="text-[13px] font-bold" style={{ color: BRAND.ink }}>Do you need help?</div>
+              <div className="text-[12px] font-semibold" style={{ color: BRAND.primary }}>Chat with us</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-[1.02fr_1fr]">
+          <div>
+            <div className="overflow-hidden rounded-[20px] border bg-[#F7F8F9]" style={{ borderColor: BRAND.line }}>
+              <div className="relative">
+                <img src={product.images[selectedImage]} alt={product.name} className="h-[520px] w-full object-cover" />
+                <button className="absolute left-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-[20px] shadow-[0_10px_24px_rgba(0,0,0,0.08)]" style={{ color: BRAND.ink }}>
+                  ‹
+                </button>
+                <button className="absolute right-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-[20px] shadow-[0_10px_24px_rgba(0,0,0,0.08)]" style={{ color: BRAND.ink }}>
+                  ›
+                </button>
               </div>
-              <h1 className="mt-3 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{product.name}</h1>
-              <p className="mt-2 max-w-[620px] text-[12px] leading-6" style={{ color: BRAND.muted }}>{product.description}</p>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-              <div>
-                <div className="overflow-hidden rounded-[16px] border bg-[#FAFBFC]" style={{ borderColor: BRAND.line }}>
-                  <img src={product.images[selectedImage]} alt={product.name} className="h-[360px] w-full object-cover" />
-                </div>
-                <div className="mt-3 flex gap-2">
-                  {product.images.map((img, i) => (
-                    <button key={i} onClick={() => setSelectedImage(i)} className="overflow-hidden rounded-[12px] border bg-white transition hover:-translate-y-[1px] hover:shadow-[0_10px_20px_rgba(0,0,0,0.05)]" style={{ borderColor: selectedImage === i ? BRAND.primary : BRAND.line }}>
-                      <img src={img} alt="" className="h-16 w-16 object-cover" />
-                    </button>
-                  ))}
-                </div>
-              </div>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {product.images.concat(product.images[0]).slice(0, 6).map((img, i) => (
+                <button
+                  key={`${img}-${i}`}
+                  onClick={() => setSelectedImage(i % product.images.length)}
+                  className="overflow-hidden rounded-[14px] border bg-white"
+                  style={{ borderColor: selectedImage === i % product.images.length ? BRAND.primary : BRAND.line }}
+                >
+                  <img src={img} alt="" className="h-16 w-16 object-cover" />
+                </button>
+              ))}
+            </div>
 
-              <div className="grid gap-4">
-                {optionKeys.map((key) => (
-                  <div key={key}>
-                    <div className="mb-2 text-[11px] font-bold uppercase tracking-[0.16em]" style={{ color: BRAND.ink }}>{key}</div>
-                    <div className="flex flex-wrap gap-2">
-                      {product.options[key].map((value) => {
-                        const active = selected[key] === value;
-                        return (
-                          <button key={String(value)} onClick={() => setSelected((prev) => ({ ...prev, [key]: value }))} className="rounded-full border px-4 py-2 text-[12px] font-semibold transition hover:-translate-y-[1px]" style={{ borderColor: active ? BRAND.primary : BRAND.line, backgroundColor: active ? "#F1FAFD" : "white", color: active ? BRAND.primaryDark : BRAND.ink }}>
-                            {String(value)}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
-
-                <div className="rounded-[14px] border bg-[#FBFBFB] p-4" style={{ borderColor: BRAND.line }}>
-                  <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em]" style={{ color: BRAND.ink }}>Technical specifications</div>
-                  <div className="grid gap-2 sm:grid-cols-2">
-                    {product.specs.map(([k, v]) => (
-                      <div key={k} className="rounded-[12px] border bg-white px-3 py-2.5" style={{ borderColor: BRAND.line }}>
-                        <div className="text-[10px] font-bold uppercase tracking-[0.16em]" style={{ color: BRAND.muted }}>{k}</div>
-                        <div className="mt-1 text-[12px] font-semibold" style={{ color: BRAND.ink }}>{v}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="grid gap-3 md:grid-cols-3">
-                  {pricingGrid.slice(0,3).map((item) => (
-                    <div key={item.qty} className="rounded-[12px] border bg-white p-3 text-center" style={{ borderColor: BRAND.line }}>
-                      <div className="text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: BRAND.muted }}>{item.qty}</div>
-                      <div className="mt-2 text-[16px] font-black" style={{ color: BRAND.ink }}>{item.price}</div>
+            <div className="mt-6 space-y-3">
+              <ProductAccordion title="Description" defaultOpen>
+                <p className="text-[13px] leading-7" style={{ color: BRAND.ink }}>{page.description}</p>
+                <div className="mt-5 space-y-3">
+                  {page.bullets.map((item, i) => (
+                    <div key={item} className="flex items-start gap-3 text-[12px]" style={{ color: BRAND.muted }}>
+                      <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full border" style={{ borderColor: i === 1 || i === 2 ? BRAND.line : BRAND.primary, color: i === 1 || i === 2 ? BRAND.muted : BRAND.primary }}>
+                        {i === 1 || i === 2 ? "−" : "＋"}
+                      </span>
+                      <span>{item}</span>
                     </div>
                   ))}
                 </div>
-              </div>
+              </ProductAccordion>
+
+              <ProductAccordion title="Product specifications">
+                <div className="overflow-hidden rounded-[12px] border" style={{ borderColor: BRAND.line }}>
+                  {page.specs.map(([label, value], i) => (
+                    <div key={label} className={`grid grid-cols-[170px_1fr] gap-4 px-4 py-3 text-[12px] ${i % 2 === 0 ? "bg-[#F7F8F9]" : "bg-white"}`}>
+                      <div style={{ color: BRAND.ink, fontWeight: 700 }}>{label}</div>
+                      <div style={{ color: BRAND.muted }}>{value}</div>
+                    </div>
+                  ))}
+                </div>
+              </ProductAccordion>
+
+              <ProductAccordion title="Design guidelines">
+                <div className="space-y-3 text-[12px]">
+                  {page.guidelines.map((item) => (
+                    <div key={item} className="font-medium underline" style={{ color: BRAND.primary }}>{item}</div>
+                  ))}
+                </div>
+              </ProductAccordion>
+
+              <ProductAccordion title="Frequently asked questions">
+                <div className="space-y-3 text-[12px]">
+                  {page.faqs.map((item) => (
+                    <div key={item} className="font-medium underline" style={{ color: BRAND.primary }}>{item}</div>
+                  ))}
+                </div>
+              </ProductAccordion>
+
+              <ProductAccordion title="Ordering process">
+                <div className="space-y-3 text-[12px]">
+                  {page.orderLinks.map((item) => (
+                    <div key={item} className="font-medium underline" style={{ color: BRAND.primary }}>{item}</div>
+                  ))}
+                </div>
+              </ProductAccordion>
             </div>
           </div>
 
-          <div className="lg:sticky lg:top-24">
-            <div className="rounded-[22px] border bg-white p-5 shadow-[0_18px_42px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
-              <div className="text-[11px] font-bold uppercase tracking-[0.16em]" style={{ color: BRAND.primary }}>Price summary</div>
-              <div className="mt-2 text-[40px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{currency(price)}</div>
-              <div className="mt-1 text-[11px]" style={{ color: BRAND.muted }}>Base pricing before live backend rules and shipping logic</div>
-              <PrimaryButton className="mt-5 w-full justify-center" onClick={() => cart.addItem({ name: product.name, config: selected, price })}>Add to cart</PrimaryButton>
-              <SecondaryButton className="mt-3 w-full justify-center">Request a custom quote</SecondaryButton>
-              <div className="mt-5 border-t pt-5" style={{ borderColor: BRAND.line }}>
-                <div className="text-[11px] font-bold uppercase tracking-[0.16em]" style={{ color: BRAND.ink }}>Included in this layout</div>
-                <div className="mt-3 grid gap-2">
-                  {["Image gallery", "Compact option pills", "Sticky purchase card", "Reference-style spacing"].map((x) => (
-                    <div key={x} className="flex items-center gap-2 text-[12px]" style={{ color: BRAND.muted }}><Check className="h-4 w-4" style={{ color: BRAND.primary }} />{x}</div>
-                  ))}
+          <div className="space-y-5">
+            {page.optionGroups.map((group) => (
+              <div key={group.key}>
+                <div className="mb-2 flex items-center gap-2 text-[22px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>
+                  <span className="text-[14px] font-semibold tracking-normal" style={{ color: BRAND.ink }}>{group.label}:</span>
+                  <span className="text-[14px] font-semibold tracking-normal" style={{ color: BRAND.primary }}>
+                    {selected[group.key] || group.valueLabel}
+                  </span>
+                </div>
+
+                {group.style === "tile" ? (
+                  <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                    {group.options.map((option) => {
+                      const active = selected[group.key] === option.value;
+                      return (
+                        <button
+                          key={option.value}
+                          onClick={() => setSelected((prev) => ({ ...prev, [group.key]: option.value }))}
+                          className="relative rounded-[14px] border bg-white p-4 text-center"
+                          style={{
+                            borderColor: active ? BRAND.primary : BRAND.line,
+                            boxShadow: active ? "inset 0 0 0 1px rgb(24, 167, 208)" : "none",
+                            opacity: option.muted ? 0.72 : 1,
+                          }}
+                        >
+                          <div className="mx-auto mb-4 h-14 w-20 rounded-[10px] bg-[linear-gradient(135deg,#f7f7f7,#eceff1)]" />
+                          <div className="text-[13px] font-bold leading-5" style={{ color: BRAND.ink }}>{option.value}</div>
+                          {option.sublabel && <div className="mt-1 text-[12px]" style={{ color: BRAND.muted }}>{option.sublabel}</div>}
+                          {option.recommended && (
+                            <div className="absolute inset-x-0 bottom-0 rounded-b-[12px] py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white" style={{ backgroundColor: BRAND.primary }}>
+                              Recommended
+                            </div>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="flex flex-wrap gap-2">
+                    {group.options.map((option) => {
+                      const active = selected[group.key] === option.value;
+                      return (
+                        <button
+                          key={option.value}
+                          onClick={() => setSelected((prev) => ({ ...prev, [group.key]: option.value }))}
+                          className="relative rounded-[10px] border bg-white px-4 py-3 text-[13px] font-semibold"
+                          style={{
+                            borderColor: active ? BRAND.primary : BRAND.line,
+                            color: active ? BRAND.ink : BRAND.ink,
+                            boxShadow: active ? "inset 0 0 0 1px rgb(24, 167, 208)" : "none",
+                          }}
+                        >
+                          {option.value}
+                          {option.recommended && (
+                            <span className="ml-2 rounded-full px-2 py-1 text-[9px] font-bold uppercase tracking-[0.1em] text-white" style={{ backgroundColor: BRAND.primary }}>
+                              Recommended
+                            </span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            ))}
+
+            <div>
+              <div className="mb-3 flex items-center gap-2 text-[14px] font-semibold" style={{ color: BRAND.ink }}>
+                <span>Print run:</span>
+                <span style={{ color: BRAND.primary }}>{selectedQty}</span>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {page.quantities.map((row) => (
+                  <button
+                    key={row.qty}
+                    onClick={() => setSelectedQty(row.qty)}
+                    className="relative rounded-[12px] border bg-white px-4 py-4 text-left"
+                    style={{
+                      borderColor: selectedQty === row.qty ? BRAND.primary : BRAND.line,
+                      boxShadow: selectedQty === row.qty ? "inset 0 0 0 1px rgb(24, 167, 208)" : "none",
+                    }}
+                  >
+                    {row.recommended && (
+                      <div className="absolute left-0 top-0 rounded-br-[10px] rounded-tl-[10px] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white" style={{ backgroundColor: BRAND.primary }}>
+                        Recommended
+                      </div>
+                    )}
+                    <div className="flex items-center justify-between pt-2">
+                      <span className="text-[14px] font-semibold" style={{ color: BRAND.ink }}>{row.qty.toLocaleString()}</span>
+                      <span className="text-[16px] font-black" style={{ color: BRAND.ink }}>{currency(row.price)}</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              <div className="mt-3 text-right text-[12px] font-semibold underline" style={{ color: BRAND.primary }}>
+                Show all quantities
+              </div>
+            </div>
+
+            <div>
+              <div className="mb-3 text-[14px] font-semibold" style={{ color: BRAND.ink }}>Estimated delivery date</div>
+              <div className="space-y-3">
+                {page.deliveryOptions.map((item, idx) => (
+                  <button
+                    key={item.day}
+                    onClick={() => setSelectedDelivery(idx)}
+                    className="w-full rounded-[12px] border bg-white px-4 py-4 text-left"
+                    style={{
+                      borderColor: selectedDelivery == idx ? BRAND.primary : BRAND.line,
+                      boxShadow: selectedDelivery == idx ? "inset 0 0 0 1px rgb(24, 167, 208)" : "none",
+                    }}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <div className="text-[15px] font-bold" style={{ color: BRAND.ink }}>{item.day}</div>
+                        <div className="mt-1 text-[12px]" style={{ color: BRAND.muted }}>{item.latest}</div>
+                      </div>
+                      {item.addon && <div className="text-[14px] font-bold" style={{ color: BRAND.ink }}>{item.addon}</div>}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[18px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em]" style={{ color: BRAND.primary }}>Selected price</div>
+                  <div className="mt-2 text-[36px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{currency(currentPrice)}</div>
+                </div>
+                <div className="text-right text-[12px]" style={{ color: BRAND.muted }}>
+                  <div>Standard delivery</div>
+                  <div className="font-semibold" style={{ color: BRAND.ink }}>{page.deliveryOptions[selectedDelivery].day}</div>
                 </div>
               </div>
-              <div className="mt-5 rounded-[14px] border bg-[#FBFBFB] p-4" style={{ borderColor: BRAND.line }}><div className="mb-3 rounded-full bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] inline-block" style={{ color: BRAND.primary }}>Support</div>
-                <div className="text-[12px] font-bold" style={{ color: BRAND.ink }}>Need something custom or a different size?
-<div className="mt-4 rounded-[14px] border bg-[#FBFBFB] p-3 text-[11px]" style={{borderColor: BRAND.line}}>
-  <div><b>Standard delivery:</b> 3–5 working days</div>
-  <div className="mt-1"><b>Express:</b> 24–48 hours available</div>
-  <div className="mt-1"><b>Artwork check:</b> Included before print</div>
-</div>
-</div>
-                <p className="mt-2 text-[11px] leading-6" style={{ color: BRAND.muted }}>Use the bespoke quote flow for custom sizes, specialist materials and bulk pricing requests.</p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
+                <PrimaryButton className="justify-center" onClick={() => cart.addItem({ name: product.name, config: { ...selected, quantity: selectedQty }, price: currentPrice })}>
+                  Add to cart
+                </PrimaryButton>
+                <SecondaryButton className="justify-center">Browse design templates</SecondaryButton>
+              </div>
+              <div className="mt-4 grid gap-2 text-[12px]" style={{ color: BRAND.muted }}>
+                <div className="flex items-center gap-2"><Check className="h-4 w-4" style={{ color: BRAND.primary }} /> Artwork check included before print</div>
+                <div className="flex items-center gap-2"><Check className="h-4 w-4" style={{ color: BRAND.primary }} /> Custom sizes and specialist materials via bespoke quote</div>
+                <div className="flex items-center gap-2"><Check className="h-4 w-4" style={{ color: BRAND.primary }} /> Production advice available from support</div>
               </div>
             </div>
           </div>
@@ -902,7 +1346,7 @@ function ProductPage({ type, cart }) {
 
 function BookletsPage({ navigate }) {
   return (
-    <section className="py-5">
+    <section className="py-6">
       <Shell narrow>
         <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
           <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Booklet printing</div>
@@ -929,7 +1373,7 @@ function BookletsPage({ navigate }) {
 
 function AllProductsPage({ navigate }) {
   return (
-    <section className="py-5">
+    <section className="py-6">
       <Shell narrow>
         <div className="grid gap-6 lg:grid-cols-[270px_1fr]">
           <div className="rounded-[20px] border bg-white p-4 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
@@ -944,7 +1388,7 @@ function AllProductsPage({ navigate }) {
               ))}
             </div>
           </div>
-          <div className="grid gap-4">
+          <div className="grid gap-5">
             {NAV_ITEMS.slice(0,7).map((group) => (
               <div key={group.label} className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
                 <div className="text-[22px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{group.label}</div>
@@ -952,7 +1396,7 @@ function AllProductsPage({ navigate }) {
                   {group.columns.flatMap((c) => c.links).slice(0, 4).map(([label, path], i) => (
                     <button key={label} onClick={() => navigate(path)} className="group rounded-[16px] border p-3 text-left transition hover:-translate-y-[1px] hover:shadow-[0_14px_28px_rgba(0,0,0,0.055)]" style={{ borderColor: BRAND.line }}>
                       <img src={featuredProducts[i % featuredProducts.length].image} alt={label} className="h-24 w-full rounded-[10px] object-cover transition duration-500 group-hover:scale-[1.03]" />
-                      <div className="mt-2 text-[10px] uppercase tracking-[0.14em]" style={{color: BRAND.primary}}>Popular</div><div className="mt-1 text-[13px] font-bold" style={{ color: BRAND.ink }}>{label}</div>
+                      <div className="mt-3 text-[13px] font-bold" style={{ color: BRAND.ink }}>{label}</div>
                     </button>
                   ))}
                 </div>
@@ -967,9 +1411,9 @@ function AllProductsPage({ navigate }) {
 
 function BespokeQuotePage() {
   return (
-    <section className="py-5">
+    <section className="py-6">
       <Shell narrow>
-        <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
+        <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
           <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Custom quote</div>
             <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Request a bespoke quote for custom print jobs</h1>
@@ -1009,7 +1453,7 @@ function BespokeQuotePage() {
 
 function CartPage({ cart, navigate }) {
   return (
-    <section className="py-5">
+    <section className="py-6">
       <Shell narrow>
         <div className="mb-5 flex items-end justify-between gap-4">
           <div>
@@ -1018,7 +1462,7 @@ function CartPage({ cart, navigate }) {
           </div>
           <SecondaryButton onClick={() => navigate("/all-products")}>Keep shopping</SecondaryButton>
         </div>
-        <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
+        <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
           <div className="grid gap-4">
             {cart.items.length === 0 ? (
               <div className="rounded-[18px] border bg-white p-6 text-[12px] shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>Your cart is empty.</div>
@@ -1088,7 +1532,7 @@ function Footer({ navigate }) {
             <div key={item} className="rounded-[18px] border px-4 py-3" style={{ borderColor: BRAND.line, color: BRAND.muted, background: "linear-gradient(180deg, #FFFFFF 0%, #F8FBFC 100%)" }}><div className="text-[10px] font-bold uppercase tracking-[0.14em]">{item}</div><div className="mt-1 text-[16px] font-black" style={{ color: BRAND.ink }}>{count}</div></div>
           ))}
         </div>
-        <div className="grid gap-8 py-12 md:grid-cols-[1.25fr_0.8fr_0.8fr_0.8fr_0.8fr]">
+        <div className="grid gap-8 py-10 md:grid-cols-[1.25fr_0.8fr_0.8fr_0.8fr_0.8fr]">
           <div>
             <button onClick={() => navigate("/")} className="flex items-center gap-0.5">
               <span className="text-[50px] font-black tracking-[-0.055em]" style={{ color: BRAND.primary }}>HOLO</span>
