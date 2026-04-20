@@ -193,3 +193,10 @@ Use these values:
 - upgraded purchase summary hierarchy
 - added trust chips below CTAs
 - improved accordion polish
+
+
+## Category pages
+- added dedicated category landing pages for business cards, flyers, posters and booklets
+- made category pages closer to the example style: hero, quick links, featured tiles, product grid and FAQ
+- updated top navigation and homepage collection cards to open category pages first
+- kept individual product pages as the next step after category browsing

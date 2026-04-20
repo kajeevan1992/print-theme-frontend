@@ -39,7 +39,7 @@ const BRAND = {
 const NAV_ITEMS = [
   {
     label: "Business Cards",
-    path: "/standard-business-cards",
+    path: "/category/business-cards",
     feature: {
       title: "Professional business cards",
       body: "Premium presentation for your brand, team and customer touchpoints.",
@@ -54,7 +54,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Flyers",
-    path: "/flyers",
+    path: "/category/flyers",
     feature: {
       title: "Flyers and leaflets",
       body: "Compact, promotional print for campaigns, menus and events.",
@@ -69,7 +69,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Posters",
-    path: "/posters-large-format-prints",
+    path: "/category/posters",
     feature: {
       title: "Posters and large format",
       body: "Strong image-led products for displays, signage and retail promotion.",
@@ -84,7 +84,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Booklets",
-    path: "/booklets",
+    path: "/category/booklets",
     feature: {
       title: "Booklets and brochures",
       body: "Editorial-style layouts for stitched, wiro and premium bound print.",
@@ -244,10 +244,10 @@ const catalog = {
 };
 
 const featuredCollections = [
-  { title: "Business Cards", subtitle: "Premium cards for teams and brands", image: "/images/business-card-front.svg", path: "/standard-business-cards" },
-  { title: "Flyers & Leaflets", subtitle: "Menus, handouts and promotions", image: "/images/flyer-front.svg", path: "/flyers" },
-  { title: "Posters & Large Format", subtitle: "Display graphics and event print", image: "/images/poster-main.svg", path: "/posters-large-format-prints" },
-  { title: "Booklets", subtitle: "Brochures, manuals and stitched print", image: "/images/hero-slide-2.svg", path: "/booklets" },
+  { title: "Business Cards", subtitle: "Premium cards for teams and brands", image: "/images/business-card-front.svg", path: "/category/business-cards" },
+  { title: "Flyers & Leaflets", subtitle: "Menus, handouts and promotions", image: "/images/flyer-front.svg", path: "/category/flyers" },
+  { title: "Posters & Large Format", subtitle: "Display graphics and event print", image: "/images/poster-main.svg", path: "/category/posters" },
+  { title: "Booklets", subtitle: "Brochures, manuals and stitched print", image: "/images/hero-slide-2.svg", path: "/category/booklets" },
   { title: "Labels", subtitle: "Bottle, product and packaging labels", image: "/images/hero-slide-3.svg", path: "/all-products" },
   { title: "Stationery", subtitle: "Branded office and presentation materials", image: "/images/hero-slide-1.svg", path: "/all-products" },
 ];
@@ -542,6 +542,264 @@ const productPageContent = {
     orderLinks: ["Ordering with own artwork", "Requesting custom sizing"],
   },
 };
+
+
+const categoryPages = {
+  businessCards: {
+    path: "/category/business-cards",
+    title: "Business Cards",
+    eyebrow: "Professional print for business",
+    intro:
+      "Choose from standard, premium and specialist business cards with a cleaner category layout, stronger visual hierarchy and quick access to the most-used product ranges.",
+    heroImage: "/images/business-card-front.svg",
+    trust: ["Fast turnaround", "Premium stocks", "Bulk pricing", "Artwork support"],
+    quickLinks: ["Standard Cards", "Premium Cards", "Rounded Corner Cards", "Loyalty Cards", "Eco Cards"],
+    featured: [
+      { title: "Classic Business Cards", text: "The most-used business card range for brands, teams and client-facing work.", path: "/standard-business-cards", image: "/images/business-card-front.svg" },
+      { title: "Premium Business Cards", text: "Thicker stocks and stronger finishes for a more premium presentation.", path: "/standard-business-cards", image: "/images/business-card-back.svg" },
+      { title: "Rounded Corner Cards", text: "A softer, more distinctive edge for creative and retail brands.", path: "/standard-business-cards", image: "/images/business-card-front.svg" },
+    ],
+    grid: [
+      "Standard Business Cards",
+      "Premium Business Cards",
+      "Rounded Corner Cards",
+      "Folded Business Cards",
+      "Square Business Cards",
+      "Eco Business Cards",
+      "Loyalty Cards",
+      "Appointment Cards",
+    ],
+    faqs: [
+      "Which business card size is most popular?",
+      "Can I order premium finishes and thicker stocks?",
+      "Do you offer rounded or folded cards?",
+      "Can I request a custom size or finish?",
+    ],
+  },
+  flyers: {
+    path: "/category/flyers",
+    title: "Flyers & Leaflets",
+    eyebrow: "Promotional print for campaigns",
+    intro:
+      "A promotional-print category page with size options, paper selections and a more reference-like structure for menus, handouts and event marketing.",
+    heroImage: "/images/flyer-front.svg",
+    trust: ["Quick handouts", "Multiple sizes", "Simple reorder flow", "Menu printing"],
+    quickLinks: ["A6 Flyers", "A5 Flyers", "A4 Flyers", "DL Flyers", "Folded Flyers"],
+    featured: [
+      { title: "A5 Flyers", text: "A balanced size for promotional campaigns, menus and branded handouts.", path: "/flyers", image: "/images/flyer-front.svg" },
+      { title: "DL Flyers", text: "Slim, menu-ready format ideal for hospitality and takeaway promotions.", path: "/flyers", image: "/images/flyer-back.svg" },
+      { title: "Folded Leaflets", text: "Best for service menus, product guides and information handouts.", path: "/flyers", image: "/images/flyer-front.svg" },
+    ],
+    grid: [
+      "A6 Flyers",
+      "A5 Flyers",
+      "A4 Flyers",
+      "DL Flyers",
+      "Folded Flyers",
+      "Menus",
+      "Leaflets",
+      "Promotional Handouts",
+    ],
+    faqs: [
+      "What flyer size works best for handouts?",
+      "Can I print takeaway menus?",
+      "What paper weights are available?",
+      "Do you offer folded flyer formats?",
+    ],
+  },
+  posters: {
+    path: "/category/posters",
+    title: "Posters & Large Format",
+    eyebrow: "Display print and large format",
+    intro:
+      "Explore large-format posters and display products with stronger category grouping for retail, events and internal signage.",
+    heroImage: "/images/poster-main.svg",
+    trust: ["Large format sizes", "Indoor & outdoor", "Display materials", "Custom sizing"],
+    quickLinks: ["A3 Posters", "A2 Posters", "A1 Posters", "A0 Posters", "PVC & Vinyl"],
+    featured: [
+      { title: "A2 Posters", text: "A versatile poster format for promotions, in-store notices and events.", path: "/posters-large-format-prints", image: "/images/poster-main.svg" },
+      { title: "A1 Posters", text: "A stronger promotional format for retail windows and wall displays.", path: "/posters-large-format-prints", image: "/images/poster-main.svg" },
+      { title: "PVC & Vinyl Posters", text: "More durable large-format options for longer-lasting display use.", path: "/posters-large-format-prints", image: "/images/poster-main.svg" },
+    ],
+    grid: [
+      "A3 Posters",
+      "A2 Posters",
+      "A1 Posters",
+      "A0 Posters",
+      "PVC Posters",
+      "Vinyl Posters",
+      "Window Graphics",
+      "Retail POS",
+    ],
+    faqs: [
+      "Which poster size is best for retail displays?",
+      "Can I choose outdoor materials?",
+      "Do you offer custom large-format sizes?",
+      "Can I add eyelets or specialist finishing?",
+    ],
+  },
+  booklets: {
+    path: "/category/booklets",
+    title: "Booklets & Brochures",
+    eyebrow: "Editorial and brochure print",
+    intro:
+      "A stronger category landing page for stapled, wiro and premium bound print products, designed to feel closer to a real commercial storefront.",
+    heroImage: "/images/hero-slide-2.svg",
+    trust: ["Stapled & bound", "Brochure ready", "Manuals & booklets", "Bulk print support"],
+    quickLinks: ["Stapled Booklets", "Wiro Bound", "Perfect Bound", "Brochures", "Manuals"],
+    featured: [
+      { title: "Stapled Booklets", text: "The most common booklet option for brochures, programmes and product guides.", path: "/booklets", image: "/images/hero-slide-2.svg" },
+      { title: "Wiro Bound Booklets", text: "A premium bound style for presentations, manuals and notebooks.", path: "/booklets", image: "/images/hero-slide-2.svg" },
+      { title: "Perfect Bound Brochures", text: "Best for thicker brochure print and more polished presentation.", path: "/booklets", image: "/images/hero-slide-2.svg" },
+    ],
+    grid: [
+      "Stapled Booklets",
+      "Wiro Bound Booklets",
+      "Perfect Bound Booklets",
+      "Brochures",
+      "Lookbooks",
+      "Manuals",
+      "Notebooks",
+      "Company Profiles",
+    ],
+    faqs: [
+      "Which binding type should I choose?",
+      "What page counts are supported?",
+      "Can I print brochures and manuals?",
+      "Is thicker cover stock available?",
+    ],
+  },
+};
+
+function CategoryPage({ kind, navigate }) {
+  const page = categoryPages[kind];
+  return (
+    <section className="py-6">
+      <Shell narrow>
+        <div className="mb-4 flex flex-wrap items-center gap-2 text-[11px]" style={{ color: BRAND.muted }}>
+          <button onClick={() => navigate("/")} className="font-semibold">Home</button>
+          <span>/</span>
+          <span>{page.title}</span>
+        </div>
+
+        <div className="overflow-hidden rounded-[22px] border bg-white shadow-[0_14px_30px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+          <div className="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">
+            <div className="p-6 md:p-8">
+              <div className="inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>
+                {page.eyebrow}
+              </div>
+              <h1 className="mt-4 text-[42px] font-black leading-[0.95] tracking-[-0.05em]" style={{ color: BRAND.ink }}>
+                {page.title}
+              </h1>
+              <p className="mt-4 max-w-[620px] text-[13px] leading-7" style={{ color: BRAND.muted }}>
+                {page.intro}
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {page.trust.map((item) => (
+                  <span key={item} className="rounded-full border bg-white px-3 py-2 text-[11px] font-semibold shadow-[0_6px_14px_rgba(0,0,0,0.02)]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <PrimaryButton onClick={() => navigate(kind === "businessCards" ? "/standard-business-cards" : kind === "flyers" ? "/flyers" : kind === "posters" ? "/posters-large-format-prints" : "/booklets")}>
+                  Shop featured range
+                </PrimaryButton>
+                <SecondaryButton onClick={() => navigate("/bespoke-quote")}>Request custom quote</SecondaryButton>
+              </div>
+            </div>
+            <div className="bg-[linear-gradient(180deg,#F8FBFC,#F1F5F7)] p-5">
+              <div className="overflow-hidden rounded-[18px] border bg-white shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+                <img src={page.heroImage} alt={page.title} className="h-[330px] w-full object-cover" />
+              </div>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                {page.quickLinks.map((item) => (
+                  <div key={item} className="rounded-[12px] border bg-white px-3 py-3 text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.ink }}>
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {page.featured.map((item) => (
+            <button key={item.title} onClick={() => navigate(item.path)} className="group rounded-[20px] border bg-white p-4 text-left shadow-[0_12px_28px_rgba(0,0,0,0.03)] transition hover:-translate-y-[1px] hover:shadow-[0_16px_34px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
+              <img src={item.image} alt={item.title} className="h-44 w-full rounded-[14px] object-cover" />
+              <div className="mt-4 text-[18px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{item.title}</div>
+              <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{item.text}</p>
+              <div className="mt-3 inline-flex items-center gap-1 text-[12px] font-bold" style={{ color: BRAND.primary }}>
+                View product <ChevronRight className="h-4 w-4" />
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-6 rounded-[22px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+          <div className="mb-4 flex items-end justify-between gap-4">
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Browse category</div>
+              <div className="mt-2 text-[30px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>
+                Explore the full {page.title.toLowerCase()} range
+              </div>
+            </div>
+            <SecondaryButton onClick={() => navigate("/all-products")}>View all products</SecondaryButton>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {page.grid.map((item, idx) => (
+              <button
+                key={item}
+                onClick={() => navigate(kind === "businessCards" ? "/standard-business-cards" : kind === "flyers" ? "/flyers" : kind === "posters" ? "/posters-large-format-prints" : "/booklets")}
+                className="group rounded-[16px] border bg-white p-3 text-left shadow-[0_8px_20px_rgba(0,0,0,0.02)] transition hover:-translate-y-[1px] hover:shadow-[0_14px_28px_rgba(0,0,0,0.05)]"
+                style={{ borderColor: BRAND.line }}
+              >
+                <img src={(kind === "businessCards" ? "/images/business-card-front.svg" : kind === "flyers" ? "/images/flyer-front.svg" : kind === "posters" ? "/images/poster-main.svg" : "/images/hero-slide-2.svg")} alt={item} className="h-28 w-full rounded-[12px] object-cover" />
+                <div className="mt-3 text-[13px] font-bold" style={{ color: BRAND.ink }}>{item}</div>
+                <div className="mt-1 text-[11px]" style={{ color: BRAND.muted }}>
+                  {idx % 2 === 0 ? "Popular option" : "Available with custom specs"}
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="rounded-[22px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+            <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Why order this category</div>
+            <div className="mt-2 text-[28px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>
+              A cleaner category page with better browsing structure.
+            </div>
+            <div className="mt-4 grid gap-3">
+              {[
+                "Stronger grouping of featured and supporting products",
+                "Clearer jump-off points to real product pages",
+                "Useful for demos before connecting live backend data",
+                "Easy to replace placeholder images with final assets",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3 text-[12px]" style={{ color: BRAND.muted }}>
+                  <Check className="mt-0.5 h-4 w-4" style={{ color: BRAND.primary }} />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[22px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+            <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Category FAQ</div>
+            <div className="mt-4 space-y-3">
+              {page.faqs.map((item) => (
+                <div key={item} className="rounded-[14px] border bg-[#FAFBFB] px-4 py-3 text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.ink }}>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Shell>
+    </section>
+  );
+}
 
 function currency(value) {
   return new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }).format(value);
@@ -1596,14 +1854,26 @@ export default function App() {
 
   let page;
   switch (path) {
+    case "/category/business-cards":
+      page = <CategoryPage kind="businessCards" navigate={navigate} />;
+      break;
     case "/standard-business-cards":
       page = <ProductPage type="businessCards" cart={cart} />;
+      break;
+    case "/category/flyers":
+      page = <CategoryPage kind="flyers" navigate={navigate} />;
       break;
     case "/flyers":
       page = <ProductPage type="flyers" cart={cart} />;
       break;
+    case "/category/posters":
+      page = <CategoryPage kind="posters" navigate={navigate} />;
+      break;
     case "/posters-large-format-prints":
       page = <ProductPage type="posters" cart={cart} />;
+      break;
+    case "/category/booklets":
+      page = <CategoryPage kind="booklets" navigate={navigate} />;
       break;
     case "/booklets":
       page = <BookletsPage navigate={navigate} />;

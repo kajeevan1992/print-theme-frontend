@@ -313,3 +313,11 @@ details {
 button[style*="inset 0 0 0 1px rgb(24, 167, 208)"] {
   background: linear-gradient(180deg, #ffffff 0%, #f8fbfc 100%);
 }
+
+
+/* category pages */
+@media (max-width: 1024px) {
+  .lg\:grid-cols-\[1\.02fr_0\.98fr\] {
+    grid-template-columns: 1fr !important;
+  }
+}
