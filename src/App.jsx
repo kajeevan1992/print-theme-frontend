@@ -1042,7 +1042,7 @@ function HomePage({ navigate }) {
 
 function ProductAccordion({ title, defaultOpen = false, children }) {
   return (
-    <details open={defaultOpen} className="group rounded-[14px] border bg-white" style={{ borderColor: BRAND.line }}>
+    <details open={defaultOpen} className="group rounded-[14px] border bg-white shadow-[0_6px_16px_rgba(0,0,0,0.015)]" style={{ borderColor: BRAND.line }}>
       <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-[13px] font-bold" style={{ color: BRAND.ink }}>
         {title}
         <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
@@ -1081,9 +1081,9 @@ function ProductPage({ type, cart }) {
           <button className="font-semibold">{product.name}</button>
         </div>
 
-        <div className="mb-3 flex flex-wrap gap-2">
+        <div className="mb-4 flex flex-wrap gap-2">
           {page.tabs.map((tab) => (
-            <button key={tab} className="rounded-full border bg-white px-4 py-2 text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
+            <button key={tab} className="rounded-full border bg-white px-4 py-2 text-[12px] font-semibold shadow-[0_6px_14px_rgba(0,0,0,0.02)]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
               {tab}
             </button>
           ))}
@@ -1096,7 +1096,7 @@ function ProductPage({ type, cart }) {
               Configure format, stock, finishing and quantity with a more commercial product-page structure inspired by your reference screenshots.
             </p>
           </div>
-          <div className="hidden items-center gap-3 rounded-[16px] border bg-white px-4 py-3 lg:flex" style={{ borderColor: BRAND.line }}>
+          <div className="hidden items-center gap-3 rounded-[18px] border bg-white px-4 py-3 shadow-[0_10px_24px_rgba(0,0,0,0.03)] lg:flex" style={{ borderColor: BRAND.line }}>
             <div className="flex -space-x-2">
               {["A", "K", "S"].map((x, i) => (
                 <div key={x} className="grid h-9 w-9 place-items-center rounded-full border-2 text-[12px] font-bold text-white" style={{ borderColor: "white", backgroundColor: i === 0 ? BRAND.primary : i === 1 ? "#1F2937" : "#94A3B8" }}>
@@ -1113,9 +1113,9 @@ function ProductPage({ type, cart }) {
 
         <div className="grid gap-8 lg:grid-cols-[1.02fr_1fr]">
           <div>
-            <div className="overflow-hidden rounded-[20px] border bg-[#F7F8F9]" style={{ borderColor: BRAND.line }}>
+            <div className="overflow-hidden rounded-[22px] border bg-[#F5F6F7] shadow-[0_14px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
               <div className="relative">
-                <img src={product.images[selectedImage]} alt={product.name} className="h-[520px] w-full object-cover" />
+                <img src={product.images[selectedImage]} alt={product.name} className="h-[560px] w-full object-cover" />
                 <button className="absolute left-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-[20px] shadow-[0_10px_24px_rgba(0,0,0,0.08)]" style={{ color: BRAND.ink }}>
                   ‹
                 </button>
@@ -1133,7 +1133,7 @@ function ProductPage({ type, cart }) {
                   className="overflow-hidden rounded-[14px] border bg-white"
                   style={{ borderColor: selectedImage === i % product.images.length ? BRAND.primary : BRAND.line }}
                 >
-                  <img src={img} alt="" className="h-16 w-16 object-cover" />
+                  <img src={img} alt="" className="h-[70px] w-[70px] object-cover" />
                 </button>
               ))}
             </div>
@@ -1193,9 +1193,9 @@ function ProductPage({ type, cart }) {
           <div className="space-y-5">
             {page.optionGroups.map((group) => (
               <div key={group.key}>
-                <div className="mb-2 flex items-center gap-2 text-[22px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>
-                  <span className="text-[14px] font-semibold tracking-normal" style={{ color: BRAND.ink }}>{group.label}:</span>
-                  <span className="text-[14px] font-semibold tracking-normal" style={{ color: BRAND.primary }}>
+                <div className="mb-3 flex items-center gap-2 text-[18px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>
+                  <span className="text-[15px] font-semibold tracking-normal" style={{ color: BRAND.ink }}>{group.label}:</span>
+                  <span className="text-[15px] font-semibold tracking-normal" style={{ color: BRAND.primary }}>
                     {selected[group.key] || group.valueLabel}
                   </span>
                 </div>
@@ -1208,14 +1208,14 @@ function ProductPage({ type, cart }) {
                         <button
                           key={option.value}
                           onClick={() => setSelected((prev) => ({ ...prev, [group.key]: option.value }))}
-                          className="relative rounded-[14px] border bg-white p-4 text-center"
+                          className="relative rounded-[14px] border bg-white p-4 text-center shadow-[0_8px_18px_rgba(0,0,0,0.02)]"
                           style={{
                             borderColor: active ? BRAND.primary : BRAND.line,
                             boxShadow: active ? "inset 0 0 0 1px rgb(24, 167, 208)" : "none",
                             opacity: option.muted ? 0.72 : 1,
                           }}
                         >
-                          <div className="mx-auto mb-4 h-14 w-20 rounded-[10px] bg-[linear-gradient(135deg,#f7f7f7,#eceff1)]" />
+                          <div className="mx-auto mb-4 h-[68px] w-[92px] rounded-[10px] bg-[linear-gradient(135deg,#f7f7f7,#eceff1)]" />
                           <div className="text-[13px] font-bold leading-5" style={{ color: BRAND.ink }}>{option.value}</div>
                           {option.sublabel && <div className="mt-1 text-[12px]" style={{ color: BRAND.muted }}>{option.sublabel}</div>}
                           {option.recommended && (
@@ -1266,7 +1266,7 @@ function ProductPage({ type, cart }) {
                   <button
                     key={row.qty}
                     onClick={() => setSelectedQty(row.qty)}
-                    className="relative rounded-[12px] border bg-white px-4 py-4 text-left"
+                    className="relative rounded-[12px] border bg-white px-4 py-4 text-left shadow-[0_6px_16px_rgba(0,0,0,0.02)]"
                     style={{
                       borderColor: selectedQty === row.qty ? BRAND.primary : BRAND.line,
                       boxShadow: selectedQty === row.qty ? "inset 0 0 0 1px rgb(24, 167, 208)" : "none",
@@ -1296,7 +1296,7 @@ function ProductPage({ type, cart }) {
                   <button
                     key={item.day}
                     onClick={() => setSelectedDelivery(idx)}
-                    className="w-full rounded-[12px] border bg-white px-4 py-4 text-left"
+                    className="w-full rounded-[12px] border bg-white px-4 py-4 text-left shadow-[0_6px_16px_rgba(0,0,0,0.02)]"
                     style={{
                       borderColor: selectedDelivery == idx ? BRAND.primary : BRAND.line,
                       boxShadow: selectedDelivery == idx ? "inset 0 0 0 1px rgb(24, 167, 208)" : "none",
@@ -1314,11 +1314,11 @@ function ProductPage({ type, cart }) {
               </div>
             </div>
 
-            <div className="rounded-[18px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+            <div className="rounded-[20px] border bg-white p-5 shadow-[0_16px_34px_rgba(0,0,0,0.04)]" style={{ borderColor: BRAND.line }}>
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <div className="text-[11px] font-bold uppercase tracking-[0.14em]" style={{ color: BRAND.primary }}>Selected price</div>
-                  <div className="mt-2 text-[36px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{currency(currentPrice)}</div>
+                  <div className="mt-2 text-[40px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{currency(currentPrice)}</div><div className="mt-1 text-[11px]" style={{ color: BRAND.muted }}>Ex VAT visual placeholder pricing</div>
                 </div>
                 <div className="text-right text-[12px]" style={{ color: BRAND.muted }}>
                   <div>Standard delivery</div>
@@ -1331,7 +1331,7 @@ function ProductPage({ type, cart }) {
                 </PrimaryButton>
                 <SecondaryButton className="justify-center">Browse design templates</SecondaryButton>
               </div>
-              <div className="mt-4 grid gap-2 text-[12px]" style={{ color: BRAND.muted }}>
+              <div className="mt-4 grid gap-2 text-[12px]" style={{ color: BRAND.muted }}><div className="mb-2 flex flex-wrap gap-2">{["Secure checkout later","Artwork support","Bespoke quote route"].map((x) => <span key={x} className="rounded-full border bg-[#F8FBFC] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em]" style={{ borderColor: BRAND.line, color: BRAND.primary }}>{x}</span>)}</div>
                 <div className="flex items-center gap-2"><Check className="h-4 w-4" style={{ color: BRAND.primary }} /> Artwork check included before print</div>
                 <div className="flex items-center gap-2"><Check className="h-4 w-4" style={{ color: BRAND.primary }} /> Custom sizes and specialist materials via bespoke quote</div>
                 <div className="flex items-center gap-2"><Check className="h-4 w-4" style={{ color: BRAND.primary }} /> Production advice available from support</div>

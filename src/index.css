@@ -293,3 +293,23 @@ details[open] summary {
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* product page next build */
+details summary {
+  user-select: none;
+}
+
+details {
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-\[1\.02fr_1fr\] {
+    gap: 2.25rem !important;
+  }
+}
+
+button[style*="inset 0 0 0 1px rgb(24, 167, 208)"] {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbfc 100%);
+}

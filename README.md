@@ -184,3 +184,12 @@ Use these values:
 - replaced generic pills with commercial selector layouts
 - added accordion content areas for description, specs, guidelines, FAQ and ordering
 - fixed broken product support markup from the previous realism pass
+
+
+## Product page next build
+- refined tabs, help box and main image stage
+- improved selector card proportions
+- strengthened quantity and delivery cards
+- upgraded purchase summary hierarchy
+- added trust chips below CTAs
+- improved accordion polish
