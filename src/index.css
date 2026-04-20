@@ -257,3 +257,23 @@ header {
 footer {
   background: linear-gradient(180deg, #FFFFFF 0%, #F7FAFB 100%);
 }
+
+
+/* next build 10 */
+body {
+  background:
+    radial-gradient(circle at top left, rgba(24,167,208,0.045), transparent 17%),
+    radial-gradient(circle at 85% 7%, rgba(255,255,255,0.82), transparent 14%),
+    linear-gradient(180deg, #F1F4F6 0%, #ECF0F2 100%);
+}
+
+section + section {
+  margin-top: 2px;
+}
+
+@media (min-width: 1280px) {
+  header nav button {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+}

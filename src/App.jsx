@@ -379,7 +379,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
                 return (
                   <button
                     key={item.label}
-                    className="inline-flex items-center gap-1 text-[13px] font-semibold"
+                    className="inline-flex items-center gap-1 text-[13px] font-semibold tracking-[-0.01em]"
                     style={{ color: active || open ? BRAND.primary : BRAND.ink }}
                     onMouseEnter={() => setOpenLabel(item.label)}
                     onClick={() => navigate(item.path)}
@@ -405,7 +405,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
           <AnimatePresence>
             {openLabel && (
               <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ duration: 0.18 }} onMouseLeave={() => setOpenLabel(null)} className="absolute left-0 right-0 top-full hidden xl:block">
-                <div className="mt-2 rounded-[20px] border bg-white p-5 shadow-[0_30px_90px_rgba(0,0,0,0.12)]" style={{ borderColor: BRAND.line }}>
+                <div className="mt-2 rounded-[22px] border bg-white p-5 shadow-[0_34px_100px_rgba(0,0,0,0.13)]" style={{ borderColor: BRAND.line }}>
                   {(() => {
                     const item = NAV_ITEMS.find((x) => x.label === openLabel) || NAV_ITEMS[0];
                     return (
@@ -742,6 +742,25 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
+      <section className="py-4"><Shell>
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="rounded-[22px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+            <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Business support</div>
+            <div className="mt-2 text-[24px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Need regular ordering or repeat business pricing?</div>
+            <p className="mt-3 text-[12px] leading-6" style={{ color: BRAND.muted }}>
+              Add an account-management or repeat-order flow later through your admin dashboard for larger teams and repeat customers.
+            </p>
+          </div>
+          <div className="rounded-[22px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+            <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Quote support</div>
+            <div className="mt-2 text-[24px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Custom materials, finishes and production advice.</div>
+            <p className="mt-3 text-[12px] leading-6" style={{ color: BRAND.muted }}>
+              Keep this area as a bridge between standard ecommerce ordering and bespoke project support.
+            </p>
+          </div>
+        </div>
+      </Shell></section>
+
       <section className="py-6"><Shell>
         <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.04)]" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, #FFFFFF 0%, #F7FBFC 100%)" }}>
           <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
@@ -781,6 +800,7 @@ function ProductPage({ type, cart }) {
     <section className="py-6">
       <Shell narrow>
         <div className="mb-4 flex items-center gap-2 text-[11px]" style={{ color: BRAND.muted }}><button onClick={() => window.history.back?.()} className="font-semibold">Store</button><span>/</span><span>{product.name}</span></div>
+        <div className="mb-4 flex flex-wrap gap-2">{["Premium print","Fast turnaround","Custom quote available"].map((x) => <span key={x} className="rounded-full border bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>{x}</span>)}</div>
         <div className="grid gap-6 lg:grid-cols-[1.05fr_360px]">
           <div className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
             <div className="mb-5 border-b pb-4" style={{ borderColor: BRAND.line }}>
@@ -1047,7 +1067,7 @@ function Footer({ navigate }) {
     <footer className="mt-8 border-t bg-white" style={{ borderColor: BRAND.line }}>
       <div className="border-b py-3" style={{ borderColor: BRAND.line, backgroundColor: BRAND.primary }}>
         <Shell>
-          <div className="flex flex-col items-center justify-between gap-2 text-[12px] font-semibold text-white md:flex-row">
+          <div className="flex flex-col items-center justify-between gap-3 text-[12px] font-semibold text-white md:flex-row">
             <span>Get the very best print solutions for your business, events and brand campaigns — with room to grow into a full admin-connected storefront.</span>
             <div className="flex gap-2">
               <Input className="h-9 w-[250px] rounded-full border-0 bg-white text-[12px] text-black" placeholder="Email address" />

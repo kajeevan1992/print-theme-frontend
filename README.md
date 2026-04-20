@@ -168,3 +168,11 @@ Use these values:
 - upgraded hero panel scale and card finishes
 - refined mega menu and footer cards with subtle gradients
 - kept structure stable while improving visual richness
+
+
+## Next build 10
+- improved mega menu depth and nav typography
+- added category promo row under collections
+- added business / quote support panels before FAQ
+- added trust chips to product pages
+- refined overall background and spacing rhythm
