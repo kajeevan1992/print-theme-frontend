@@ -224,3 +224,31 @@ section + section::after {
 footer {
   background: linear-gradient(180deg, #ffffff 0%, #f7f9fa 100%);
 }
+
+
+/* COLOR SYSTEM UPGRADE */
+:root {
+  --primary: rgb(24,167,208);
+  --primary-soft: rgba(24,167,208,0.08);
+  --primary-ultra-soft: rgba(24,167,208,0.04);
+}
+
+/* better section layering */
+section:nth-of-type(even) {
+  background: linear-gradient(180deg, #f8fafb 0%, #f2f5f7 100%);
+}
+
+/* subtle card tint */
+.bg-white {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+}
+
+/* hover color richness */
+button:hover {
+  filter: brightness(1.02);
+}
+
+/* primary accent glow */
+.shadow-primary {
+  box-shadow: 0 10px 30px rgba(24,167,208,0.15);
+}

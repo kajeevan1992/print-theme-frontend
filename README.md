@@ -160,3 +160,11 @@ Use these values:
 - added subtle section dividers
 - improved dropdown shadow depth
 - refined footer contrast
+
+
+## Next build 8
+- upgraded color system with layered soft blues
+- reduced harsh white → more premium grey-white tones
+- added subtle alternating section backgrounds
+- improved hover richness and depth
+- enhanced primary color glow usage

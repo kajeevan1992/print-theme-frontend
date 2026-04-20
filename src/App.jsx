@@ -31,6 +31,8 @@ const BRAND = {
   ink: "#121517",
   muted: "#667179",
   primary: "rgb(24, 167, 208)",
+  primarySoft: "rgba(24, 167, 208, 0.08)",
+  primaryUltraSoft: "rgba(24, 167, 208, 0.04)",
   primaryDark: "#127B98",
   black: "#0F1012",
 };
@@ -379,7 +381,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
                   <button
                     key={item.label}
                     className="inline-flex items-center gap-1 text-[13px] font-semibold"
-                    style={{ color: active || open ? BRAND.primary : BRAND.ink }}
+                    style={{ color: active || open ? BRAND.primary : BRAND.ink, opacity: active or open and 1 or 0.9 }}
                     onMouseEnter={() => setOpenLabel(item.label)}
                     onClick={() => navigate(item.path)}
                   >
@@ -393,7 +395,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
             <div className="ml-auto flex items-center gap-2">
               <IconButton icon={<Search className="h-4 w-4" />} />
               <IconButton icon={<User className="h-4 w-4" />} />
-              <button onClick={() => navigate("/cart")} className="flex items-center gap-2 rounded-xl border px-3 py-2 text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted, backgroundColor: "white" }}>
+              <button onClick={() => navigate("/cart")} className="flex items-center gap-2 rounded-xl border px-3 py-2 text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted, backgroundColor: BRAND.panel }}>
                 <ShoppingCart className="h-4 w-4" />
                 <span>{currency(cartSubtotal)}</span>
                 {cartCount > 0 && <span className="rounded-full px-1.5 py-0.5 text-[10px] text-white" style={{ backgroundColor: BRAND.primary }}>{cartCount}</span>}
@@ -1105,7 +1107,7 @@ function FooterCol({ title, items, navigate }) {
 
 function PrimaryButton({ children, className = "", ...props }) {
   return (
-    <Button className={`inline-flex items-center rounded-full px-5 py-2.5 text-[12px] font-bold text-white shadow-[0_12px_26px_rgba(24,167,208,0.22)] transition hover:translate-y-[-1px] hover:shadow-[0_14px_26px_rgba(24,167,208,0.22)] ${className}`} style={{ backgroundColor: BRAND.primary }} {...props}>
+    <Button className={`inline-flex items-center rounded-full px-5 py-2.5 text-[12px] font-bold text-white shadow-[0_12px_26px_rgba(24,167,208,0.22)] shadow-primary transition hover:translate-y-[-1px] hover:shadow-[0_14px_26px_rgba(24,167,208,0.22)] ${className}`} style={{ backgroundColor: BRAND.primary }} {...props}>
       {children}
     </Button>
   );
@@ -1113,7 +1115,7 @@ function PrimaryButton({ children, className = "", ...props }) {
 
 function SecondaryButton({ children, className = "", ...props }) {
   return (
-    <Button className={`inline-flex items-center rounded-full border px-5 py-2.5 text-[12px] font-bold transition hover:bg-[#F6F7F8] ${className}`} style={{ borderColor: BRAND.line, color: BRAND.ink, backgroundColor: "white" }} {...props}>
+    <Button className={`inline-flex items-center rounded-full border px-5 py-2.5 text-[12px] font-bold transition hover:bg-[#F6F7F8] ${className}`} style={{ borderColor: BRAND.line, color: BRAND.ink, backgroundColor: BRAND.panel }} {...props}>
       {children}
     </Button>
   );
