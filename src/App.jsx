@@ -509,11 +509,11 @@ function Hero({ navigate }) {
         </div>
         <div className="mt-6 rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
           <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>You may also like</div>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3">
             {featuredProducts.slice(0,3).map((item) => (
               <button key={item.title} onClick={() => window.location.pathname !== item.path && (window.history.pushState({}, "", item.path), window.dispatchEvent(new PopStateEvent("popstate")))} className="group rounded-[16px] border bg-white p-3 text-left transition hover:-translate-y-[1px] hover:shadow-[0_12px_24px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
                 <img src={item.image} alt={item.title} className="h-28 w-full rounded-[12px] object-cover transition duration-500 group-hover:scale-[1.03]" />
-                <div className="mt-3 text-[13px] font-bold" style={{ color: BRAND.ink }}>{item.title}</div>
+                <div className="mt-2 text-[10px] uppercase tracking-[0.14em]" style={{color: BRAND.primary}}>Popular</div><div className="mt-1 text-[13px] font-bold" style={{ color: BRAND.ink }}>{item.title}</div>
                 <div className="text-[11px]" style={{ color: BRAND.muted }}>{item.price}</div>
               </button>
             ))}
@@ -652,7 +652,7 @@ function HomePage({ navigate }) {
         </div>
       </div></Shell></section>
 
-      <section className="py-6"><Shell><div className="grid gap-4 md:grid-cols-3">
+      <section className="py-6"><Shell><div className="grid gap-5 md:grid-cols-3">
         {[
           ["Choose your product", "Browse cards, flyers, posters, labels and more."],
           ["Upload artwork or request help", "Use artwork later or move through a bespoke quote flow."],
@@ -946,7 +946,7 @@ function AllProductsPage({ navigate }) {
                   {group.columns.flatMap((c) => c.links).slice(0, 4).map(([label, path], i) => (
                     <button key={label} onClick={() => navigate(path)} className="group rounded-[16px] border p-3 text-left transition hover:-translate-y-[1px] hover:shadow-[0_14px_28px_rgba(0,0,0,0.055)]" style={{ borderColor: BRAND.line }}>
                       <img src={featuredProducts[i % featuredProducts.length].image} alt={label} className="h-24 w-full rounded-[10px] object-cover transition duration-500 group-hover:scale-[1.03]" />
-                      <div className="mt-3 text-[13px] font-bold" style={{ color: BRAND.ink }}>{label}</div>
+                      <div className="mt-2 text-[10px] uppercase tracking-[0.14em]" style={{color: BRAND.primary}}>Popular</div><div className="mt-1 text-[13px] font-bold" style={{ color: BRAND.ink }}>{label}</div>
                     </button>
                   ))}
                 </div>
@@ -1082,7 +1082,7 @@ function Footer({ navigate }) {
             <div key={item} className="rounded-[18px] border px-4 py-3" style={{ borderColor: BRAND.line, color: BRAND.muted, background: "linear-gradient(180deg, #FFFFFF 0%, #F8FBFC 100%)" }}><div className="text-[10px] font-bold uppercase tracking-[0.14em]">{item}</div><div className="mt-1 text-[16px] font-black" style={{ color: BRAND.ink }}>{count}</div></div>
           ))}
         </div>
-        <div className="grid gap-8 py-10 md:grid-cols-[1.25fr_0.8fr_0.8fr_0.8fr_0.8fr]">
+        <div className="grid gap-8 py-12 md:grid-cols-[1.25fr_0.8fr_0.8fr_0.8fr_0.8fr]">
           <div>
             <button onClick={() => navigate("/")} className="flex items-center gap-0.5">
               <span className="text-[50px] font-black tracking-[-0.055em]" style={{ color: BRAND.primary }}>HOLO</span>
