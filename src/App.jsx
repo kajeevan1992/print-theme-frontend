@@ -329,7 +329,7 @@ function UtilityBar() {
       <Shell>
         <div className="flex h-8 items-center justify-between text-[11px] font-medium">
           <span>Professional print, signage and packaging solutions</span>
-          <div className="hidden gap-5 sm:flex">
+          <div className="hidden gap-4 sm:flex">
             <span>Business orders</span>
             <span>Bulk pricing</span>
             <span>Fast turnaround</span>
@@ -409,7 +409,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
                   {(() => {
                     const item = NAV_ITEMS.find((x) => x.label === openLabel) || NAV_ITEMS[0];
                     return (
-                      <div className="grid gap-5">
+                      <div className="grid gap-4">
                         <div className="grid grid-cols-[270px_1fr_1fr_1fr] gap-6">
                           <div className="rounded-[20px] border p-4" style={{ borderColor: BRAND.line, background: "linear-gradient(180deg, #FBFDFE 0%, #F4F9FB 100%)" }}>
                             <img src={item.feature.image} alt={item.feature.title} className="h-36 w-full rounded-[12px] object-cover" />
@@ -487,7 +487,7 @@ function Hero({ navigate }) {
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.22 }}>
               <div className="mb-3 inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{heroSlides[active].eyebrow}</div>
-              <h1 className="max-w-[660px] text-[66px] font-black leading-[0.9] tracking-[-0.065em] sm:text-[78px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
+              <h1 className="max-w-[660px] text-[64px] font-black leading-[0.9] tracking-[-0.065em] sm:text-[78px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
               <p className="mt-5 max-w-[600px] text-[14px] leading-7" style={{ color: BRAND.muted }}>{heroSlides[active].body}</p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <PrimaryButton onClick={() => navigate("/all-products")}>Browse Products</PrimaryButton>
@@ -509,7 +509,7 @@ function Hero({ navigate }) {
         </div>
         <div className="mt-6 rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
           <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>You may also like</div>
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             {featuredProducts.slice(0,3).map((item) => (
               <button key={item.title} onClick={() => window.location.pathname !== item.path && (window.history.pushState({}, "", item.path), window.dispatchEvent(new PopStateEvent("popstate")))} className="group rounded-[16px] border bg-white p-3 text-left transition hover:-translate-y-[1px] hover:shadow-[0_12px_24px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
                 <img src={item.image} alt={item.title} className="h-28 w-full rounded-[12px] object-cover transition duration-500 group-hover:scale-[1.03]" />
@@ -541,13 +541,13 @@ function HomePage({ navigate }) {
     <div>
       <Hero navigate={navigate} />
 
-      <section className="py-6"><Shell><div className="flex gap-3 overflow-x-auto pb-2">
+      <section className="py-5"><Shell><div className="flex gap-3 overflow-x-auto pb-2">
         {["Business Cards", "Flyers", "Posters", "Booklets", "Labels", "Signage", "Packaging", "Stationery"].map((item) => (
           <button key={item} className="whitespace-nowrap rounded-full border bg-white px-4 py-2 text-[12px] font-semibold shadow-[0_6px_14px_rgba(0,0,0,0.02)]" style={{ borderColor: BRAND.line }}>{item}</button>
         ))}
       </div></Shell></section>
 
-      <section className="py-6"><Shell><div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="py-5"><Shell><div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {trustBadges.map((item) => {
           const Icon = item.icon;
           return (
@@ -591,7 +591,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-6"><Shell>
+      <section className="py-5"><Shell>
         <SectionHeading eyebrow="Collections" title="Shop our most-used print categories" action={<SecondaryButton onClick={() => navigate("/all-products")}>View all</SecondaryButton>} />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {featuredCollections.map((item) => (
@@ -605,7 +605,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-6"><Shell>
+      <section className="py-5"><Shell>
         <SectionHeading eyebrow="Featured products" title="Popular print products with a cleaner card structure" />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {featuredProducts.map((item) => (
@@ -623,7 +623,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-6"><Shell><div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
+      <section className="py-5"><Shell><div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="overflow-hidden rounded-[20px] border bg-white shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
           <div className="grid gap-0 md:grid-cols-[0.95fr_1.05fr]">
             <div className="p-6">
@@ -652,7 +652,7 @@ function HomePage({ navigate }) {
         </div>
       </div></Shell></section>
 
-      <section className="py-6"><Shell><div className="grid gap-5 md:grid-cols-3">
+      <section className="py-5"><Shell><div className="grid gap-4 md:grid-cols-3">
         {[
           ["Choose your product", "Browse cards, flyers, posters, labels and more."],
           ["Upload artwork or request help", "Use artwork later or move through a bespoke quote flow."],
@@ -666,7 +666,7 @@ function HomePage({ navigate }) {
         ))}
       </div></Shell></section>
 
-      <section className="py-6"><Shell>
+      <section className="py-5"><Shell>
         <SectionHeading eyebrow="Pricing options" title="Simple starter pricing blocks" />
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {pricingGrid.map((item) => (
@@ -679,7 +679,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-6"><Shell>
+      <section className="py-5"><Shell>
         <div className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
           <div className="grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
@@ -695,7 +695,7 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-6"><Shell>
+      <section className="py-5"><Shell>
         <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
           <SectionHeading eyebrow="Frequently asked questions" title="Common questions before customers order" compact />
           <div className="grid gap-3">
@@ -761,9 +761,9 @@ function HomePage({ navigate }) {
         </div>
       </Shell></section>
 
-      <section className="py-6"><Shell>
+      <section className="py-5"><Shell>
         <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.04)]" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, #FFFFFF 0%, #F7FBFC 100%)" }}>
-          <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Ready to connect your backend later</div>
               <div className="mt-2 text-[32px] font-black tracking-[-0.045em]" style={{ color: BRAND.ink }}>Present a polished storefront now and grow into a full commerce flow.</div>
@@ -797,7 +797,7 @@ function ProductPage({ type, cart }) {
   }, [selected, product]);
 
   return (
-    <section className="py-6">
+    <section className="py-5">
       <Shell narrow>
         <div className="mb-4 flex items-center gap-2 text-[11px]" style={{ color: BRAND.muted }}><button onClick={() => window.history.back?.()} className="font-semibold">Store</button><span>/</span><span>{product.name}</span></div>
         <div className="mb-4 flex flex-wrap gap-2">{["Premium print","Fast turnaround","Custom quote available"].map((x) => <span key={x} className="rounded-full border bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>{x}</span>)}</div>
@@ -826,7 +826,7 @@ function ProductPage({ type, cart }) {
                 </div>
               </div>
 
-              <div className="grid gap-5">
+              <div className="grid gap-4">
                 {optionKeys.map((key) => (
                   <div key={key}>
                     <div className="mb-2 text-[11px] font-bold uppercase tracking-[0.16em]" style={{ color: BRAND.ink }}>{key}</div>
@@ -896,7 +896,7 @@ function ProductPage({ type, cart }) {
 
 function BookletsPage({ navigate }) {
   return (
-    <section className="py-6">
+    <section className="py-5">
       <Shell narrow>
         <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
           <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Booklet printing</div>
@@ -923,7 +923,7 @@ function BookletsPage({ navigate }) {
 
 function AllProductsPage({ navigate }) {
   return (
-    <section className="py-6">
+    <section className="py-5">
       <Shell narrow>
         <div className="grid gap-6 lg:grid-cols-[270px_1fr]">
           <div className="rounded-[20px] border bg-white p-4 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
@@ -938,7 +938,7 @@ function AllProductsPage({ navigate }) {
               ))}
             </div>
           </div>
-          <div className="grid gap-5">
+          <div className="grid gap-4">
             {NAV_ITEMS.slice(0,7).map((group) => (
               <div key={group.label} className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
                 <div className="text-[22px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{group.label}</div>
@@ -961,9 +961,9 @@ function AllProductsPage({ navigate }) {
 
 function BespokeQuotePage() {
   return (
-    <section className="py-6">
+    <section className="py-5">
       <Shell narrow>
-        <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
+        <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
           <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Custom quote</div>
             <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Request a bespoke quote for custom print jobs</h1>
@@ -1003,7 +1003,7 @@ function BespokeQuotePage() {
 
 function CartPage({ cart, navigate }) {
   return (
-    <section className="py-6">
+    <section className="py-5">
       <Shell narrow>
         <div className="mb-5 flex items-end justify-between gap-4">
           <div>
@@ -1012,7 +1012,7 @@ function CartPage({ cart, navigate }) {
           </div>
           <SecondaryButton onClick={() => navigate("/all-products")}>Keep shopping</SecondaryButton>
         </div>
-        <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
+        <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
           <div className="grid gap-4">
             {cart.items.length === 0 ? (
               <div className="rounded-[18px] border bg-white p-6 text-[12px] shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>Your cart is empty.</div>
