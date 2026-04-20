@@ -23,16 +23,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 const BRAND = {
-  bg: "#F2F4F5",
-  bg2: "#EEF1F3",
+  bg: "#F1F4F6",
+  bg2: "#EDF1F3",
   panel: "#FFFFFF",
-  panelSoft: "#FAFBFB",
+  panelSoft: "#F8FBFC",
+  panelTint: "#F6FAFC",
   line: "#E2E6E8",
   ink: "#121517",
   muted: "#667179",
   primary: "rgb(24, 167, 208)",
-  primarySoft: "rgba(24, 167, 208, 0.08)",
-  primaryUltraSoft: "rgba(24, 167, 208, 0.04)",
   primaryDark: "#127B98",
   black: "#0F1012",
 };
@@ -381,7 +380,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
                   <button
                     key={item.label}
                     className="inline-flex items-center gap-1 text-[13px] font-semibold"
-                    style={{ color: active || open ? BRAND.primary : BRAND.ink, opacity: active or open and 1 or 0.9 }}
+                    style={{ color: active || open ? BRAND.primary : BRAND.ink }}
                     onMouseEnter={() => setOpenLabel(item.label)}
                     onClick={() => navigate(item.path)}
                   >
@@ -395,7 +394,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
             <div className="ml-auto flex items-center gap-2">
               <IconButton icon={<Search className="h-4 w-4" />} />
               <IconButton icon={<User className="h-4 w-4" />} />
-              <button onClick={() => navigate("/cart")} className="flex items-center gap-2 rounded-xl border px-3 py-2 text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted, backgroundColor: BRAND.panel }}>
+              <button onClick={() => navigate("/cart")} className="flex items-center gap-2 rounded-xl border px-3 py-2 text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted, backgroundColor: "white" }}>
                 <ShoppingCart className="h-4 w-4" />
                 <span>{currency(cartSubtotal)}</span>
                 {cartCount > 0 && <span className="rounded-full px-1.5 py-0.5 text-[10px] text-white" style={{ backgroundColor: BRAND.primary }}>{cartCount}</span>}
@@ -412,7 +411,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
                     return (
                       <div className="grid gap-5">
                         <div className="grid grid-cols-[270px_1fr_1fr_1fr] gap-6">
-                          <div className="rounded-[18px] border p-4" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panelSoft }}>
+                          <div className="rounded-[20px] border p-4" style={{ borderColor: BRAND.line, background: "linear-gradient(180deg, #FBFDFE 0%, #F4F9FB 100%)" }}>
                             <img src={item.feature.image} alt={item.feature.title} className="h-36 w-full rounded-[12px] object-cover" />
                             <div className="mt-4 text-[18px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{item.feature.title}</div>
                             <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{item.feature.body}</p>
@@ -434,7 +433,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
                         </div>
                         <div className="grid grid-cols-4 gap-3 border-t pt-4" style={{ borderColor: BRAND.line }}>
                           {["Fast turnaround", "Premium stock", "Bulk pricing", "Artwork support"].map((x, idx) => (
-                            <div key={x} className="rounded-[16px] border bg-[#FBFBFB] px-4 py-3 text-[11px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
+                            <div key={x} className="rounded-[16px] border px-4 py-3 text-[11px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted, background: "linear-gradient(180deg, #FFFFFF 0%, #F8FBFC 100%)" }}>
                               {x}
                             </div>
                           ))}
@@ -488,7 +487,7 @@ function Hero({ navigate }) {
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.22 }}>
               <div className="mb-3 inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{heroSlides[active].eyebrow}</div>
-              <h1 className="max-w-[660px] text-[66px] font-black leading-[0.9] tracking-[-0.065em] sm:text-[76px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
+              <h1 className="max-w-[660px] text-[66px] font-black leading-[0.9] tracking-[-0.065em] sm:text-[78px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
               <p className="mt-5 max-w-[600px] text-[14px] leading-7" style={{ color: BRAND.muted }}>{heroSlides[active].body}</p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <PrimaryButton onClick={() => navigate("/all-products")}>Browse Products</PrimaryButton>
@@ -504,7 +503,7 @@ function Hero({ navigate }) {
 
           <div className="justify-self-center lg:justify-self-end">
             <div className="overflow-hidden rounded-[28px] border bg-white p-3 shadow-[0_28px_72px_rgba(0,0,0,0.065)]" style={{ borderColor: BRAND.line }}>
-              <img src={heroSlides[active].image} alt="Hero" className="h-[355px] w-[560px] max-w-full rounded-[18px] object-cover" />
+              <img src={heroSlides[active].image} alt="Hero" className="h-[365px] w-[580px] max-w-full rounded-[18px] object-cover" />
             </div>
           </div>
         </div>
@@ -697,7 +696,7 @@ function HomePage({ navigate }) {
       </Shell></section>
 
       <section className="py-6"><Shell>
-        <div className="rounded-[22px] border bg-white p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
+        <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
           <SectionHeading eyebrow="Frequently asked questions" title="Common questions before customers order" compact />
           <div className="grid gap-3">
             {faqItems.map(([q, a]) => (
@@ -879,7 +878,7 @@ function BookletsPage({ navigate }) {
   return (
     <section className="py-6">
       <Shell narrow>
-        <div className="rounded-[22px] border bg-white p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
+        <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
           <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Booklet printing</div>
           <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Booklets with a cleaner, more editorial storefront layout</h1>
           <p className="mt-3 max-w-[660px] text-[12px] leading-6" style={{ color: BRAND.muted }}>This page now reflects a fuller commerce structure with lighter cards, more compact typography and cleaner category presentation.</p>
@@ -945,7 +944,7 @@ function BespokeQuotePage() {
     <section className="py-6">
       <Shell narrow>
         <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
-          <div className="rounded-[22px] border bg-white p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
+          <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Custom quote</div>
             <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Request a bespoke quote for custom print jobs</h1>
             <p className="mt-3 max-w-[620px] text-[12px] leading-6" style={{ color: BRAND.muted }}>This section now sits more naturally inside the storefront and better matches the professional, compact structure from your references.</p>
@@ -1060,7 +1059,7 @@ function Footer({ navigate }) {
       <Shell>
         <div className="grid gap-3 py-5 md:grid-cols-4">
           {[["Business printing","20+"],["Event signage","12+"],["Labels & packaging","18+"],["Custom quote support","1:1"]].map(([item,count]) => (
-            <div key={item} className="rounded-[18px] border bg-[#FBFBFB] px-4 py-3" style={{ borderColor: BRAND.line, color: BRAND.muted }}><div className="text-[10px] font-bold uppercase tracking-[0.14em]">{item}</div><div className="mt-1 text-[16px] font-black" style={{ color: BRAND.ink }}>{count}</div></div>
+            <div key={item} className="rounded-[18px] border px-4 py-3" style={{ borderColor: BRAND.line, color: BRAND.muted, background: "linear-gradient(180deg, #FFFFFF 0%, #F8FBFC 100%)" }}><div className="text-[10px] font-bold uppercase tracking-[0.14em]">{item}</div><div className="mt-1 text-[16px] font-black" style={{ color: BRAND.ink }}>{count}</div></div>
           ))}
         </div>
         <div className="grid gap-8 py-10 md:grid-cols-[1.25fr_0.8fr_0.8fr_0.8fr_0.8fr]">
@@ -1107,7 +1106,7 @@ function FooterCol({ title, items, navigate }) {
 
 function PrimaryButton({ children, className = "", ...props }) {
   return (
-    <Button className={`inline-flex items-center rounded-full px-5 py-2.5 text-[12px] font-bold text-white shadow-[0_12px_26px_rgba(24,167,208,0.22)] shadow-primary transition hover:translate-y-[-1px] hover:shadow-[0_14px_26px_rgba(24,167,208,0.22)] ${className}`} style={{ backgroundColor: BRAND.primary }} {...props}>
+    <Button className={`inline-flex items-center rounded-full px-5 py-2.5 text-[12px] font-bold text-white shadow-[0_12px_26px_rgba(24,167,208,0.22)] transition hover:translate-y-[-1px] hover:shadow-[0_14px_26px_rgba(24,167,208,0.22)] ${className}`} style={{ backgroundColor: BRAND.primary }} {...props}>
       {children}
     </Button>
   );
@@ -1115,7 +1114,7 @@ function PrimaryButton({ children, className = "", ...props }) {
 
 function SecondaryButton({ children, className = "", ...props }) {
   return (
-    <Button className={`inline-flex items-center rounded-full border px-5 py-2.5 text-[12px] font-bold transition hover:bg-[#F6F7F8] ${className}`} style={{ borderColor: BRAND.line, color: BRAND.ink, backgroundColor: BRAND.panel }} {...props}>
+    <Button className={`inline-flex items-center rounded-full border px-5 py-2.5 text-[12px] font-bold transition hover:bg-[#F6F7F8] ${className}`} style={{ borderColor: BRAND.line, color: BRAND.ink, backgroundColor: "white" }} {...props}>
       {children}
     </Button>
   );

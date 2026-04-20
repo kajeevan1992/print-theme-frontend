@@ -162,9 +162,9 @@ Use these values:
 - refined footer contrast
 
 
-## Next build 8
-- upgraded color system with layered soft blues
-- reduced harsh white → more premium grey-white tones
-- added subtle alternating section backgrounds
-- improved hover richness and depth
-- enhanced primary color glow usage
+## Next build 9
+- based on the last stable build instead of the risky color patch
+- softened the grey-white palette safely
+- upgraded hero panel scale and card finishes
+- refined mega menu and footer cards with subtle gradients
+- kept structure stable while improving visual richness
