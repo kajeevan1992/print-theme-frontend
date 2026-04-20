@@ -340,3 +340,20 @@ body::before {
   pointer-events: none;
   z-index: 0;
 }
+
+/* realism pass */
+input, select {
+  border-radius: 6px;
+}
+
+input:focus {
+  outline: 2px solid rgba(24,167,208,0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+input::placeholder {
+  color: rgba(0,0,0,0.4);
+}

@@ -193,3 +193,11 @@ Use these values:
 - mobile spacing improvements
 - refined hover + motion
 - final UI tightening for production readiness
+
+
+## Realism pass
+- added delivery + turnaround info
+- improved product messaging
+- refined testimonials
+- improved CTA clarity
+- enhanced form UX realism

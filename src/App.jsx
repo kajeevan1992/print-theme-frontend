@@ -490,7 +490,7 @@ function Hero({ navigate }) {
               <h1 className="max-w-[660px] text-[64px] font-black leading-[0.9] tracking-[-0.065em] sm:text-[78px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
               <p className="mt-5 max-w-[600px] text-[14px] leading-7" style={{ color: BRAND.muted }}>{heroSlides[active].body}</p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <PrimaryButton onClick={() => navigate("/all-products")}>Browse Products</PrimaryButton>
+                <PrimaryButton onClick={() => navigate("/all-products")}>Browse all print products</PrimaryButton>
                 <SecondaryButton onClick={() => navigate("/bespoke-quote")}>Request Bespoke Quote</SecondaryButton>
               </div>
               <div className="mt-5 flex gap-2">
@@ -883,7 +883,13 @@ function ProductPage({ type, cart }) {
                 </div>
               </div>
               <div className="mt-5 rounded-[14px] border bg-[#FBFBFB] p-4" style={{ borderColor: BRAND.line }}><div className="mb-3 rounded-full bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] inline-block" style={{ color: BRAND.primary }}>Support</div>
-                <div className="text-[12px] font-bold" style={{ color: BRAND.ink }}>Need something custom?</div>
+                <div className="text-[12px] font-bold" style={{ color: BRAND.ink }}>Need something custom or a different size?
+<div className="mt-4 rounded-[14px] border bg-[#FBFBFB] p-3 text-[11px]" style={{borderColor: BRAND.line}}>
+  <div><b>Standard delivery:</b> 3–5 working days</div>
+  <div className="mt-1"><b>Express:</b> 24–48 hours available</div>
+  <div className="mt-1"><b>Artwork check:</b> Included before print</div>
+</div>
+</div>
                 <p className="mt-2 text-[11px] leading-6" style={{ color: BRAND.muted }}>Use the bespoke quote flow for custom sizes, specialist materials and bulk pricing requests.</p>
               </div>
             </div>
