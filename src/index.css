@@ -180,3 +180,47 @@ section .rounded-\[18px\] {
     letter-spacing: -0.01em;
   }
 }
+
+
+/* next build 6 */
+body {
+  background:
+    radial-gradient(circle at top left, rgba(24,167,208,0.048), transparent 19%),
+    radial-gradient(circle at 82% 6%, rgba(255,255,255,0.72), transparent 16%),
+    linear-gradient(180deg, #F1F3F4 0%, #ECEFF1 100%);
+}
+
+section {
+  isolation: isolate;
+}
+
+.rounded-\[28px\] {
+  overflow: hidden;
+}
+
+
+/* global premium hover */
+[class*="rounded-"] {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+[class*="rounded-"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+}
+
+
+/* subtle divider */
+section + section::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.06), transparent);
+  margin-top: 32px;
+}
+
+
+/* footer depth */
+footer {
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fa 100%);
+}

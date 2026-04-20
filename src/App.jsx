@@ -404,7 +404,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
           <AnimatePresence>
             {openLabel && (
               <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ duration: 0.18 }} onMouseLeave={() => setOpenLabel(null)} className="absolute left-0 right-0 top-full hidden xl:block">
-                <div className="mt-2 rounded-[20px] border bg-white p-5 shadow-[0_26px_80px_rgba(0,0,0,0.10)]" style={{ borderColor: BRAND.line }}>
+                <div className="mt-2 rounded-[20px] border bg-white p-5 shadow-[0_30px_90px_rgba(0,0,0,0.12)]" style={{ borderColor: BRAND.line }}>
                   {(() => {
                     const item = NAV_ITEMS.find((x) => x.label === openLabel) || NAV_ITEMS[0];
                     return (
@@ -486,7 +486,7 @@ function Hero({ navigate }) {
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.22 }}>
               <div className="mb-3 inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{heroSlides[active].eyebrow}</div>
-              <h1 className="max-w-[660px] text-[62px] font-black leading-[0.92] tracking-[-0.06em] sm:text-[72px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
+              <h1 className="max-w-[660px] text-[66px] font-black leading-[0.9] tracking-[-0.065em] sm:text-[76px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
               <p className="mt-5 max-w-[600px] text-[14px] leading-7" style={{ color: BRAND.muted }}>{heroSlides[active].body}</p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <PrimaryButton onClick={() => navigate("/all-products")}>Browse Products</PrimaryButton>
@@ -501,8 +501,8 @@ function Hero({ navigate }) {
           </AnimatePresence>
 
           <div className="justify-self-center lg:justify-self-end">
-            <div className="overflow-hidden rounded-[26px] border bg-white p-3 shadow-[0_24px_64px_rgba(0,0,0,0.06)]" style={{ borderColor: BRAND.line }}>
-              <img src={heroSlides[active].image} alt="Hero" className="h-[345px] w-[540px] max-w-full rounded-[16px] object-cover" />
+            <div className="overflow-hidden rounded-[28px] border bg-white p-3 shadow-[0_28px_72px_rgba(0,0,0,0.065)]" style={{ borderColor: BRAND.line }}>
+              <img src={heroSlides[active].image} alt="Hero" className="h-[355px] w-[560px] max-w-full rounded-[18px] object-cover" />
             </div>
           </div>
         </div>
@@ -552,7 +552,7 @@ function HomePage({ navigate }) {
           return (
             <div key={item.title} className="rounded-[20px] border bg-white p-4 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
               <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#F1FAFD]" style={{ color: BRAND.primary }}><Icon className="h-5 w-5" /></div>
-              <div className="mt-3 text-[15px] font-bold" style={{ color: BRAND.ink }}>{item.title}</div>
+              <div className="mt-3 text-[10px] font-bold uppercase tracking-[0.16em]" style={{ color: BRAND.primary }}>Store benefit</div><div className="mt-2 text-[15px] font-bold" style={{ color: BRAND.ink }}>{item.title}</div>
               <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{item.text}</p>
             </div>
           );
@@ -598,6 +598,7 @@ function HomePage({ navigate }) {
               <div className="overflow-hidden rounded-[14px]"><img src={item.image} alt={item.title} className="h-40 w-full object-cover transition duration-500 group-hover:scale-[1.03]" /></div>
               <div className="mt-4 text-[18px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{item.title}</div>
               <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{item.subtitle}</p>
+              <div className="mt-4 inline-flex items-center gap-1 text-[12px] font-bold" style={{ color: BRAND.primary }}>Explore <ChevronRight className="h-4 w-4" /></div>
             </button>
           ))}
         </div>
@@ -720,6 +721,23 @@ function HomePage({ navigate }) {
               <div className="mt-2 text-[11px] leading-6" style={{ color: BRAND.muted }}>{text}</div>
             </div>
           ))}
+        </div>
+      </Shell></section>
+
+      <section className="py-3"><Shell>
+        <div className="rounded-[20px] border bg-white px-5 py-4 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+          <div className="grid gap-3 md:grid-cols-3">
+            {[
+              ["Most popular for brand launches", "Cards, flyers and posters grouped for quick decision-making."],
+              ["Useful for hospitality and events", "Menus, handouts, signage and branded print in one storefront."],
+              ["Designed to scale later", "Replace placeholders with real images and connect live data when ready."],
+            ].map(([title, text]) => (
+              <div key={title} className="rounded-[16px] border bg-[#FBFBFB] px-4 py-4" style={{ borderColor: BRAND.line }}>
+                <div className="text-[12px] font-bold" style={{ color: BRAND.ink }}>{title}</div>
+                <div className="mt-2 text-[11px] leading-6" style={{ color: BRAND.muted }}>{text}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </Shell></section>
 
@@ -1060,7 +1078,7 @@ function Footer({ navigate }) {
     
         <Shell>
           <div className="border-t py-4 text-[11px] flex flex-col gap-2 md:flex-row md:items-center md:justify-between" style={{ borderColor: BRAND.line, color: BRAND.muted }}>
-            <span>© 2026 HOLO PRINT. All rights reserved.</span>
+            <span>© 2026 HOLO PRINT. All rights reserved. Professional print storefront theme.</span>
             <div className="flex gap-4">
               <button onClick={() => navigate("/all-products")}>All products</button>
               <button onClick={() => navigate("/bespoke-quote")}>Custom quote</button>
@@ -1087,7 +1105,7 @@ function FooterCol({ title, items, navigate }) {
 
 function PrimaryButton({ children, className = "", ...props }) {
   return (
-    <Button className={`inline-flex items-center rounded-full px-5 py-2.5 text-[12px] font-bold text-white shadow-[0_10px_22px_rgba(24,167,208,0.18)] transition hover:translate-y-[-1px] hover:shadow-[0_14px_26px_rgba(24,167,208,0.22)] ${className}`} style={{ backgroundColor: BRAND.primary }} {...props}>
+    <Button className={`inline-flex items-center rounded-full px-5 py-2.5 text-[12px] font-bold text-white shadow-[0_12px_26px_rgba(24,167,208,0.22)] transition hover:translate-y-[-1px] hover:shadow-[0_14px_26px_rgba(24,167,208,0.22)] ${className}`} style={{ backgroundColor: BRAND.primary }} {...props}>
       {children}
     </Button>
   );

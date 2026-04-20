@@ -144,3 +144,19 @@ Use these values:
 - added another credibility row before the final CTA band
 - refined dropdown utility chips and product summary support styling
 - softened overall background and section contrast
+
+
+## Next build 6
+- upgraded hero image panel and title scale
+- improved collection cards with CTA detail
+- added another announcement/support strip before the final CTA band
+- added product support tiles below the main product layout
+- refined legal row copy and overall contrast
+
+
+## Next build 7
+- improved typography scale further
+- enhanced global hover and depth system
+- added subtle section dividers
+- improved dropdown shadow depth
+- refined footer contrast
