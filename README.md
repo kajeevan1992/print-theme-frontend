@@ -232,8 +232,8 @@ Use these values:
 - reduced width/spacing on artwork and checkout pages for a denser portal feel
 
 
-## Customer flow build 3
-- denser auth layout
-- more structured account dashboard
-- stronger order-detail progress and actions
-- reduced checkout and artwork widths for a tighter portal feel
+## Customer flow build 4
+- made auth page denser and less template-like
+- restructured account page into summary + actions + denser order rows
+- improved order detail into a job-management style page with simple progress strip
+- tightened checkout/artwork widths for a denser portal feel
