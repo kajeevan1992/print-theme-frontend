@@ -201,3 +201,11 @@ Use these values:
 - connected checkout submit to orders API service layer
 - added customer account route with safe orders fallback
 - wired cart proceed button and account navigation into the storefront
+
+
+## Checkout next build
+- upgraded checkout with stronger stepper UX
+- added review and payment-step agreement handling
+- improved artwork now/later messaging and upload state
+- strengthened confirmation page
+- upgraded account page with stats cards and safer order rendering

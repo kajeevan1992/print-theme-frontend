@@ -1,6 +1,6 @@
 
 import React, { useMemo, useState } from "react";
-import { Check, Upload, Image as ImageIcon, FileText, Truck, CreditCard } from "lucide-react";
+import { Check, Upload, Image as ImageIcon, FileText, Truck, CreditCard, ShieldCheck } from "lucide-react";
 import { createOrder, uploadArtwork } from "./services_api";
 
 const STEPS = ["Customer", "Company", "Address", "Delivery", "Artwork", "Review", "Payment", "Confirm"];
@@ -13,12 +13,21 @@ function StepPill({ label, index, current }) {
   const done = current > index;
   const active = current === index;
   return (
-    <div className={`flex items-center gap-2 rounded-full border px-3 py-2 text-[12px] font-semibold ${active ? "shadow-[0_10px_24px_rgba(0,0,0,0.04)]" : ""}`} style={{
-      borderColor: active || done ? "rgb(24, 167, 208)" : "#E2E6E8",
-      color: active || done ? "#121517" : "#667179",
-      backgroundColor: active ? "#F1FAFD" : "white"
-    }}>
-      <span className="grid h-5 w-5 place-items-center rounded-full text-[10px] font-bold" style={{ backgroundColor: done || active ? "rgb(24, 167, 208)" : "#EEF1F3", color: done || active ? "white" : "#667179" }}>
+    <div
+      className={`flex items-center gap-2 rounded-full border px-3 py-2 text-[12px] font-semibold ${active ? "shadow-[0_10px_24px_rgba(0,0,0,0.04)]" : ""}`}
+      style={{
+        borderColor: active || done ? "rgb(24, 167, 208)" : "#E2E6E8",
+        color: active || done ? "#121517" : "#667179",
+        backgroundColor: active ? "#F1FAFD" : "white",
+      }}
+    >
+      <span
+        className="grid h-5 w-5 place-items-center rounded-full text-[10px] font-bold"
+        style={{
+          backgroundColor: done || active ? "rgb(24, 167, 208)" : "#EEF1F3",
+          color: done || active ? "white" : "#667179",
+        }}
+      >
         {done ? "✓" : index}
       </span>
       {label}
@@ -26,12 +35,25 @@ function StepPill({ label, index, current }) {
   );
 }
 
-function Field({ label, children }) {
+function Field({ label, children, hint = "" }) {
   return (
     <label className="grid gap-2">
-      <span className="text-[12px] font-bold" style={{ color: "#121517" }}>{label}</span>
+      <div className="flex items-center justify-between gap-3">
+        <span className="text-[12px] font-bold" style={{ color: "#121517" }}>{label}</span>
+        {hint ? <span className="text-[11px]" style={{ color: "#667179" }}>{hint}</span> : null}
+      </div>
       {children}
     </label>
+  );
+}
+
+function SectionCard({ title, eyebrow = "", children }) {
+  return (
+    <div className="rounded-[18px] border bg-[#FBFCFD] p-4" style={{ borderColor: "#E2E6E8" }}>
+      {eyebrow ? <div className="text-[10px] font-bold uppercase tracking-[0.16em]" style={{ color: "rgb(24, 167, 208)" }}>{eyebrow}</div> : null}
+      <div className="mt-1 text-[15px] font-bold" style={{ color: "#121517" }}>{title}</div>
+      <div className="mt-3">{children}</div>
+    </div>
   );
 }
 
@@ -47,6 +69,7 @@ export default function Checkout({ cart, navigate }) {
     delivery: "Standard (3–5 working days)",
     paymentMethod: "Pay now",
     notes: "",
+    agree: false,
   });
 
   const items = cart?.items || [];
@@ -61,6 +84,7 @@ export default function Checkout({ cart, navigate }) {
     if (step === 1) return !!form.firstName && !!form.lastName && !!form.email;
     if (step === 3) return !!form.address1 && !!form.city && !!form.postcode;
     if (step === 5) return artworkState.mode === "later" || !!artworkState.file || !!artworkState.uploaded;
+    if (step === 7) return !!form.paymentMethod && form.agree;
     return true;
   }, [step, form, artworkState]);
 
@@ -118,6 +142,9 @@ export default function Checkout({ cart, navigate }) {
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: "rgb(24, 167, 208)" }}>Checkout</div>
             <h1 className="mt-2 text-[36px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Secure print order checkout</h1>
+            <p className="mt-2 max-w-[760px] text-[12px] leading-6" style={{ color: "#667179" }}>
+              A multi-step print-commerce flow with delivery, artwork, review and payment placeholders ready for live API integration.
+            </p>
           </div>
           <button onClick={() => navigate("/cart")} className="rounded-full border px-4 py-2 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>
             Back to cart
@@ -135,14 +162,14 @@ export default function Checkout({ cart, navigate }) {
                 <Field label="First name"><input value={form.firstName} onChange={(e) => setField("firstName", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
                 <Field label="Last name"><input value={form.lastName} onChange={(e) => setField("lastName", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
                 <Field label="Email"><input value={form.email} onChange={(e) => setField("email", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
-                <Field label="Phone"><input value={form.phone} onChange={(e) => setField("phone", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
+                <Field label="Phone" hint="Optional"><input value={form.phone} onChange={(e) => setField("phone", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
               </div>
             )}
 
             {step === 2 && (
               <div className="grid gap-4 sm:grid-cols-2">
-                <Field label="Company name"><input value={form.companyName} onChange={(e) => setField("companyName", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
-                <Field label="VAT number"><input value={form.vatNumber} onChange={(e) => setField("vatNumber", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
+                <Field label="Company name" hint="Optional"><input value={form.companyName} onChange={(e) => setField("companyName", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
+                <Field label="VAT number" hint="Optional"><input value={form.vatNumber} onChange={(e) => setField("vatNumber", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
                 <div className="sm:col-span-2 rounded-[16px] border bg-[#F8FBFC] p-4 text-[12px]" style={{ borderColor: "#E2E6E8", color: "#667179" }}>
                   Add company details if this is a business order or if you need invoicing information on the order.
                 </div>
@@ -152,7 +179,7 @@ export default function Checkout({ cart, navigate }) {
             {step === 3 && (
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="sm:col-span-2"><Field label="Address line 1"><input value={form.address1} onChange={(e) => setField("address1", e.target.value)} className="h-11 w-full rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field></div>
-                <div className="sm:col-span-2"><Field label="Address line 2"><input value={form.address2} onChange={(e) => setField("address2", e.target.value)} className="h-11 w-full rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field></div>
+                <div className="sm:col-span-2"><Field label="Address line 2" hint="Optional"><input value={form.address2} onChange={(e) => setField("address2", e.target.value)} className="h-11 w-full rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field></div>
                 <Field label="City"><input value={form.city} onChange={(e) => setField("city", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
                 <Field label="Postcode"><input value={form.postcode} onChange={(e) => setField("postcode", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
                 <Field label="Country"><input value={form.country} onChange={(e) => setField("country", e.target.value)} className="h-11 rounded-xl border px-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} /></Field>
@@ -162,19 +189,18 @@ export default function Checkout({ cart, navigate }) {
             {step === 4 && (
               <div className="grid gap-3">
                 {[
-                  { label: "Standard (3–5 working days)", fee: 0, icon: Truck },
-                  { label: "Express (24–48 hours)", fee: 9.95, icon: Truck },
-                  { label: "Priority same-day review", fee: 14.95, icon: Truck },
+                  { label: "Standard (3–5 working days)", fee: 0, desc: "Best-value default delivery option" },
+                  { label: "Express (24–48 hours)", fee: 9.95, desc: "Faster production and dispatch" },
+                  { label: "Priority same-day review", fee: 14.95, desc: "Urgent review and production queue" },
                 ].map((option) => {
-                  const Icon = option.icon;
                   const active = form.delivery === option.label;
                   return (
                     <button key={option.label} onClick={() => setField("delivery", option.label)} className="flex items-start justify-between rounded-[14px] border bg-white p-4 text-left shadow-[0_6px_16px_rgba(0,0,0,0.02)]" style={{ borderColor: active ? "rgb(24, 167, 208)" : "#E2E6E8", boxShadow: active ? "inset 0 0 0 1px rgb(24, 167, 208)" : "0 6px 16px rgba(0,0,0,0.02)" }}>
                       <div className="flex items-start gap-3">
-                        <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#F1FAFD]" style={{ color: "rgb(24, 167, 208)" }}><Icon className="h-5 w-5" /></div>
+                        <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#F1FAFD]" style={{ color: "rgb(24, 167, 208)" }}><Truck className="h-5 w-5" /></div>
                         <div>
                           <div className="text-[14px] font-bold" style={{ color: "#121517" }}>{option.label}</div>
-                          <div className="mt-1 text-[12px]" style={{ color: "#667179" }}>{option.fee ? "Faster production and dispatch" : "Best-value default delivery option"}</div>
+                          <div className="mt-1 text-[12px]" style={{ color: "#667179" }}>{option.desc}</div>
                         </div>
                       </div>
                       <div className="text-[14px] font-black" style={{ color: "#121517" }}>{option.fee ? currency(option.fee) : "Free"}</div>
@@ -208,35 +234,43 @@ export default function Checkout({ cart, navigate }) {
                 </div>
 
                 {artworkState.mode === "now" && (
-                  <div className="rounded-[16px] border bg-[#FBFCFD] p-4" style={{ borderColor: "#E2E6E8" }}>
-                    <label className="mb-3 block text-[12px] font-bold" style={{ color: "#121517" }}>Artwork file</label>
-                    <input type="file" onChange={(e) => setArtworkState((prev) => ({ ...prev, file: e.target.files?.[0] || null, uploaded: null, error: "" }))} />
-                    {artworkState.file && (
-                      <div className="mt-3 flex items-center justify-between rounded-[12px] border bg-white px-3 py-3 text-[12px]" style={{ borderColor: "#E2E6E8" }}>
-                        <div className="flex items-center gap-2" style={{ color: "#121517" }}><ImageIcon className="h-4 w-4" /> {artworkState.file.name}</div>
-                        <button onClick={handleArtworkUpload} className="rounded-full bg-[#121517] px-3 py-2 text-[11px] font-bold text-white">Upload file</button>
-                      </div>
-                    )}
-                    {artworkState.uploaded && <div className="mt-3 text-[12px]" style={{ color: "rgb(24, 167, 208)" }}>Artwork uploaded successfully.</div>}
-                    {artworkState.error && <div className="mt-3 text-[12px]" style={{ color: "#C23636" }}>{artworkState.error}</div>}
-                  </div>
+                  <SectionCard title="Artwork upload" eyebrow="Upload now">
+                    <div className="grid gap-3">
+                      <input type="file" onChange={(e) => setArtworkState((prev) => ({ ...prev, file: e.target.files?.[0] || null, uploaded: null, error: "" }))} />
+                      {artworkState.file && (
+                        <div className="flex items-center justify-between rounded-[12px] border bg-white px-3 py-3 text-[12px]" style={{ borderColor: "#E2E6E8" }}>
+                          <div className="flex items-center gap-2" style={{ color: "#121517" }}><ImageIcon className="h-4 w-4" /> {artworkState.file.name}</div>
+                          <button onClick={handleArtworkUpload} className="rounded-full bg-[#121517] px-3 py-2 text-[11px] font-bold text-white">Upload file</button>
+                        </div>
+                      )}
+                      {artworkState.uploaded && <div className="text-[12px]" style={{ color: "rgb(24, 167, 208)" }}>Artwork uploaded successfully.</div>}
+                      {artworkState.error && <div className="text-[12px]" style={{ color: "#C23636" }}>{artworkState.error}</div>}
+                    </div>
+                  </SectionCard>
+                )}
+
+                {artworkState.mode === "later" && (
+                  <SectionCard title="Upload later guidance" eyebrow="Artwork handoff">
+                    <div className="text-[12px] leading-6" style={{ color: "#667179" }}>
+                      You can place the order now and hand artwork over later. This route is useful when your design team is still preparing files.
+                    </div>
+                  </SectionCard>
                 )}
               </div>
             )}
 
             {step === 6 && (
               <div className="grid gap-5">
-                <div className="rounded-[16px] border bg-[#FBFCFD] p-4" style={{ borderColor: "#E2E6E8" }}>
-                  <div className="text-[14px] font-bold" style={{ color: "#121517" }}>Order review</div>
-                  <div className="mt-3 grid gap-2 text-[12px]" style={{ color: "#667179" }}>
+                <SectionCard title="Order review" eyebrow="Final check">
+                  <div className="grid gap-2 text-[12px]" style={{ color: "#667179" }}>
                     <div><b>Customer:</b> {form.firstName} {form.lastName}</div>
                     <div><b>Email:</b> {form.email}</div>
                     <div><b>Address:</b> {form.address1}, {form.city}, {form.postcode}</div>
                     <div><b>Delivery:</b> {form.delivery}</div>
                     <div><b>Artwork:</b> {artworkState.mode === "later" ? "Upload later" : artworkState.uploaded ? "Uploaded now" : "Ready to upload"}</div>
                   </div>
-                </div>
-                <Field label="Order notes">
+                </SectionCard>
+                <Field label="Order notes" hint="Optional">
                   <textarea value={form.notes} onChange={(e) => setField("notes", e.target.value)} className="min-h-[140px] rounded-[14px] border px-3 py-3 text-[13px]" style={{ borderColor: "#E2E6E8" }} />
                 </Field>
               </div>
@@ -256,6 +290,10 @@ export default function Checkout({ cart, navigate }) {
                     {form.paymentMethod === method && <Check className="h-5 w-5" style={{ color: "rgb(24, 167, 208)" }} />}
                   </button>
                 ))}
+                <label className="mt-2 flex items-start gap-3 rounded-[14px] border bg-[#FBFCFD] p-4 text-[12px]" style={{ borderColor: "#E2E6E8", color: "#667179" }}>
+                  <input type="checkbox" checked={form.agree} onChange={(e) => setField("agree", e.target.checked)} />
+                  <span>I confirm the order details are correct and understand this payment step is currently a frontend placeholder until the live payment integration is connected.</span>
+                </label>
               </div>
             )}
 
@@ -288,7 +326,7 @@ export default function Checkout({ cart, navigate }) {
                 )}
 
                 {step === 7 && (
-                  <button disabled={submitting} onClick={handleSubmit} className="rounded-full bg-[#121517] px-5 py-3 text-[12px] font-bold text-white disabled:opacity-50">
+                  <button disabled={submitting || !canContinue} onClick={handleSubmit} className="rounded-full bg-[#121517] px-5 py-3 text-[12px] font-bold text-white disabled:opacity-50">
                     {submitting ? "Submitting..." : "Place order"}
                   </button>
                 )}
@@ -331,7 +369,10 @@ export default function Checkout({ cart, navigate }) {
             </div>
 
             <div className="mt-5 rounded-[14px] border bg-[#F8FBFC] p-4 text-[12px]" style={{ borderColor: "#E2E6E8", color: "#667179" }}>
-              <div className="font-bold" style={{ color: "#121517" }}>Print-order guidance</div>
+              <div className="flex items-center gap-2 font-bold" style={{ color: "#121517" }}>
+                <ShieldCheck className="h-4 w-4" style={{ color: "rgb(24, 167, 208)" }} />
+                Print-order guidance
+              </div>
               <div className="mt-2">Artwork can be uploaded now or after the order is placed. Delivery options and payment methods are ready for real API integration.</div>
             </div>
           </div>

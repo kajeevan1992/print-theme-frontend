@@ -30,6 +30,19 @@ export default function Account({ navigate }) {
           </button>
         </div>
 
+        <div className="mb-5 grid gap-4 md:grid-cols-3">
+          {[
+            ["Orders", String(orders.length || 0)],
+            ["Artwork status", "Awaiting API sync"],
+            ["Reorders", "Ready later"],
+          ].map(([label, value]) => (
+            <div key={label} className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: "#E2E6E8" }}>
+              <div className="text-[11px] font-bold uppercase tracking-[0.14em]" style={{ color: "#667179" }}>{label}</div>
+              <div className="mt-2 text-[24px] font-black tracking-[-0.03em]" style={{ color: "#121517" }}>{value}</div>
+            </div>
+          ))}
+        </div>
+
         {loading ? (
           <div className="rounded-[18px] border bg-white p-6 text-[12px]" style={{ borderColor: "#E2E6E8", color: "#667179" }}>Loading orders…</div>
         ) : orders.length === 0 ? (
