@@ -554,6 +554,16 @@ const categoryPages = {
     heroImage: "/images/business-card-front.svg",
     trust: ["Fast turnaround", "Premium stocks", "Bulk pricing", "Artwork support"],
     quickLinks: ["Standard Cards", "Premium Cards", "Rounded Corner Cards", "Loyalty Cards", "Eco Cards"],
+    subcategories: ["Standard Business Cards", "Luxury Business Cards", "Rounded Corner Cards", "Folded Cards", "Square Cards", "Eco Cards"],
+    supportCards: [
+      ["Need help choosing stock?", "Compare matte, gloss, eco and premium options before ordering."],
+      ["Ordering for a team?", "Use bulk pricing and repeat-order support for larger businesses."],
+      ["Need custom finishing?", "Use the bespoke quote route for specialist sizes and finishes."],
+    ],
+    testimonials: [
+      "The business card range was much easier to browse after the category-page redesign.",
+      "Clearer featured products and quick links made choosing the right card type much faster.",
+    ],
     featured: [
       { title: "Classic Business Cards", text: "The most-used business card range for brands, teams and client-facing work.", path: "/standard-business-cards", image: "/images/business-card-front.svg" },
       { title: "Premium Business Cards", text: "Thicker stocks and stronger finishes for a more premium presentation.", path: "/standard-business-cards", image: "/images/business-card-back.svg" },
@@ -585,6 +595,16 @@ const categoryPages = {
     heroImage: "/images/flyer-front.svg",
     trust: ["Quick handouts", "Multiple sizes", "Simple reorder flow", "Menu printing"],
     quickLinks: ["A6 Flyers", "A5 Flyers", "A4 Flyers", "DL Flyers", "Folded Flyers"],
+    subcategories: ["A6 Flyers", "A5 Flyers", "A4 Flyers", "DL Flyers", "Folded Flyers", "Menus"],
+    supportCards: [
+      ["Need menu printing?", "Category-level guidance helps customers choose the right flyer style faster."],
+      ["Planning a campaign?", "Use featured formats and quick links for faster decision-making."],
+      ["Need custom folds?", "Route specialist formats through bespoke quote support."],
+    ],
+    testimonials: [
+      "The flyer category page feels much closer to a real print storefront now.",
+      "The quick-link structure helps customers move to the right flyer size much faster.",
+    ],
     featured: [
       { title: "A5 Flyers", text: "A balanced size for promotional campaigns, menus and branded handouts.", path: "/flyers", image: "/images/flyer-front.svg" },
       { title: "DL Flyers", text: "Slim, menu-ready format ideal for hospitality and takeaway promotions.", path: "/flyers", image: "/images/flyer-back.svg" },
@@ -616,6 +636,16 @@ const categoryPages = {
     heroImage: "/images/poster-main.svg",
     trust: ["Large format sizes", "Indoor & outdoor", "Display materials", "Custom sizing"],
     quickLinks: ["A3 Posters", "A2 Posters", "A1 Posters", "A0 Posters", "PVC & Vinyl"],
+    subcategories: ["A3 Posters", "A2 Posters", "A1 Posters", "A0 Posters", "PVC Posters", "Retail POS"],
+    supportCards: [
+      ["Need outdoor material?", "PVC and vinyl options can be highlighted at category level."],
+      ["Unsure on poster size?", "Use the featured range to compare the most-used formats quickly."],
+      ["Need custom dimensions?", "Use bespoke quote support for custom large-format requests."],
+    ],
+    testimonials: [
+      "The new poster category page feels much more commercial and browseable.",
+      "Large-format products are grouped better and easier to understand now.",
+    ],
     featured: [
       { title: "A2 Posters", text: "A versatile poster format for promotions, in-store notices and events.", path: "/posters-large-format-prints", image: "/images/poster-main.svg" },
       { title: "A1 Posters", text: "A stronger promotional format for retail windows and wall displays.", path: "/posters-large-format-prints", image: "/images/poster-main.svg" },
@@ -647,6 +677,16 @@ const categoryPages = {
     heroImage: "/images/hero-slide-2.svg",
     trust: ["Stapled & bound", "Brochure ready", "Manuals & booklets", "Bulk print support"],
     quickLinks: ["Stapled Booklets", "Wiro Bound", "Perfect Bound", "Brochures", "Manuals"],
+    subcategories: ["Stapled Booklets", "Wiro Bound", "Perfect Bound", "Brochures", "Manuals", "Lookbooks"],
+    supportCards: [
+      ["Need help with binding?", "Use featured booklet types to compare popular binding methods."],
+      ["Printing for presentations?", "Guide brochure and booklet customers with clearer entry points."],
+      ["Need a custom page count?", "Use bespoke support for specialist booklet production."],
+    ],
+    testimonials: [
+      "Booklet customers now get a much better category-level introduction before configuration.",
+      "The extra category content makes brochure browsing feel more premium and structured.",
+    ],
     featured: [
       { title: "Stapled Booklets", text: "The most common booklet option for brochures, programmes and product guides.", path: "/booklets", image: "/images/hero-slide-2.svg" },
       { title: "Wiro Bound Booklets", text: "A premium bound style for presentations, manuals and notebooks.", path: "/booklets", image: "/images/hero-slide-2.svg" },
@@ -671,8 +711,18 @@ const categoryPages = {
   },
 };
 
+
 function CategoryPage({ kind, navigate }) {
   const page = categoryPages[kind];
+  const leadPath =
+    kind === "businessCards"
+      ? "/standard-business-cards"
+      : kind === "flyers"
+        ? "/flyers"
+        : kind === "posters"
+          ? "/posters-large-format-prints"
+          : "/booklets";
+
   return (
     <section className="py-6">
       <Shell narrow>
@@ -682,13 +732,13 @@ function CategoryPage({ kind, navigate }) {
           <span>{page.title}</span>
         </div>
 
-        <div className="overflow-hidden rounded-[22px] border bg-white shadow-[0_14px_30px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
+        <div className="overflow-hidden rounded-[24px] border bg-white shadow-[0_16px_34px_rgba(0,0,0,0.04)]" style={{ borderColor: BRAND.line }}>
           <div className="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">
             <div className="p-6 md:p-8">
               <div className="inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>
                 {page.eyebrow}
               </div>
-              <h1 className="mt-4 text-[42px] font-black leading-[0.95] tracking-[-0.05em]" style={{ color: BRAND.ink }}>
+              <h1 className="mt-4 text-[44px] font-black leading-[0.95] tracking-[-0.05em]" style={{ color: BRAND.ink }}>
                 {page.title}
               </h1>
               <p className="mt-4 max-w-[620px] text-[13px] leading-7" style={{ color: BRAND.muted }}>
@@ -702,15 +752,14 @@ function CategoryPage({ kind, navigate }) {
                 ))}
               </div>
               <div className="mt-6 flex flex-wrap gap-3">
-                <PrimaryButton onClick={() => navigate(kind === "businessCards" ? "/standard-business-cards" : kind === "flyers" ? "/flyers" : kind === "posters" ? "/posters-large-format-prints" : "/booklets")}>
-                  Shop featured range
-                </PrimaryButton>
+                <PrimaryButton onClick={() => navigate(leadPath)}>Shop featured range</PrimaryButton>
                 <SecondaryButton onClick={() => navigate("/bespoke-quote")}>Request custom quote</SecondaryButton>
               </div>
             </div>
+
             <div className="bg-[linear-gradient(180deg,#F8FBFC,#F1F5F7)] p-5">
-              <div className="overflow-hidden rounded-[18px] border bg-white shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
-                <img src={page.heroImage} alt={page.title} className="h-[330px] w-full object-cover" />
+              <div className="overflow-hidden rounded-[20px] border bg-white shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+                <img src={page.heroImage} alt={page.title} className="h-[340px] w-full object-cover" />
               </div>
               <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
                 {page.quickLinks.map((item) => (
@@ -720,6 +769,30 @@ function CategoryPage({ kind, navigate }) {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-5 rounded-[22px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+          <div className="mb-4 flex items-end justify-between gap-4">
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Popular in this category</div>
+              <div className="mt-2 text-[28px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>
+                Quick ways into the {page.title.toLowerCase()} range
+              </div>
+            </div>
+            <SecondaryButton onClick={() => navigate(leadPath)}>Go to product</SecondaryButton>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {page.subcategories.map((item) => (
+              <button
+                key={item}
+                onClick={() => navigate(leadPath)}
+                className="rounded-full border bg-white px-4 py-3 text-[12px] font-semibold shadow-[0_6px_14px_rgba(0,0,0,0.02)]"
+                style={{ borderColor: BRAND.line, color: BRAND.ink }}
+              >
+                {item}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -750,7 +823,7 @@ function CategoryPage({ kind, navigate }) {
             {page.grid.map((item, idx) => (
               <button
                 key={item}
-                onClick={() => navigate(kind === "businessCards" ? "/standard-business-cards" : kind === "flyers" ? "/flyers" : kind === "posters" ? "/posters-large-format-prints" : "/booklets")}
+                onClick={() => navigate(leadPath)}
                 className="group rounded-[16px] border bg-white p-3 text-left shadow-[0_8px_20px_rgba(0,0,0,0.02)] transition hover:-translate-y-[1px] hover:shadow-[0_14px_28px_rgba(0,0,0,0.05)]"
                 style={{ borderColor: BRAND.line }}
               >
@@ -762,6 +835,15 @@ function CategoryPage({ kind, navigate }) {
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="mt-6 grid gap-4 lg:grid-cols-3">
+          {page.supportCards.map(([title, text]) => (
+            <div key={title} className="rounded-[20px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.025)]" style={{ borderColor: BRAND.line }}>
+              <div className="text-[15px] font-bold" style={{ color: BRAND.ink }}>{title}</div>
+              <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{text}</p>
+            </div>
+          ))}
         </div>
 
         <div className="mt-6 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
@@ -780,6 +862,18 @@ function CategoryPage({ kind, navigate }) {
                 <div key={item} className="flex items-start gap-3 text-[12px]" style={{ color: BRAND.muted }}>
                   <Check className="mt-0.5 h-4 w-4" style={{ color: BRAND.primary }} />
                   <span>{item}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              {page.testimonials.map((item) => (
+                <div key={item} className="rounded-[14px] border bg-[#FBFBFB] p-4" style={{ borderColor: BRAND.line }}>
+                  <div className="flex gap-1" style={{ color: BRAND.primary }}>
+                    <Check className="h-4 w-4" />
+                    <Check className="h-4 w-4" />
+                    <Check className="h-4 w-4" />
+                  </div>
+                  <p className="mt-3 text-[12px] leading-6" style={{ color: BRAND.ink }}>“{item}”</p>
                 </div>
               ))}
             </div>

@@ -200,3 +200,10 @@ Use these values:
 - made category pages closer to the example style: hero, quick links, featured tiles, product grid and FAQ
 - updated top navigation and homepage collection cards to open category pages first
 - kept individual product pages as the next step after category browsing
+
+
+## Category pages next build
+- expanded category pages with subcategory chip navigation
+- added support cards and category testimonials
+- improved category hero, quick links and browse flow density
+- made category landing pages feel more complete before product-page entry
