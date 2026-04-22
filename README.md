@@ -195,22 +195,9 @@ Use these values:
 - improved accordion polish
 
 
-## Category pages
-- added dedicated category landing pages for business cards, flyers, posters and booklets
-- made category pages closer to the example style: hero, quick links, featured tiles, product grid and FAQ
-- updated top navigation and homepage collection cards to open category pages first
-- kept individual product pages as the next step after category browsing
-
-
-## Category pages next build
-- expanded category pages with subcategory chip navigation
-- added support cards and category testimonials
-- improved category hero, quick links and browse flow density
-- made category landing pages feel more complete before product-page entry
-
-
-## Category pages build 3
-- added extra conversion/info row above support cards
-- added bottom category CTA strip
-- improved category card copy wording
-- strengthened category hero title styling
+## Checkout UX build
+- added proper stepper-style checkout route
+- added delivery option cards, artwork now/later flow, review and payment steps
+- connected checkout submit to orders API service layer
+- added customer account route with safe orders fallback
+- wired cart proceed button and account navigation into the storefront

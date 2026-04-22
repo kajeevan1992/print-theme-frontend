@@ -315,32 +315,17 @@ button[style*="inset 0 0 0 1px rgb(24, 167, 208)"] {
 }
 
 
-/* category pages */
-@media (max-width: 1024px) {
-  .lg\:grid-cols-\[1\.02fr_0\.98fr\] {
-    grid-template-columns: 1fr !important;
-  }
+/* checkout/account UX build */
+input, textarea, select {
+  background: white;
 }
 
-
-/* category pages next build */
-@media (max-width: 1024px) {
-  .lg\:grid-cols-3,
-  .lg\:grid-cols-\[1\.05fr_0\.95fr\] {
-    grid-template-columns: 1fr !important;
-  }
+input[type="file"] {
+  display: block;
+  width: 100%;
+  font-size: 12px;
 }
 
-
-/* category pages build 3 */
-@media (max-width: 1024px) {
-  .md\:grid-cols-4 {
-    grid-template-columns: 1fr 1fr !important;
-  }
-}
-
-@media (max-width: 640px) {
-  .md\:grid-cols-4 {
-    grid-template-columns: 1fr !important;
-  }
+details summary {
+  user-select: none;
 }
