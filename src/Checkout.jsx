@@ -101,11 +101,11 @@ export default function Checkout({ cart, navigate }) {
 
   return (
     <section className="py-6">
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1140px] px-4 sm:px-6 lg:px-8">
         <div className="mb-5 flex items-end justify-between gap-4">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: "rgb(24, 167, 208)" }}>Checkout</div>
-            <h1 className="mt-2 text-[36px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Secure print order checkout</h1>
+            <h1 className="mt-2 text-[30px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Secure print order checkout</h1>
             <p className="mt-2 max-w-[760px] text-[12px] leading-6" style={{ color: "#667179" }}>A multi-step print-commerce flow with delivery, artwork, review and payment placeholders ready for live API integration.</p>
           </div>
           <button onClick={() => navigate("/cart")} className="rounded-full border px-4 py-2 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Back to cart</button>

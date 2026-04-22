@@ -223,3 +223,10 @@ Use these values:
 - finished billing + delivery address step in checkout
 - added order detail route and safer account-to-order flow
 - improved artwork handoff to send order-linked metadata and fail gracefully
+
+
+## Customer flow next build
+- refined auth page layout and hierarchy
+- improved account dashboard cards and recent-order actions
+- tightened order-detail page sections and customer actions
+- reduced width/spacing on artwork and checkout pages for a denser portal feel

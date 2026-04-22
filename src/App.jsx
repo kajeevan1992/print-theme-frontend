@@ -25,6 +25,7 @@ import Checkout from "./Checkout";
 import Account from "./Account";
 import ArtworkUpload from "./ArtworkUpload";
 import OrderDetail from "./OrderDetail";
+import AuthPage from "./AuthPage";
 
 const BRAND = {
   bg: "#F1F4F6",
@@ -654,7 +655,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
 
             <div className="ml-auto flex items-center gap-2">
               <IconButton icon={<Search className="h-4 w-4" />} />
-              <button onClick={() => navigate("/account")}><IconButton icon={<User className="h-4 w-4" />} /></button>
+              <button onClick={() => navigate("/login")}><IconButton icon={<User className="h-4 w-4" />} /></button>
               <button onClick={() => navigate("/cart")} className="flex items-center gap-2 rounded-xl border px-3 py-2 text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted, backgroundColor: "white" }}>
                 <ShoppingCart className="h-4 w-4" />
                 <span>{currency(cartSubtotal)}</span>
@@ -1640,6 +1641,9 @@ export default function App() {
       break;
     case "/checkout":
       page = <Checkout cart={cart} navigate={navigate} />;
+      break;
+    case "/login":
+      page = <AuthPage navigate={navigate} />;
       break;
     case "/account":
       page = <Account navigate={navigate} setSelectedOrder={setSelectedOrder} />;
