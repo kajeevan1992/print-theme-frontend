@@ -23,6 +23,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Checkout from "./Checkout";
 import Account from "./Account";
+import ArtworkUpload from "./ArtworkUpload";
+import OrderDetail from "./OrderDetail";
 
 const BRAND = {
   bg: "#F1F4F6",
@@ -1592,9 +1594,26 @@ function SecondaryButton({ children, className = "", ...props }) {
   );
 }
 
+class StorefrontErrorBoundary extends React.Component {
+  constructor(props) { super(props); this.state = { hasError: false }; }
+  static getDerivedStateFromError() { return { hasError: true }; }
+  componentDidCatch() {}
+  render() {
+    if (this.state.hasError) {
+      return (<section className="py-6"><div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8"><div className="rounded-[18px] border bg-white p-6 text-[12px]" style={{ borderColor: "#E2E6E8", color: "#667179" }}>This storefront route hit a rendering problem, so a safe fallback was shown instead of crashing.</div></div></section>);
+    }
+    return this.props.children;
+  }
+}
+
+function NotFoundPage({ navigate }) {
+  return (<section className="py-6"><div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8"><div className="rounded-[18px] border bg-white p-6" style={{ borderColor: "#E2E6E8" }}><div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: "rgb(24, 167, 208)" }}>Storefront route</div><h1 className="mt-2 text-[32px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Page not found</h1><p className="mt-3 text-[12px] leading-6" style={{ color: "#667179" }}>This storefront route does not exist yet. Showing a safe fallback keeps the standalone build stable.</p><div className="mt-4"><button onClick={() => navigate("/")} className="rounded-full border px-4 py-2 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Back to storefront</button></div></div></div></section>);
+}
+
 export default function App() {
   const { path, navigate } = usePathState();
   const cart = useCart();
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
   let page;
   switch (path) {
@@ -1623,17 +1642,26 @@ export default function App() {
       page = <Checkout cart={cart} navigate={navigate} />;
       break;
     case "/account":
-      page = <Account navigate={navigate} />;
+      page = <Account navigate={navigate} setSelectedOrder={setSelectedOrder} />;
+      break;
+    case "/account/order":
+      page = <OrderDetail order={selectedOrder} navigate={navigate} />;
+      break;
+    case "/artwork-upload":
+      page = <ArtworkUpload navigate={navigate} />;
+      break;
+    case "/":
+      page = <HomePage navigate={navigate} />;
       break;
     default:
-      page = <HomePage navigate={navigate} />;
+      page = <NotFoundPage navigate={navigate} />;
   }
 
   return (
     <div style={{ backgroundColor: BRAND.bg, color: BRAND.ink }}>
       <UtilityBar />
       <Header navigate={navigate} currentPath={path} cartCount={cart.items.length} cartSubtotal={cart.subtotal} />
-      {page}
+      <StorefrontErrorBoundary>{page}</StorefrontErrorBoundary>
       <Footer navigate={navigate} />
     </div>
   );

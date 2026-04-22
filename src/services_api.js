@@ -1,55 +1,53 @@
 
-const API_BASE = "/api/proxy";
+const RAW_API_BASE =
+  (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_API_BASE_URL)
+    ? String(import.meta.env.VITE_API_BASE_URL).replace(/\/$/, "")
+    : "/api/proxy";
+
+const API_BASE = RAW_API_BASE;
 
 async function safeJson(res) {
+  try { return await res.json(); } catch { return null; }
+}
+
+async function safeFetch(path, options = {}) {
   try {
-    return await res.json();
+    const res = await fetch(`${API_BASE}${path}`, options);
+    const data = await safeJson(res);
+    return { ok: res.ok, status: res.status, data, message: data?.message || (!res.ok ? `Request failed (${res.status})` : "") };
   } catch {
-    return null;
+    return { ok: false, status: 0, data: null, message: "API unavailable" };
   }
 }
 
+export async function getHealth() { return safeFetch('/health'); }
 export async function getProducts() {
-  try {
-    const res = await fetch(`${API_BASE}/products`);
-    return (await safeJson(res)) || [];
-  } catch {
-    return [];
-  }
+  const res = await safeFetch('/products');
+  return Array.isArray(res.data) ? res.data : [];
 }
-
 export async function createOrder(payload) {
-  try {
-    const res = await fetch(`${API_BASE}/orders`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    return (await safeJson(res)) || { success: false, message: "No response body" };
-  } catch {
-    return { success: false, message: "Orders API unavailable" };
-  }
+  const res = await safeFetch('/orders', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  return res.ok ? (res.data || { success: true, message: 'Order submitted' }) : { success: false, message: res.message || 'Orders API unavailable' };
 }
-
 export async function getOrders() {
-  try {
-    const res = await fetch(`${API_BASE}/orders-list`);
-    return (await safeJson(res)) || [];
-  } catch {
-    return [];
-  }
+  const res = await safeFetch('/orders-list');
+  return Array.isArray(res.data) ? res.data : [];
 }
-
-export async function uploadArtwork(file) {
+export async function uploadArtwork(file, meta = {}) {
   try {
     const form = new FormData();
-    form.append("file", file);
-    const res = await fetch(`${API_BASE}/artwork`, {
-      method: "POST",
-      body: form,
+    form.append('file', file);
+    Object.entries(meta).forEach(([key, value]) => {
+      if (value !== undefined && value !== null && value !== '') form.append(key, String(value));
     });
-    return (await safeJson(res)) || { success: false, message: "No response body" };
+    const res = await fetch(`${API_BASE}/artwork`, { method: 'POST', body: form });
+    const data = await safeJson(res);
+    return res.ok ? (data || { success: true }) : { success: false, message: data?.message || `Artwork upload failed (${res.status})` };
   } catch {
-    return { success: false, message: "Artwork API unavailable" };
+    return { success: false, message: 'Artwork API unavailable' };
   }
 }

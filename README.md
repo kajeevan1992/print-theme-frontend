@@ -209,3 +209,17 @@ Use these values:
 - improved artwork now/later messaging and upload state
 - strengthened confirmation page
 - upgraded account page with stats cards and safer order rendering
+
+
+## Checkout/account next build
+- added dedicated artwork upload route
+- improved account area with artwork and reorder shortcuts
+- made checkout/account flow feel more end-to-end for print-commerce handoff
+
+
+## Frontend 5-point pass
+- added standalone-friendly API service with env-based base URL support
+- added runtime-safe error boundary and not-found page
+- finished billing + delivery address step in checkout
+- added order detail route and safer account-to-order flow
+- improved artwork handoff to send order-linked metadata and fail gracefully

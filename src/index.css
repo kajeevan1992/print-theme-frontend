@@ -347,3 +347,22 @@ input[type="file"] {
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* checkout/account next-next build */
+input[type="file"] {
+  background: transparent;
+}
+
+
+/* storefront stability and standalone pass */
+input[type="file"] {
+  background: transparent;
+}
+
+@media (max-width: 1024px) {
+  .lg\:grid-cols-\[1fr_360px\],
+  .lg\:grid-cols-\[1fr_340px\] {
+    grid-template-columns: 1fr !important;
+  }
+}
