@@ -207,3 +207,10 @@ Use these values:
 - added support cards and category testimonials
 - improved category hero, quick links and browse flow density
 - made category landing pages feel more complete before product-page entry
+
+
+## Category pages build 3
+- added extra conversion/info row above support cards
+- added bottom category CTA strip
+- improved category card copy wording
+- strengthened category hero title styling

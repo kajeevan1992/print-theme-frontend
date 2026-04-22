@@ -330,3 +330,17 @@ button[style*="inset 0 0 0 1px rgb(24, 167, 208)"] {
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* category pages build 3 */
+@media (max-width: 1024px) {
+  .md\:grid-cols-4 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .md\:grid-cols-4 {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -738,7 +738,7 @@ function CategoryPage({ kind, navigate }) {
               <div className="inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>
                 {page.eyebrow}
               </div>
-              <h1 className="mt-4 text-[44px] font-black leading-[0.95] tracking-[-0.05em]" style={{ color: BRAND.ink }}>
+              <h1 className="mt-4 text-[46px] font-black leading-[0.94] tracking-[-0.052em]" style={{ color: BRAND.ink }}>
                 {page.title}
               </h1>
               <p className="mt-4 max-w-[620px] text-[13px] leading-7" style={{ color: BRAND.muted }}>
@@ -830,11 +830,25 @@ function CategoryPage({ kind, navigate }) {
                 <img src={(kind === "businessCards" ? "/images/business-card-front.svg" : kind === "flyers" ? "/images/flyer-front.svg" : kind === "posters" ? "/images/poster-main.svg" : "/images/hero-slide-2.svg")} alt={item} className="h-28 w-full rounded-[12px] object-cover" />
                 <div className="mt-3 text-[13px] font-bold" style={{ color: BRAND.ink }}>{item}</div>
                 <div className="mt-1 text-[11px]" style={{ color: BRAND.muted }}>
-                  {idx % 2 === 0 ? "Popular option" : "Available with custom specs"}
+                  {idx % 2 === 0 ? "Best seller in category" : "Custom sizes and finishes available"}
                 </div>
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-4">
+          {[
+            ["Best for first orders", "Start with the most popular format in this category."],
+            ["Bulk pricing available", "Move larger requirements into your bespoke quote flow."],
+            ["Artwork support", "Useful support messaging before product configuration."],
+            ["Fast turnaround", "Guide users toward urgent print options more clearly."],
+          ].map(([title, text]) => (
+            <div key={title} className="rounded-[20px] border bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.025)]" style={{ borderColor: BRAND.line }}>
+              <div className="text-[13px] font-bold" style={{ color: BRAND.ink }}>{title}</div>
+              <p className="mt-2 text-[11px] leading-6" style={{ color: BRAND.muted }}>{text}</p>
+            </div>
+          ))}
         </div>
 
         <div className="mt-6 grid gap-4 lg:grid-cols-3">
@@ -844,6 +858,24 @@ function CategoryPage({ kind, navigate }) {
               <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{text}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-6 rounded-[22px] border bg-white p-5 shadow-[0_12px_28px_rgba(0,0,0,0.03)]" style={{ borderColor: BRAND.line }}>
+          <div className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Need a faster route?</div>
+              <div className="mt-2 text-[26px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>
+                Jump straight into the most popular product or request a bespoke quote.
+              </div>
+              <p className="mt-2 max-w-[740px] text-[12px] leading-6" style={{ color: BRAND.muted }}>
+                This extra category-level CTA block makes the page feel closer to a real commercial storefront with clearer next steps for standard and custom requirements.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <PrimaryButton onClick={() => navigate(leadPath)}>Go to featured product</PrimaryButton>
+              <SecondaryButton onClick={() => navigate("/bespoke-quote")}>Talk to print support</SecondaryButton>
+            </div>
+          </div>
         </div>
 
         <div className="mt-6 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
