@@ -76,7 +76,7 @@ export default function OrderDetail({ order, navigate }) {
             </div>
 
             <div className="rounded-[16px] border bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: "#E2E6E8" }}>
-              <div className="text-[14px] font-black" style={{ color: "#121517" }}>Items</div>
+              <div className="text-[14px] font-black" style={{ color: "#121517" }}>Order items</div>
               <div className="mt-3 text-[12px] leading-6" style={{ color: "#667179" }}>
                 Item-level product detail is ready for live API binding. This page is laid out for real product rows, proofs, invoices and delivery updates.
               </div>
@@ -84,7 +84,8 @@ export default function OrderDetail({ order, navigate }) {
           </div>
 
           <div className="rounded-[16px] border bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: "#E2E6E8", height: "fit-content" }}>
-            <div className="text-[18px] font-black tracking-[-0.03em]" style={{ color: "#121517" }}>Next action</div>
+            <div className="text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: "rgb(24, 167, 208)" }}>Next action</div>
+            <div className="mt-2 text-[18px] font-black tracking-[-0.03em]" style={{ color: "#121517" }}>Complete the next step for this print job.</div>
             <div className="mt-4 grid gap-3">
               <button onClick={() => navigate("/artwork-upload")} className="rounded-full bg-[#121517] px-4 py-3 text-[11px] font-bold uppercase tracking-[0.08em] text-white">
                 Upload artwork

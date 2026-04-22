@@ -22,7 +22,7 @@ export default function ArtworkUpload({ navigate }) {
 
   return (
     <section className="py-6">
-      <div className="mx-auto max-w-[1040px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1000px] px-4 sm:px-6 lg:px-8">
         <div className="mb-5 flex items-end justify-between gap-4">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: "rgb(24, 167, 208)" }}>Artwork handoff</div>

@@ -237,3 +237,10 @@ Use these values:
 - restructured account page into summary + actions + denser order rows
 - improved order detail into a job-management style page with simple progress strip
 - tightened checkout/artwork widths for a denser portal feel
+
+
+## Customer flow build 5
+- added a needs-attention strip to account dashboard
+- made account summary/actions feel more like job management
+- improved order detail next-action panel
+- tightened checkout/artwork widths again for a denser portal feel

@@ -25,24 +25,48 @@ export default function Account({ navigate, setSelectedOrder }) {
     });
   }, []);
 
+  const needsAttention = orders.length ? 1 : 0;
+
   return (
     <section className="py-6">
-      <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1160px] px-4 sm:px-6 lg:px-8">
         <div className="mb-5 flex items-end justify-between gap-4">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: "rgb(24, 167, 208)" }}>Customer account</div>
-            <h1 className="mt-2 text-[32px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Your print-job dashboard</h1>
+            <h1 className="mt-2 text-[30px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Your print-job dashboard</h1>
           </div>
           <button onClick={() => navigate("/")} className="rounded-full border px-4 py-2 text-[11px] font-bold uppercase tracking-[0.08em]" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>
             Back to store
           </button>
         </div>
 
-        <div className="mb-5 grid gap-4 lg:grid-cols-[1fr_300px]">
+        <div className="mb-5 rounded-[16px] border bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: "#E2E6E8" }}>
+          <div className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: "rgb(24, 167, 208)" }}>Needs attention</div>
+              <div className="mt-2 text-[22px] font-black tracking-[-0.03em]" style={{ color: "#121517" }}>
+                {needsAttention ? "One or more jobs may need artwork or customer action." : "No urgent customer actions right now."}
+              </div>
+              <div className="mt-2 text-[12px] leading-6" style={{ color: "#667179" }}>
+                Use the action panel or jump into an order to upload artwork, continue a checkout or review the latest job details.
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <button onClick={() => navigate("/artwork-upload")} className="rounded-full bg-[#121517] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-white">
+                Upload artwork
+              </button>
+              <button onClick={() => navigate("/checkout")} className="rounded-full border px-4 py-2 text-[11px] font-bold uppercase tracking-[0.08em]" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>
+                Start order
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="mb-5 grid gap-4 lg:grid-cols-[1fr_280px]">
           <div className="grid gap-4 md:grid-cols-4">
             {[
               ["Orders", String(orders.length || 0)],
-              ["Awaiting artwork", orders.length ? "Live later" : "0"],
+              ["Awaiting artwork", needsAttention ? "1" : "0"],
               ["In production", "API later"],
               ["Completed", "API later"],
             ].map(([label, value]) => (
@@ -56,9 +80,9 @@ export default function Account({ navigate, setSelectedOrder }) {
           <div className="rounded-[16px] border bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: "#E2E6E8" }}>
             <div className="text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: "rgb(24, 167, 208)" }}>Quick actions</div>
             <div className="mt-4 grid gap-3">
-              <button onClick={() => navigate("/artwork-upload")} className="rounded-full bg-[#121517] px-4 py-2 text-[12px] font-bold text-white">Upload artwork</button>
-              <button onClick={() => navigate("/checkout")} className="rounded-full border px-4 py-2 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Start new order</button>
-              <button onClick={() => navigate("/login")} className="rounded-full border px-4 py-2 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Login & account</button>
+              <button onClick={() => navigate("/artwork-upload")} className="rounded-full bg-[#121517] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-white">Upload artwork</button>
+              <button onClick={() => navigate("/checkout")} className="rounded-full border px-4 py-2 text-[11px] font-bold uppercase tracking-[0.08em]" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Start new order</button>
+              <button onClick={() => navigate("/login")} className="rounded-full border px-4 py-2 text-[11px] font-bold uppercase tracking-[0.08em]" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Login & account</button>
             </div>
           </div>
         </div>
@@ -66,7 +90,7 @@ export default function Account({ navigate, setSelectedOrder }) {
         <div className="mb-4 flex items-end justify-between gap-4">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: "rgb(24, 167, 208)" }}>Recent orders</div>
-            <div className="mt-2 text-[26px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Current jobs and next actions</div>
+            <div className="mt-2 text-[24px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Current jobs and next actions</div>
           </div>
         </div>
 

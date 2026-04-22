@@ -385,3 +385,12 @@ input[type="file"] {
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* customer flow build 5 */
+@media (max-width: 1024px) {
+  .lg\:grid-cols-\[1fr_280px\],
+  .lg\:grid-cols-\[1fr_300px\] {
+    grid-template-columns: 1fr !important;
+  }
+}
