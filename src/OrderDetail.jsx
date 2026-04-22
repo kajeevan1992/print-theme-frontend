@@ -9,10 +9,14 @@ export default function OrderDetail({ order, navigate }) {
   if (!order) {
     return (
       <section className="py-6">
-        <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
           <div className="rounded-[18px] border bg-white p-6 text-[12px]" style={{ borderColor: "#E2E6E8", color: "#667179" }}>
             Order details are unavailable. This route stays safe instead of crashing if order data is missing.
-            <div className="mt-4"><button onClick={() => navigate("/account")} className="rounded-full border px-4 py-2 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Back to account</button></div>
+            <div className="mt-4">
+              <button onClick={() => navigate("/account")} className="rounded-full border px-4 py-2 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>
+                Back to account
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -21,37 +25,55 @@ export default function OrderDetail({ order, navigate }) {
 
   return (
     <section className="py-6">
-      <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
         <div className="mb-5 flex items-end justify-between gap-4">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: "rgb(24, 167, 208)" }}>Order detail</div>
-            <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Order #{order.id || "Pending"}</h1>
+            <h1 className="mt-2 text-[32px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Order #{order.id || "Pending"}</h1>
           </div>
           <div className="flex flex-wrap gap-3">
-            <button onClick={() => navigate("/artwork-upload")} className="rounded-full bg-[#121517] px-4 py-2 text-[12px] font-bold text-white">Upload artwork</button>
-            <button onClick={() => navigate("/account")} className="rounded-full border px-4 py-2 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Back to account</button>
+            <button onClick={() => navigate("/artwork-upload")} className="rounded-full bg-[#121517] px-4 py-2 text-[12px] font-bold text-white">
+              Upload artwork
+            </button>
+            <button onClick={() => navigate("/account")} className="rounded-full border px-4 py-2 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>
+              Back to account
+            </button>
           </div>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
+        <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
           <div className="grid gap-4">
             <div className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: "#E2E6E8" }}>
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div><div className="text-[11px] font-bold uppercase tracking-[0.14em]" style={{ color: "#667179" }}>Order status</div><div className="mt-2 text-[24px] font-black tracking-[-0.03em]" style={{ color: "#121517" }}>{order.status || "Processing"}</div></div>
-                <div className="rounded-full border px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em]" style={{ borderColor: "#E2E6E8", color: "rgb(24, 167, 208)" }}>{order.artwork_status || "Awaiting artwork"}</div>
+              <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
+                <div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: "#667179" }}>Order progress</div>
+                  <div className="mt-2 text-[22px] font-black tracking-[-0.03em]" style={{ color: "#121517" }}>{order.status || "Processing"}</div>
+                </div>
+                <div className="rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em]" style={{ borderColor: "#E2E6E8", color: "rgb(24, 167, 208)" }}>
+                  {order.artwork_status || "Awaiting artwork"}
+                </div>
+              </div>
+              <div className="mt-4 grid gap-2 sm:grid-cols-4">
+                {["Order placed","Awaiting artwork","In production","Completed"].map((label, idx) => (
+                  <div key={label} className="rounded-[12px] border px-3 py-3 text-[11px] font-semibold" style={{ borderColor: "#E2E6E8", color: idx < 2 ? "#121517" : "#667179", backgroundColor: idx < 2 ? "#F8FBFC" : "white" }}>
+                    {label}
+                  </div>
+                ))}
               </div>
             </div>
+
             <div className="grid gap-4 md:grid-cols-2">
               <div className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: "#E2E6E8" }}>
-                <div className="text-[15px] font-black" style={{ color: "#121517" }}>Order information</div>
+                <div className="text-[14px] font-black" style={{ color: "#121517" }}>Order information</div>
                 <div className="mt-4 grid gap-2 text-[12px]" style={{ color: "#667179" }}>
                   <div><b>Created:</b> {order.created_at || "Pending sync"}</div>
                   <div><b>Delivery:</b> {order.delivery || "Standard delivery"}</div>
                   <div><b>Artwork:</b> {order.artwork_status || "Awaiting artwork"}</div>
                 </div>
               </div>
+
               <div className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: "#E2E6E8" }}>
-                <div className="text-[15px] font-black" style={{ color: "#121517" }}>Billing & support</div>
+                <div className="text-[14px] font-black" style={{ color: "#121517" }}>Billing & support</div>
                 <div className="mt-4 grid gap-2 text-[12px]" style={{ color: "#667179" }}>
                   <div><b>Total:</b> {currency(order.total || 0)}</div>
                   <div><b>Status:</b> {order.status || "Processing"}</div>
@@ -59,17 +81,27 @@ export default function OrderDetail({ order, navigate }) {
                 </div>
               </div>
             </div>
+
             <div className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: "#E2E6E8" }}>
-              <div className="text-[15px] font-black" style={{ color: "#121517" }}>Order items</div>
-              <div className="mt-4 text-[12px] leading-6" style={{ color: "#667179" }}>Item-level product detail is ready for live API binding. This page layout is prepared for real product rows, artwork proofs, invoices and delivery updates.</div>
+              <div className="text-[14px] font-black" style={{ color: "#121517" }}>Order items</div>
+              <div className="mt-4 text-[12px] leading-6" style={{ color: "#667179" }}>
+                Item-level product detail is ready for live API binding. This page layout is prepared for real product rows, artwork proofs, invoices and delivery updates.
+              </div>
             </div>
           </div>
+
           <div className="rounded-[18px] border bg-white p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]" style={{ borderColor: "#E2E6E8", height: "fit-content" }}>
-            <div className="text-[20px] font-black tracking-[-0.03em]" style={{ color: "#121517" }}>Actions</div>
+            <div className="text-[18px] font-black tracking-[-0.03em]" style={{ color: "#121517" }}>Actions</div>
             <div className="mt-4 grid gap-3">
-              <button onClick={() => navigate("/artwork-upload")} className="rounded-full bg-[#121517] px-4 py-3 text-[12px] font-bold text-white">Upload artwork</button>
-              <button onClick={() => navigate("/checkout")} className="rounded-full border px-4 py-3 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Reorder</button>
-              <button className="rounded-full border px-4 py-3 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Contact support</button>
+              <button onClick={() => navigate("/artwork-upload")} className="rounded-full bg-[#121517] px-4 py-3 text-[12px] font-bold text-white">
+                Upload artwork
+              </button>
+              <button onClick={() => navigate("/checkout")} className="rounded-full border px-4 py-3 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>
+                Reorder
+              </button>
+              <button className="rounded-full border px-4 py-3 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>
+                Contact support
+              </button>
             </div>
           </div>
         </div>

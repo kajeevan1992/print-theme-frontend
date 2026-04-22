@@ -230,3 +230,10 @@ Use these values:
 - improved account dashboard cards and recent-order actions
 - tightened order-detail page sections and customer actions
 - reduced width/spacing on artwork and checkout pages for a denser portal feel
+
+
+## Customer flow build 3
+- denser auth layout
+- more structured account dashboard
+- stronger order-detail progress and actions
+- reduced checkout and artwork widths for a tighter portal feel
