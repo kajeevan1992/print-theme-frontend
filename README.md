@@ -252,3 +252,11 @@ Use these values:
 - made header search interactive with a product suggestion dropdown
 - redesigned featured product cards to feel more print-specific and less generic ecommerce
 - improved empty dashboard message and first-order call to action
+
+
+## Printed-style rebuild pass
+- enlarged homepage visual scale toward a more commercial print storefront
+- rebuilt hero into a bigger image-led premium section
+- added large category merchandising cards inspired by major online print shops
+- upgraded featured product cards to feel less generic and more print-specific
+- widened product/detail layouts and improved premium spacing rhythm

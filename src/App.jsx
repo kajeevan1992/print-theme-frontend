@@ -28,20 +28,20 @@ import OrderDetail from "./OrderDetail";
 import AuthPage from "./AuthPage";
 
 const BRAND = {
-  bg: "#F6F7FB",
-  bg2: "#F1F3F8",
+  bg: "#F7F8FA",
+  bg2: "#F2F4F7",
   panel: "#FFFFFF",
-  panelSoft: "#F7FAFF",
-  panelTint: "#F6F4FF",
-  line: "#E3E7EF",
-  ink: "#161821",
-  muted: "#647084",
+  panelSoft: "#FAFBFD",
+  panelTint: "#F8F9FC",
+  line: "#E5E9EF",
+  ink: "#141922",
+  muted: "#667387",
   primary: "#18A7D0",
-  primaryDark: "#0D7F9F",
+  primaryDark: "#0E7F9E",
   accent: "#7B3FE4",
-  accentSoft: "#F1EAFF",
+  accentSoft: "#F2ECFF",
   sun: "#FFC83D",
-  sunSoft: "#FFF6D8",
+  sunSoft: "#FFF7DE",
   black: "#101218",
 };
 
@@ -185,21 +185,21 @@ const NAV_ITEMS = [
 
 const heroSlides = [
   {
-    eyebrow: "Bright print energy",
-    title: "Beautiful print products that feel fast, creative and exciting to buy.",
-    body: "A more colorful HOLO PRINT direction with stronger product storytelling, cleaner shopping flow and a happier premium storefront mood.",
+    eyebrow: "Beautiful print, made simple",
+    title: "Print products that look premium before they even reach the customer.",
+    body: "A bigger, cleaner, more commercial storefront direction inspired by leading online print shops — with stronger product storytelling, clearer calls to action and a more image-led layout.",
     image: "/images/hero-slide-1.svg",
   },
   {
-    eyebrow: "Built for standout brands",
-    title: "From business cards to packaging, make every print order feel more alive.",
-    body: "We are leaning into a cleaner but more expressive print brand using cyan, purple and warm yellow accents instead of a flat generic ecommerce look.",
+    eyebrow: "From cards to packaging",
+    title: "High-impact print for growing brands, events and everyday business needs.",
+    body: "Shop business cards, flyers, posters, booklets and more through a brighter, more premium HOLO Print experience built for trust and conversion.",
     image: "/images/hero-slide-2.svg",
   },
   {
-    eyebrow: "Simple to order",
-    title: "Upload, approve and reorder with a storefront made for print customers.",
-    body: "This build focuses on stronger visual energy, clearer customer actions and a friendlier print-buying experience before API connection.",
+    eyebrow: "Easy ordering flow",
+    title: "Choose, upload and reorder through a storefront designed for real print customers.",
+    body: "This rebuild focuses on the visual confidence, merchandising depth and product-first hierarchy you would expect from a serious online print business.",
     image: "/images/hero-slide-3.svg",
   },
 ];
@@ -262,10 +262,10 @@ const featuredCollections = [
 ];
 
 const featuredProducts = [
-  { title: "Standard Business Cards", price: "From £21.99", badge: "Best Seller", image: "/images/business-card-front.svg", path: "/standard-business-cards", specs: "500 pcs · 350gsm · Matte", tone: "cyan" },
-  { title: "Premium Flyers", price: "From £18.40", badge: "Popular", image: "/images/flyer-front.svg", path: "/flyers", specs: "A5 · Double-sided · Silk", tone: "purple" },
-  { title: "Large Format Posters", price: "From £8.49", badge: "Fast Turnaround", image: "/images/poster-main.svg", path: "/posters-large-format-prints", specs: "A2 · Satin · Indoor", tone: "yellow" },
-  { title: "Wiro Bound Booklets", price: "From £34.00", badge: "Professional", image: "/images/hero-slide-2.svg", path: "/booklets", specs: "Wiro · Premium cover · Full colour", tone: "purple" },
+  { title: "Standard Business Cards", price: "From £21.99", badge: "Best Seller", image: "/images/business-card-front.svg", path: "/standard-business-cards", specs: "500 pcs · 350gsm · Matte", blurb: "Perfect for everyday professional networking.", tone: "cyan" },
+  { title: "Premium Flyers", price: "From £18.40", badge: "Popular", image: "/images/flyer-front.svg", path: "/flyers", specs: "A5 · Double-sided · Silk", blurb: "Bold promotional print with crisp colour.", tone: "purple" },
+  { title: "Large Format Posters", price: "From £8.49", badge: "Fast Turnaround", image: "/images/poster-main.svg", path: "/posters-large-format-prints", specs: "A2 · Satin · Indoor", blurb: "Ideal for events, retail and wall displays.", tone: "yellow" },
+  { title: "Wiro Bound Booklets", price: "From £34.00", badge: "Professional", image: "/images/hero-slide-2.svg", path: "/booklets", specs: "Wiro · Premium cover · Full colour", blurb: "Great for menus, guides and presentations.", tone: "purple" },
 ];
 
 const trustBadges = [
@@ -781,7 +781,7 @@ function Hero({ navigate }) {
         <div className="relative grid min-h-[500px] items-center gap-10 py-8 lg:grid-cols-[1.02fr_0.98fr]">
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.22 }}>
-              <div className="mb-3 inline-flex rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ backgroundColor: BRAND.sunSoft, color: BRAND.accent }}>{heroSlides[active].eyebrow}</div>
+              <div className="mb-4 inline-flex rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ backgroundColor: BRAND.sunSoft, color: BRAND.accent }}>{heroSlides[active].eyebrow}</div>
               <h1 className="max-w-[660px] text-[66px] font-black leading-[0.9] tracking-[-0.065em] sm:text-[78px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
               <p className="mt-5 max-w-[600px] text-[14px] leading-7" style={{ color: BRAND.muted }}>{heroSlides[active].body}</p>
               <div className="mt-7 flex flex-wrap gap-3">
@@ -1352,7 +1352,7 @@ function ProductPage({ type, cart }) {
               </div>
             </div>
 
-            <div className="rounded-[20px] border bg-white p-5 shadow-[0_16px_34px_rgba(0,0,0,0.04)]" style={{ borderColor: BRAND.line }}>
+            <div className="rounded-[24px] border bg-white p-6 shadow-[0_16px_34px_rgba(0,0,0,0.04)]" style={{ borderColor: BRAND.line }}>
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <div className="text-[11px] font-bold uppercase tracking-[0.14em]" style={{ color: BRAND.primary }}>Selected price</div>
@@ -1388,10 +1388,10 @@ function BookletsPage({ navigate }) {
       <Shell narrow>
         <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
           <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Booklet printing</div>
-          <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Booklets with a cleaner, more editorial storefront layout</h1>
+          <h1 className="mt-2 text-[40px] font-black tracking-[-0.045em]" style={{ color: BRAND.ink }}>Booklets with a cleaner, more editorial storefront layout</h1>
           <p className="mt-3 max-w-[660px] text-[12px] leading-6" style={{ color: BRAND.muted }}>This page now reflects a fuller commerce structure with lighter cards, more compact typography and cleaner category presentation.</p>
           <div className="mt-5 flex gap-3">
-            <PrimaryButton onClick={() => navigate("/all-products")}>Browse products</PrimaryButton>
+            <PrimaryButton onClick={() => navigate("/all-products")} className="px-7 py-3.5 text-[13px]">Browse products</PrimaryButton>
             <SecondaryButton onClick={() => navigate("/bespoke-quote")}>Request quote</SecondaryButton>
           </div>
         </div>
@@ -1454,7 +1454,7 @@ function BespokeQuotePage() {
         <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
           <div className="rounded-[22px] border p-6 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panel }}>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Custom quote</div>
-            <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Request a bespoke quote for custom print jobs</h1>
+            <h1 className="mt-2 text-[40px] font-black tracking-[-0.045em]" style={{ color: BRAND.ink }}>Request a bespoke quote for custom print jobs</h1>
             <p className="mt-3 max-w-[620px] text-[12px] leading-6" style={{ color: BRAND.muted }}>This section now sits more naturally inside the storefront and better matches the professional, compact structure from your references.</p>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
               <Input placeholder="Full name" className="h-11 rounded-xl border text-[12px]" style={{ borderColor: BRAND.line }} />
@@ -1496,7 +1496,7 @@ function CartPage({ cart, navigate }) {
         <div className="mb-5 flex items-end justify-between gap-4">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Basket</div>
-            <h1 className="mt-2 text-[34px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>Your cart</h1>
+            <h1 className="mt-2 text-[40px] font-black tracking-[-0.045em]" style={{ color: BRAND.ink }}>Your cart</h1>
           </div>
           <SecondaryButton onClick={() => navigate("/all-products")}>Keep shopping</SecondaryButton>
         </div>
@@ -1634,14 +1634,14 @@ class StorefrontErrorBoundary extends React.Component {
   componentDidCatch() {}
   render() {
     if (this.state.hasError) {
-      return (<section className="py-6"><div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8"><div className="rounded-[18px] border bg-white p-6 text-[12px]" style={{ borderColor: "#E2E6E8", color: "#667179" }}>This storefront route hit a rendering problem, so a safe fallback was shown instead of crashing.</div></div></section>);
+      return (<section className="py-6"><div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8"><div className="rounded-[18px] border bg-white p-6 text-[12px]" style={{ borderColor: "#E2E6E8", color: "#667179" }}>This storefront route hit a rendering problem, so a safe fallback was shown instead of crashing.</div></div></section>);
     }
     return this.props.children;
   }
 }
 
 function NotFoundPage({ navigate }) {
-  return (<section className="py-6"><div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8"><div className="rounded-[18px] border bg-white p-6" style={{ borderColor: "#E2E6E8" }}><div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: "rgb(24, 167, 208)" }}>Storefront route</div><h1 className="mt-2 text-[32px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Page not found</h1><p className="mt-3 text-[12px] leading-6" style={{ color: "#667179" }}>This storefront route does not exist yet. Showing a safe fallback keeps the standalone build stable.</p><div className="mt-4"><button onClick={() => navigate("/")} className="rounded-full border px-4 py-2 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Back to storefront</button></div></div></div></section>);
+  return (<section className="py-6"><div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8"><div className="rounded-[18px] border bg-white p-6" style={{ borderColor: "#E2E6E8" }}><div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: "rgb(24, 167, 208)" }}>Storefront route</div><h1 className="mt-2 text-[32px] font-black tracking-[-0.04em]" style={{ color: "#121517" }}>Page not found</h1><p className="mt-3 text-[12px] leading-6" style={{ color: "#667179" }}>This storefront route does not exist yet. Showing a safe fallback keeps the standalone build stable.</p><div className="mt-4"><button onClick={() => navigate("/")} className="rounded-full border px-4 py-2 text-[12px] font-bold" style={{ borderColor: "#E2E6E8", color: "#121517", backgroundColor: "white" }}>Back to storefront</button></div></div></div></section>);
 }
 
 export default function App() {

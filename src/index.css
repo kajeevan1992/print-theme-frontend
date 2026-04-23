@@ -434,3 +434,34 @@ section .rounded-\[18px\] {
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* Printed-style rebuild pass */
+body {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(24,167,208,0.06), transparent 18%),
+    radial-gradient(circle at 92% 4%, rgba(123,63,228,0.05), transparent 16%),
+    linear-gradient(180deg, #F7F8FA 0%, #F2F4F7 100%);
+}
+
+section {
+  position: relative;
+}
+
+header {
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(12px);
+}
+
+button:hover {
+  filter: saturate(1.03);
+}
+
+@media (max-width: 1024px) {
+  .lg\:grid-cols-3,
+  .lg\:grid-cols-\[1\.05fr_0\.95fr\],
+  .lg\:grid-cols-\[1fr_280px\],
+  .lg\:grid-cols-\[1fr_300px\] {
+    grid-template-columns: 1fr !important;
+  }
+}
