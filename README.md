@@ -244,3 +244,10 @@ Use these values:
 - made account summary/actions feel more like job management
 - improved order detail next-action panel
 - tightened checkout/artwork widths again for a denser portal feel
+
+
+## Controlled improvement build
+- fixed dead top search with working suggestion dropdown
+- improved product cards with badges, specs and larger image areas
+- added a slightly richer color system while keeping the original structure
+- replaced the empty dashboard with an intentional first-order state

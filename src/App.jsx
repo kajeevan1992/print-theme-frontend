@@ -28,16 +28,18 @@ import OrderDetail from "./OrderDetail";
 import AuthPage from "./AuthPage";
 
 const BRAND = {
-  bg: "#F1F4F6",
-  bg2: "#EDF1F3",
+  bg: "#F7F8FC",
+  bg2: "#F3F5FA",
   panel: "#FFFFFF",
-  panelSoft: "#F8FBFC",
-  panelTint: "#F6FAFC",
-  line: "#E2E6E8",
-  ink: "#121517",
-  muted: "#667179",
-  primary: "rgb(24, 167, 208)",
+  panelSoft: "#FAFBFE",
+  panelTint: "#F8FAFF",
+  line: "#E3E8F0",
+  ink: "#161A22",
+  muted: "#667487",
+  primary: "#18A7D0",
   primaryDark: "#127B98",
+  accent: "#7B3FE4",
+  sun: "#FFC83D",
   black: "#0F1012",
 };
 
@@ -258,10 +260,10 @@ const featuredCollections = [
 ];
 
 const featuredProducts = [
-  { title: "Standard Business Cards", price: "From £21.99", badge: "Best Seller", image: "/images/business-card-front.svg", path: "/standard-business-cards" },
-  { title: "Premium Flyers", price: "From £18.40", badge: "Popular", image: "/images/flyer-front.svg", path: "/flyers" },
-  { title: "Large Format Posters", price: "From £8.49", badge: "Fast Turnaround", image: "/images/poster-main.svg", path: "/posters-large-format-prints" },
-  { title: "Wiro Bound Booklets", price: "From £34.00", badge: "Professional", image: "/images/hero-slide-2.svg", path: "/booklets" },
+  { title: "Standard Business Cards", price: "From £21.99", badge: "Best Seller", image: "/images/business-card-front.svg", path: "/standard-business-cards", specs: "500 pcs · 350gsm · Matte" },
+  { title: "Premium Flyers", price: "From £18.40", badge: "Popular", image: "/images/flyer-front.svg", path: "/flyers", specs: "A5 · Double-sided · Silk" },
+  { title: "Large Format Posters", price: "From £8.49", badge: "Fast Turnaround", image: "/images/poster-main.svg", path: "/posters-large-format-prints", specs: "A2 · Satin · Indoor" },
+  { title: "Wiro Bound Booklets", price: "From £34.00", badge: "Professional", image: "/images/hero-slide-2.svg", path: "/booklets", specs: "Wiro · Full colour · Premium cover" },
 ];
 
 const trustBadges = [
@@ -606,11 +608,13 @@ function UtilityBar() {
 function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openLabel, setOpenLabel] = useState(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    const close = (e) => { if (wrapperRef.current && !wrapperRef.current.contains(e.target)) setOpenLabel(null); };
+    const close = (e) => { if (wrapperRef.current && !wrapperRef.current.contains(e.target)) { setOpenLabel(null); setSearchOpen(false); } };
     const onScroll = () => setIsScrolled(window.scrollY > 10);
     document.addEventListener("mousedown", close);
     window.addEventListener("scroll", onScroll);
@@ -629,7 +633,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
             <div className="flex items-center gap-3">
               <button className="rounded-xl p-2 xl:hidden" onClick={() => setMobileOpen(true)}><Menu className="h-5 w-5" /></button>
               <button onClick={() => navigate("/")} className="flex items-center gap-0.5">
-                <span className="text-[42px] font-black tracking-[-0.055em]" style={{ color: BRAND.primary }}>HOLO</span>
+                <span className="text-[42px] font-black tracking-[-0.055em]" style={{ color: BRAND.accent || BRAND.primary }}>HOLO</span>
                 <span className="text-[42px] font-black tracking-[-0.055em]" style={{ color: BRAND.ink }}>PRINT</span>
               </button>
             </div>
@@ -654,16 +658,49 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
             </nav>
 
             <div className="ml-auto flex items-center gap-2">
-              <IconButton icon={<Search className="h-4 w-4" />} />
+              <button onClick={() => setSearchOpen((s) => !s)}><IconButton icon={<Search className="h-4 w-4" />} /></button>
               <button onClick={() => navigate("/login")}><IconButton icon={<User className="h-4 w-4" />} /></button>
               <button onClick={() => navigate("/cart")} className="flex items-center gap-2 rounded-xl border px-3 py-2 text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted, backgroundColor: "white" }}>
                 <ShoppingCart className="h-4 w-4" />
                 <span>{currency(cartSubtotal)}</span>
-                {cartCount > 0 && <span className="rounded-full px-1.5 py-0.5 text-[10px] text-white" style={{ backgroundColor: BRAND.primary }}>{cartCount}</span>}
+                {cartCount > 0 && <span className="rounded-full px-1.5 py-0.5 text-[10px] text-white" style={{ background: "linear-gradient(135deg, #18A7D0, #7B3FE4)" }}>{cartCount}</span>}
               </button>
             </div>
           </div>
 
+
+          <AnimatePresence>
+            {searchOpen && (
+              <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ duration: 0.18 }} className="absolute right-0 top-full z-20 mt-2 w-[360px] max-w-[92vw]">
+                <div className="rounded-[20px] border bg-white p-4 shadow-[0_28px_72px_rgba(0,0,0,0.13)]" style={{ borderColor: BRAND.line }}>
+                  <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.accent || BRAND.primary }}>Search products</div>
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" style={{ color: BRAND.muted }} />
+                    <Input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="h-11 rounded-xl border pl-10 text-[12px]" placeholder="Search business cards, flyers, posters..." style={{ borderColor: BRAND.line }} />
+                  </div>
+                  <div className="mt-4 grid gap-2">
+                    {[
+                      ["Business Cards", "/standard-business-cards", "Best seller"],
+                      ["Flyers", "/flyers", "Popular marketing print"],
+                      ["Posters", "/posters-large-format-prints", "Large format"],
+                      ["Booklets", "/booklets", "Brochures & guides"],
+                    ].filter(([label]) => !searchTerm || label.toLowerCase().includes(searchTerm.toLowerCase())).map(([label, path, hint]) => (
+                      <button key={label} onClick={() => { navigate(path); setSearchOpen(false); setSearchTerm(""); }} className="flex items-center justify-between rounded-[12px] border bg-[#FBFCFF] px-4 py-3 text-left" style={{ borderColor: BRAND.line }}>
+                        <div>
+                          <div className="text-[12px] font-bold" style={{ color: BRAND.ink }}>{label}</div>
+                          <div className="text-[11px]" style={{ color: BRAND.muted }}>{hint}</div>
+                        </div>
+                        <ChevronRight className="h-4 w-4" style={{ color: BRAND.primary }} />
+                      </button>
+                    ))}
+                    {!["Business Cards","Flyers","Posters","Booklets"].some((x)=>x.toLowerCase().includes(searchTerm.toLowerCase())) && searchTerm && (
+                      <div className="rounded-[12px] border px-4 py-3 text-[12px]" style={{ borderColor: BRAND.line, color: BRAND.muted }}>No matching products yet. Try Business Cards, Flyers or Posters.</div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
           <AnimatePresence>
             {openLabel && (
               <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ duration: 0.18 }} onMouseLeave={() => setOpenLabel(null)} className="absolute left-0 right-0 top-full hidden xl:block">
@@ -742,13 +779,13 @@ function Hero({ navigate }) {
     return () => clearInterval(timer);
   }, []);
   return (
-    <section className="relative overflow-hidden border-b" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panelSoft }}>
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(24,167,208,0.07),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.03),transparent_24%)]" />
+    <section className="relative overflow-hidden border-b" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(24,167,208,0.08) 0%, rgba(123,63,228,0.06) 60%, rgba(255,200,61,0.08) 100%)" }}>
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(24,167,208,0.12),transparent_24%),radial-gradient(circle_at_center_right,rgba(123,63,228,0.10),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(255,200,61,0.10),transparent_18%)]" />
       <Shell>
         <div className="relative grid min-h-[500px] items-center gap-10 py-8 lg:grid-cols-[1.02fr_0.98fr]">
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.22 }}>
-              <div className="mb-3 inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{heroSlides[active].eyebrow}</div>
+              <div className="mb-3 inline-flex rounded-full bg-[#F3EFFF] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{heroSlides[active].eyebrow}</div>
               <h1 className="max-w-[660px] text-[66px] font-black leading-[0.9] tracking-[-0.065em] sm:text-[78px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
               <p className="mt-5 max-w-[600px] text-[14px] leading-7" style={{ color: BRAND.muted }}>{heroSlides[active].body}</p>
               <div className="mt-7 flex flex-wrap gap-3">
@@ -805,7 +842,7 @@ function HomePage({ navigate }) {
 
       <section className="py-6"><Shell><div className="flex gap-3 overflow-x-auto pb-2">
         {["Business Cards", "Flyers", "Posters", "Booklets", "Labels", "Signage", "Packaging", "Stationery"].map((item) => (
-          <button key={item} className="whitespace-nowrap rounded-full border bg-white px-4 py-2 text-[12px] font-semibold shadow-[0_6px_14px_rgba(0,0,0,0.02)]" style={{ borderColor: BRAND.line }}>{item}</button>
+          <button key={item} className="whitespace-nowrap rounded-full border bg-white px-4 py-2 text-[12px] font-semibold shadow-[0_6px_14px_rgba(0,0,0,0.02)]" style={{ borderColor: BRAND.line, color: BRAND.ink, background: "linear-gradient(180deg,#fff,#fbfcff)" }}>{item}</button>
         ))}
       </div></Shell></section>
 
@@ -857,8 +894,8 @@ function HomePage({ navigate }) {
         <SectionHeading eyebrow="Collections" title="Shop our most-used print categories" action={<SecondaryButton onClick={() => navigate("/all-products")}>View all</SecondaryButton>} />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {featuredCollections.map((item) => (
-            <button key={item.title} onClick={() => navigate(item.path)} className="group rounded-[18px] border bg-white p-4 text-left shadow-[0_10px_24px_rgba(0,0,0,0.03)] transition hover:-translate-y-[1px] hover:shadow-[0_14px_34px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
-              <div className="overflow-hidden rounded-[14px]"><img src={item.image} alt={item.title} className="h-40 w-full object-cover transition duration-500 group-hover:scale-[1.03]" /></div>
+            <button key={item.title} onClick={() => navigate(item.path)} className="group rounded-[22px] border bg-white p-4 text-left shadow-[0_16px_34px_rgba(0,0,0,0.05)] transition hover:-translate-y-[2px] hover:shadow-[0_22px_44px_rgba(0,0,0,0.08)]" style={{ borderColor: BRAND.line }}>
+              <div className="overflow-hidden rounded-[14px]"><img src={item.image} alt={item.title} className="h-48 w-full object-cover transition duration-500 group-hover:scale-[1.04]" /></div>
               <div className="mt-4 text-[18px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{item.title}</div>
               <p className="mt-2 text-[12px] leading-6" style={{ color: BRAND.muted }}>{item.subtitle}</p>
               <div className="mt-4 inline-flex items-center gap-1 text-[12px] font-bold" style={{ color: BRAND.primary }}>Explore <ChevronRight className="h-4 w-4" /></div>
@@ -868,10 +905,10 @@ function HomePage({ navigate }) {
       </Shell></section>
 
       <section className="py-6"><Shell>
-        <SectionHeading eyebrow="Featured products" title="Popular print products with a cleaner card structure" />
+        <SectionHeading eyebrow="Featured products" title="Popular print products with a more premium print-shop feel" />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {featuredProducts.map((item) => (
-            <button key={item.title} onClick={() => navigate(item.path)} className="group rounded-[18px] border bg-white p-4 text-left shadow-[0_10px_24px_rgba(0,0,0,0.03)] transition hover:-translate-y-[1px] hover:shadow-[0_14px_34px_rgba(0,0,0,0.05)]" style={{ borderColor: BRAND.line }}>
+            <button key={item.title} onClick={() => navigate(item.path)} className="group rounded-[22px] border bg-white p-4 text-left shadow-[0_16px_34px_rgba(0,0,0,0.05)] transition hover:-translate-y-[2px] hover:shadow-[0_22px_44px_rgba(0,0,0,0.08)]" style={{ borderColor: BRAND.line }}>
               <div className="flex items-center justify-between">
                 <span className="rounded-full bg-[#F1FAFD] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: BRAND.primary }}>{item.badge}</span>
                 <span className="text-[11px]" style={{ color: BRAND.muted }}>In stock</span>
