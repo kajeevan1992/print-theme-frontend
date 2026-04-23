@@ -401,3 +401,13 @@ body {
 }
 header{background:rgba(255,255,255,0.94);backdrop-filter: blur(10px);}
 button:hover{filter:saturate(1.03);}
+
+
+/* fix pass */
+@media (max-width: 1024px) {
+  .lg\:grid-cols-\[270px_1fr\],
+  .lg\:grid-cols-\[1fr_280px\],
+  .lg\:grid-cols-\[1fr_300px\] {
+    grid-template-columns: 1fr !important;
+  }
+}

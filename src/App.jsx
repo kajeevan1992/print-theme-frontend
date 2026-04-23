@@ -45,6 +45,21 @@ const BRAND = {
 
 const NAV_ITEMS = [
   {
+    label: "Same Day Printing",
+    path: "/same-day-printing",
+    feature: {
+      title: "Need it today?",
+      body: "Fast-turnaround print products for urgent jobs, events and last-minute business needs.",
+      image: "/images/hero-slide-3.svg",
+      cta: "Shop same day print",
+    },
+    columns: [
+      { title: "Fast options", links: [["Same Day Business Cards", "/standard-business-cards"], ["Same Day Flyers", "/flyers"], ["Same Day Posters", "/posters-large-format-prints"], ["Urgent Booklets", "/booklets"]] },
+      { title: "Helpful services", links: [["Artwork Check", "/artwork-upload"], ["Priority Quote", "/bespoke-quote"], ["Express Delivery", "/checkout"], ["Call Support", "/bespoke-quote"]] },
+      { title: "Popular categories", links: [["Business Cards", "/standard-business-cards"], ["Flyers", "/flyers"], ["Labels", "/all-products"], ["Signage", "/signage"]] },
+    ],
+  },
+  {
     label: "Business Cards",
     path: "/standard-business-cards",
     feature: {
@@ -121,7 +136,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Stationery",
-    path: "/all-products",
+    path: "/stationery",
     feature: {
       title: "Professional stationery",
       body: "Core office and brand stationery with a calm, polished presentation.",
@@ -136,7 +151,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Signage",
-    path: "/all-products",
+    path: "/signage",
     feature: {
       title: "Display and signage",
       body: "Retail, event and wayfinding graphics with large-format flexibility.",
@@ -592,7 +607,7 @@ function UtilityBar() {
     <div style={{ backgroundColor: BRAND.black, color: "white" }}>
       <Shell>
         <div className="flex h-8 items-center justify-between text-[11px] font-medium">
-          <span>Professional print, signage and packaging solutions</span>
+          <span>Professional print, same day printing, signage and packaging solutions</span>
           <div className="hidden gap-5 sm:flex">
             <span>Business orders</span>
             <span>Bulk pricing</span>
@@ -610,18 +625,30 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
   const [openLabel, setOpenLabel] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const searchSuggestions = [
+    ["Business Cards", "/standard-business-cards"],
+    ["Flyers", "/flyers"],
+    ["Posters", "/posters-large-format-prints"],
+    ["Booklets", "/booklets"],
+    ["Stationery", "/stationery"],
+    ["Signage", "/signage"],
+    ["All Products", "/all-products"],
+  ];
   const [isScrolled, setIsScrolled] = useState(false);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    const close = (e) => { if (wrapperRef.current && !wrapperRef.current.contains(e.target)) { setOpenLabel(null); setSearchOpen(false); } };
+    const close = (e) => { if (wrapperRef.current && !wrapperRef.current.contains(e.target)) { setOpenLabel(null); } };
     const onScroll = () => setIsScrolled(window.scrollY > 10);
+    const onOpenSearch = () => setSearchOpen(true);
     document.addEventListener("mousedown", close);
     window.addEventListener("scroll", onScroll);
+    window.addEventListener("open-holo-search", onOpenSearch);
     onScroll();
     return () => {
       document.removeEventListener("mousedown", close);
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("open-holo-search", onOpenSearch);
     };
   }, []);
 
@@ -633,7 +660,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
             <div className="flex items-center gap-3">
               <button className="rounded-xl p-2 xl:hidden" onClick={() => setMobileOpen(true)}><Menu className="h-5 w-5" /></button>
               <button onClick={() => navigate("/")} className="flex items-center gap-0.5">
-                <span className="text-[42px] font-black tracking-[-0.055em]" style={{ color: BRAND.accent || BRAND.primary }}>HOLO</span>
+                <span className="text-[42px] font-black tracking-[-0.055em]" style={{ color: BRAND.primary }}>HOLO</span>
                 <span className="text-[42px] font-black tracking-[-0.055em]" style={{ color: BRAND.ink }}>PRINT</span>
               </button>
             </div>
@@ -701,6 +728,63 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
               </motion.div>
             )}
           </AnimatePresence>
+
+<AnimatePresence>
+  {searchOpen && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18 }}
+      className="fixed inset-0 z-[70] bg-[rgba(16,18,24,0.45)] px-4 py-6 md:px-10"
+    >
+      <div className="mx-auto flex max-w-[1080px] items-start justify-end">
+        <button onClick={() => setSearchOpen(false)} className="mt-3 rounded-full bg-white p-3 shadow-[0_12px_28px_rgba(0,0,0,0.10)]">
+          <X className="h-5 w-5" style={{ color: BRAND.ink }} />
+        </button>
+      </div>
+      <div className="mx-auto mt-4 max-w-[1080px] rounded-[28px] border bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.20)] md:p-8" style={{ borderColor: BRAND.line }}>
+        <div className="text-center">
+          <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.accent }}>Search HOLO Print</div>
+          <div className="mt-3 text-[34px] font-black tracking-[-0.045em]" style={{ color: BRAND.ink }}>
+            Find the right print product faster
+          </div>
+        </div>
+        <div className="relative mx-auto mt-6 max-w-[760px]">
+          <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2" style={{ color: BRAND.muted }} />
+          <Input
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="h-14 rounded-[18px] border pl-12 text-[14px]"
+            placeholder="Search business cards, flyers, posters, booklets..."
+            style={{ borderColor: BRAND.line }}
+          />
+        </div>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          {searchSuggestions
+            .filter(([label]) => label.toLowerCase().includes(searchTerm.toLowerCase()))
+            .map(([label, path], idx) => (
+              <button
+                key={label}
+                onClick={() => { navigate(path); setSearchOpen(false); }}
+                className="group flex items-center justify-between rounded-[18px] border bg-[#FBFCFF] px-5 py-4 text-left shadow-[0_10px_24px_rgba(0,0,0,0.03)] transition hover:-translate-y-[1px] hover:shadow-[0_16px_32px_rgba(0,0,0,0.06)]"
+                style={{ borderColor: BRAND.line }}
+              >
+                <div>
+                  <div className="text-[14px] font-black tracking-[-0.02em]" style={{ color: BRAND.ink }}>{label}</div>
+                  <div className="mt-1 text-[12px]" style={{ color: BRAND.muted }}>
+                    {idx < 2 ? "Popular print category" : idx < 5 ? "Browse products and options" : "Explore more products"}
+                  </div>
+                </div>
+                <ChevronRight className="h-5 w-5" style={{ color: BRAND.primary }} />
+              </button>
+            ))}
+        </div>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
           <AnimatePresence>
             {openLabel && (
               <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ duration: 0.18 }} onMouseLeave={() => setOpenLabel(null)} className="absolute left-0 right-0 top-full hidden xl:block">
@@ -1413,25 +1497,53 @@ function BookletsPage({ navigate }) {
   );
 }
 
-function AllProductsPage({ navigate }) {
+
+function AllProductsPage({ navigate, pageTitle = "All Products", activeFilter = "All Products" }) {
+  const filters = ["Labels", "Stationery", "Signage", "All Products"];
+  const filterRoutes = {
+    "Labels": "/all-products",
+    "Stationery": "/stationery",
+    "Signage": "/signage",
+    "All Products": "/all-products",
+  };
+
   return (
     <section className="py-6">
       <Shell narrow>
+        <div className="mb-5">
+          <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.accent }}>Browse catalog</div>
+          <div className="mt-2 text-[30px] font-black tracking-[-0.04em]" style={{ color: BRAND.ink }}>{pageTitle}</div>
+        </div>
+
         <div className="grid gap-6 lg:grid-cols-[270px_1fr]">
           <div className="rounded-[20px] border bg-white p-4 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
-            <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Search catalog</div>
-            <div className="relative">
+            <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.accent }}>Search catalog</div>
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-holo-search"))}
+              className="relative flex h-10 w-full items-center rounded-xl border pl-10 text-left text-[12px]"
+              style={{ borderColor: BRAND.line, color: BRAND.muted, backgroundColor: "white" }}
+            >
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" style={{ color: BRAND.muted }} />
-              <Input className="h-10 rounded-xl border pl-10 text-[12px]" placeholder="Search products..." style={{ borderColor: BRAND.line }} />
-            </div>
+              Type to search products…
+            </button>
             <div className="mt-4 grid gap-1">
-              {["Business Cards", "Flyers", "Posters", "Booklets", "Labels", "Signage", "Packaging", "Stationery"].map((x) => (
-                <button key={x} className="rounded-xl px-3 py-2 text-left text-[12px] font-medium hover:bg-[#F6F7F8]">{x}</button>
+              {filters.map((x) => (
+                <button
+                  key={x}
+                  onClick={() => navigate(filterRoutes[x])}
+                  className="rounded-xl px-3 py-2 text-left text-[12px] font-medium"
+                  style={{
+                    backgroundColor: activeFilter === x ? "#EAF7FC" : "transparent",
+                    color: activeFilter === x ? BRAND.primary : BRAND.ink,
+                  }}
+                >
+                  {x}
+                </button>
               ))}
             </div>
           </div>
           <div className="grid gap-5">
-            {NAV_ITEMS.slice(0,7).map((group) => (
+            {NAV_ITEMS.slice(0,8).filter((group) => pageTitle === "All Products" ? true : group.label === pageTitle || (pageTitle === "Signage" && group.label === "Signage") || (pageTitle === "Stationery" && group.label === "Stationery")).map((group) => (
               <div key={group.label} className="rounded-[22px] border bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.038)]" style={{ borderColor: BRAND.line }}>
                 <div className="text-[22px] font-black tracking-[-0.03em]" style={{ color: BRAND.ink }}>{group.label}</div>
                 <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -1668,7 +1780,16 @@ export default function App() {
       page = <BookletsPage navigate={navigate} />;
       break;
     case "/all-products":
-      page = <AllProductsPage navigate={navigate} />;
+      page = <AllProductsPage navigate={navigate} pageTitle="All Products" activeFilter="All Products" />;
+      break;
+    case "/stationery":
+      page = <AllProductsPage navigate={navigate} pageTitle="Stationery" activeFilter="Stationery" />;
+      break;
+    case "/signage":
+      page = <AllProductsPage navigate={navigate} pageTitle="Signage" activeFilter="Signage" />;
+      break;
+    case "/same-day-printing":
+      page = <AllProductsPage navigate={navigate} pageTitle="Same Day Printing" activeFilter="All Products" />;
       break;
     case "/bespoke-quote":
       page = <BespokeQuotePage />;

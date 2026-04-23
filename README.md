@@ -251,3 +251,11 @@ Use these values:
 - improved product cards with badges, specs and larger image areas
 - added a slightly richer color system while keeping the original structure
 - replaced the empty dashboard with an intentional first-order state
+
+
+## Fix pass
+- top logo color restored to the original cyan
+- added Same Day Printing to the top nav
+- replaced small search popup with a centered full-window search overlay
+- split Stationery and Signage onto their own routes so the active nav/filter state is correct
+- added nginx.conf with SPA routing support to prevent refresh 404s on nested pages
