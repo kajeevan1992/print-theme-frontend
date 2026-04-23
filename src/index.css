@@ -394,3 +394,43 @@ input[type="file"] {
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* HOLO Print visual identity pass */
+body {
+  background:
+    radial-gradient(circle at top left, rgba(24,167,208,0.09), transparent 18%),
+    radial-gradient(circle at 75% 5%, rgba(123,63,228,0.10), transparent 18%),
+    radial-gradient(circle at 90% 12%, rgba(255,200,61,0.12), transparent 12%),
+    linear-gradient(180deg, #F7F8FB 0%, #F1F3F8 100%);
+}
+
+header {
+  background: rgba(255,255,255,0.92);
+}
+
+button {
+  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+img {
+  image-rendering: auto;
+}
+
+section .rounded-\[22px\],
+section .rounded-\[20px\],
+section .rounded-\[18px\] {
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 1024px) {
+  .lg\:grid-cols-\[1\.02fr_0\.98fr\],
+  .lg\:grid-cols-\[1fr_280px\],
+  .lg\:grid-cols-\[1fr_300px\] {
+    grid-template-columns: 1fr !important;
+  }
+}

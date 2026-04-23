@@ -28,17 +28,21 @@ import OrderDetail from "./OrderDetail";
 import AuthPage from "./AuthPage";
 
 const BRAND = {
-  bg: "#F1F4F6",
-  bg2: "#EDF1F3",
+  bg: "#F6F7FB",
+  bg2: "#F1F3F8",
   panel: "#FFFFFF",
-  panelSoft: "#F8FBFC",
-  panelTint: "#F6FAFC",
-  line: "#E2E6E8",
-  ink: "#121517",
-  muted: "#667179",
-  primary: "rgb(24, 167, 208)",
-  primaryDark: "#127B98",
-  black: "#0F1012",
+  panelSoft: "#F7FAFF",
+  panelTint: "#F6F4FF",
+  line: "#E3E7EF",
+  ink: "#161821",
+  muted: "#647084",
+  primary: "#18A7D0",
+  primaryDark: "#0D7F9F",
+  accent: "#7B3FE4",
+  accentSoft: "#F1EAFF",
+  sun: "#FFC83D",
+  sunSoft: "#FFF6D8",
+  black: "#101218",
 };
 
 const NAV_ITEMS = [
@@ -181,21 +185,21 @@ const NAV_ITEMS = [
 
 const heroSlides = [
   {
-    eyebrow: "Premium print solutions",
-    title: "Professional online printing with a cleaner, calmer storefront feel.",
-    body: "A much closer visual direction to the reference screenshots: softer grey-white background, broader navigation, fuller dropdown coverage and denser ecommerce sections.",
+    eyebrow: "Bright print energy",
+    title: "Beautiful print products that feel fast, creative and exciting to buy.",
+    body: "A more colorful HOLO PRINT direction with stronger product storytelling, cleaner shopping flow and a happier premium storefront mood.",
     image: "/images/hero-slide-1.svg",
   },
   {
-    eyebrow: "Built for trust",
-    title: "Make browsing, ordering and quoting feel structured and premium.",
-    body: "This theme now leans further into a real print ecommerce layout with product-led sections, review blocks, category strips and a broader footer structure.",
+    eyebrow: "Built for standout brands",
+    title: "From business cards to packaging, make every print order feel more alive.",
+    body: "We are leaning into a cleaner but more expressive print brand using cyan, purple and warm yellow accents instead of a flat generic ecommerce look.",
     image: "/images/hero-slide-2.svg",
   },
   {
-    eyebrow: "Ready for scale",
-    title: "A stronger storefront foundation before connecting your backend.",
-    body: "Use the current build for presentation now, then wire product data, pricing rules, uploads and admin flows through your dashboard later.",
+    eyebrow: "Simple to order",
+    title: "Upload, approve and reorder with a storefront made for print customers.",
+    body: "This build focuses on stronger visual energy, clearer customer actions and a friendlier print-buying experience before API connection.",
     image: "/images/hero-slide-3.svg",
   },
 ];
@@ -258,10 +262,10 @@ const featuredCollections = [
 ];
 
 const featuredProducts = [
-  { title: "Standard Business Cards", price: "From £21.99", badge: "Best Seller", image: "/images/business-card-front.svg", path: "/standard-business-cards" },
-  { title: "Premium Flyers", price: "From £18.40", badge: "Popular", image: "/images/flyer-front.svg", path: "/flyers" },
-  { title: "Large Format Posters", price: "From £8.49", badge: "Fast Turnaround", image: "/images/poster-main.svg", path: "/posters-large-format-prints" },
-  { title: "Wiro Bound Booklets", price: "From £34.00", badge: "Professional", image: "/images/hero-slide-2.svg", path: "/booklets" },
+  { title: "Standard Business Cards", price: "From £21.99", badge: "Best Seller", image: "/images/business-card-front.svg", path: "/standard-business-cards", specs: "500 pcs · 350gsm · Matte", tone: "cyan" },
+  { title: "Premium Flyers", price: "From £18.40", badge: "Popular", image: "/images/flyer-front.svg", path: "/flyers", specs: "A5 · Double-sided · Silk", tone: "purple" },
+  { title: "Large Format Posters", price: "From £8.49", badge: "Fast Turnaround", image: "/images/poster-main.svg", path: "/posters-large-format-prints", specs: "A2 · Satin · Indoor", tone: "yellow" },
+  { title: "Wiro Bound Booklets", price: "From £34.00", badge: "Professional", image: "/images/hero-slide-2.svg", path: "/booklets", specs: "Wiro · Premium cover · Full colour", tone: "purple" },
 ];
 
 const trustBadges = [
@@ -607,10 +611,11 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openLabel, setOpenLabel] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    const close = (e) => { if (wrapperRef.current && !wrapperRef.current.contains(e.target)) setOpenLabel(null); };
+    const close = (e) => { if (wrapperRef.current && !wrapperRef.current.contains(e.target)) { setOpenLabel(null); setSearchOpen(false); } };
     const onScroll = () => setIsScrolled(window.scrollY > 10);
     document.addEventListener("mousedown", close);
     window.addEventListener("scroll", onScroll);
@@ -654,7 +659,7 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
             </nav>
 
             <div className="ml-auto flex items-center gap-2">
-              <IconButton icon={<Search className="h-4 w-4" />} />
+              <button onClick={() => setSearchOpen((s) => !s)}><IconButton icon={<Search className="h-4 w-4" />} /></button>
               <button onClick={() => navigate("/login")}><IconButton icon={<User className="h-4 w-4" />} /></button>
               <button onClick={() => navigate("/cart")} className="flex items-center gap-2 rounded-xl border px-3 py-2 text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.muted, backgroundColor: "white" }}>
                 <ShoppingCart className="h-4 w-4" />
@@ -663,6 +668,34 @@ function Header({ navigate, currentPath, cartCount, cartSubtotal }) {
               </button>
             </div>
           </div>
+
+
+<AnimatePresence>
+  {searchOpen && (
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ duration: 0.18 }} className="absolute right-0 top-full z-20 mt-2 w-[360px] max-w-[92vw]">
+      <div className="rounded-[20px] border bg-white p-4 shadow-[0_24px_70px_rgba(0,0,0,0.12)]" style={{ borderColor: BRAND.line }}>
+        <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.16em]" style={{ color: BRAND.accent }}>Search products</div>
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" style={{ color: BRAND.muted }} />
+          <Input className="h-11 rounded-xl border pl-10 text-[12px]" placeholder="Search business cards, flyers, stickers..." style={{ borderColor: BRAND.line }} />
+        </div>
+        <div className="mt-4 grid gap-2">
+          {[
+            ["Business Cards", "/standard-business-cards"],
+            ["Flyers", "/flyers"],
+            ["Posters", "/posters-large-format-prints"],
+            ["Booklets", "/booklets"],
+          ].map(([label, path]) => (
+            <button key={label} onClick={() => { navigate(path); setSearchOpen(false); }} className="flex items-center justify-between rounded-[12px] border bg-[#FBFCFF] px-4 py-3 text-left text-[12px] font-semibold" style={{ borderColor: BRAND.line, color: BRAND.ink }}>
+              <span>{label}</span>
+              <ChevronRight className="h-4 w-4" style={{ color: BRAND.primary }} />
+            </button>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
           <AnimatePresence>
             {openLabel && (
@@ -742,13 +775,13 @@ function Hero({ navigate }) {
     return () => clearInterval(timer);
   }, []);
   return (
-    <section className="relative overflow-hidden border-b" style={{ borderColor: BRAND.line, backgroundColor: BRAND.panelSoft }}>
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(24,167,208,0.07),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.03),transparent_24%)]" />
+    <section className="relative overflow-hidden border-b" style={{ borderColor: BRAND.line, background: "linear-gradient(135deg, rgba(24,167,208,0.10) 0%, rgba(123,63,228,0.08) 52%, rgba(255,200,61,0.10) 100%)" }}>
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(24,167,208,0.15),transparent_24%),radial-gradient(circle_at_center_right,rgba(123,63,228,0.12),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(255,200,61,0.14),transparent_22%)]" />
       <Shell>
         <div className="relative grid min-h-[500px] items-center gap-10 py-8 lg:grid-cols-[1.02fr_0.98fr]">
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.22 }}>
-              <div className="mb-3 inline-flex rounded-full bg-[#F1FAFD] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>{heroSlides[active].eyebrow}</div>
+              <div className="mb-3 inline-flex rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ backgroundColor: BRAND.sunSoft, color: BRAND.accent }}>{heroSlides[active].eyebrow}</div>
               <h1 className="max-w-[660px] text-[66px] font-black leading-[0.9] tracking-[-0.065em] sm:text-[78px]" style={{ color: BRAND.ink }}>{heroSlides[active].title}</h1>
               <p className="mt-5 max-w-[600px] text-[14px] leading-7" style={{ color: BRAND.muted }}>{heroSlides[active].body}</p>
               <div className="mt-7 flex flex-wrap gap-3">
@@ -764,7 +797,7 @@ function Hero({ navigate }) {
           </AnimatePresence>
 
           <div className="justify-self-center lg:justify-self-end">
-            <div className="overflow-hidden rounded-[28px] border bg-white p-3 shadow-[0_28px_72px_rgba(0,0,0,0.065)]" style={{ borderColor: BRAND.line }}>
+            <div className="overflow-hidden rounded-[28px] border bg-white p-3 shadow-[0_28px_72px_rgba(0,0,0,0.08)]" style={{ borderColor: BRAND.line, boxShadow: "0 28px 72px rgba(0,0,0,0.08), 0 0 0 8px rgba(123,63,228,0.05)" }}>
               <img src={heroSlides[active].image} alt="Hero" className="h-[365px] w-[580px] max-w-full rounded-[18px] object-cover" />
             </div>
           </div>
@@ -805,7 +838,7 @@ function HomePage({ navigate }) {
 
       <section className="py-6"><Shell><div className="flex gap-3 overflow-x-auto pb-2">
         {["Business Cards", "Flyers", "Posters", "Booklets", "Labels", "Signage", "Packaging", "Stationery"].map((item) => (
-          <button key={item} className="whitespace-nowrap rounded-full border bg-white px-4 py-2 text-[12px] font-semibold shadow-[0_6px_14px_rgba(0,0,0,0.02)]" style={{ borderColor: BRAND.line }}>{item}</button>
+          <button key={item} className="whitespace-nowrap rounded-full border bg-white px-4 py-2 text-[12px] font-semibold shadow-[0_6px_14px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_26px_rgba(0,0,0,0.06)]" style={{ borderColor: BRAND.line }}>{item}</button>
         ))}
       </div></Shell></section>
 
@@ -1382,7 +1415,7 @@ function AllProductsPage({ navigate }) {
       <Shell narrow>
         <div className="grid gap-6 lg:grid-cols-[270px_1fr]">
           <div className="rounded-[20px] border bg-white p-4 shadow-[0_12px_28px_rgba(0,0,0,0.035)]" style={{ borderColor: BRAND.line }}>
-            <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.primary }}>Search catalog</div>
+            <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: BRAND.accent }}>Search catalog</div>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" style={{ color: BRAND.muted }} />
               <Input className="h-10 rounded-xl border pl-10 text-[12px]" placeholder="Search products..." style={{ borderColor: BRAND.line }} />

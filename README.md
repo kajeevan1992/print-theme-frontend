@@ -244,3 +244,11 @@ Use these values:
 - made account summary/actions feel more like job management
 - improved order detail next-action panel
 - tightened checkout/artwork widths again for a denser portal feel
+
+
+## HOLO Print visual identity pass
+- refreshed brand palette to cyan + purple + warm yellow
+- upgraded hero to a cleaner colorful premium look
+- made header search interactive with a product suggestion dropdown
+- redesigned featured product cards to feel more print-specific and less generic ecommerce
+- improved empty dashboard message and first-order call to action
