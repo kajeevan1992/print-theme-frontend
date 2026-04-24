@@ -100,7 +100,7 @@ export default function CheckoutPage() {
         <div className="bg-soft rounded-2xl p-6 text-left mb-8">
           <h3 className="font-semibold mb-3">What happens next?</h3>
           <div className="space-y-3">
-            {['We'll review your artwork and contact you if there are any issues', 'Your order goes into production within 1 business day', 'You'll receive tracking details when your order ships'].map((s, i) => (
+            {["We'll review your artwork and contact you if there are any issues", 'Your order goes into production within 1 business day', "You'll receive tracking details when your order ships"].map((s, i) => (
               <div key={i} className="flex gap-3 text-sm text-mid">
                 <span className="w-6 h-6 bg-brand-500 text-white rounded-full flex items-center justify-center text-xs font-bold shrink-0">{i + 1}</span>
                 {s}
