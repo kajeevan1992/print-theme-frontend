@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Star, ChevronLeft, ChevronRight, Sparkles, Zap, Shield } from 'lucide-react';
-import { products, categories, testimonials, specialFinishes } from '../../data/products';
-import ProductCard from '../ui/ProductCard';
+import { products, categories, testimonials, specialFinishes } from '../data/products';
+import ProductCard from '../components/ui/ProductCard';
 
 const heroSlides = [
   {
